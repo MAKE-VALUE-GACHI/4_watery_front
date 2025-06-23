@@ -9,14 +9,28 @@ dist/
 web-build/
 expo-env.d.ts
 
-# Native
-.kotlin/
-*.orig.*
+# Android
+android/.gradle/
+android/app/build/
 *.jks
-*.p8
-*.p12
-*.key
-*.mobileprovision
+*.keystore
+*.orig.*
+
+# iOS
+ios/build/
+ios/Pods/
+*.xcuserstate
+*.xcworkspace
+*.xcodeproj
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xccheckout
+*.moved-aside
+DerivedData/
+*.hmap
+*.ipa
 
 # Metro
 .metro-health-check*
@@ -31,9 +45,13 @@ yarn-error.*
 *.pem
 
 # local env files
-.env*.local
+.env*
 
 # typescript
 *.tsbuildinfo
 
 app-example
+
+# misc
+.idea/
+.vscode/

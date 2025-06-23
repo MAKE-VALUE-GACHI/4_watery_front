@@ -48,3 +48,20 @@ Join our community of developers creating universal apps.
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+
+## Development Setup
+
+This project uses:
+- **TypeScript** for static typing
+- **Zustand** for state management
+- **NativeWind** (TailwindCSS for React Native) for styling
+- **ESLint** and **Prettier** for code quality and formatting
+
+### NativeWind Setup
+- Tailwind config: `tailwind.config.ts` (content globs set for app, components, hooks)
+- TypeScript config: `tsconfig.json` includes `nativewind/types`
+- Expo plugin: `package.json` includes `expo.plugins: ["nativewind"]`
+
+### Linting & Formatting
+- ESLint config: `eslint.config.js` (includes Prettier integration)
+- Format code: `npx prettier --write .`
