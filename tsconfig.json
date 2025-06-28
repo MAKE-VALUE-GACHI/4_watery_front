@@ -18,8 +18,10 @@
     "isolatedModules": true
   },
   "include": [
-    "src",
-    "App.tsx",
+    "app/**/*",
+    "hooks/**/*",
+    "components/**/*",
+    "constants/**/*",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
   ],
