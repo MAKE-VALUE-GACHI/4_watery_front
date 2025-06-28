@@ -24,5 +24,11 @@ module.exports = {
         allow: ["\\.(ttf|otf|woff|woff2|png|jpg|jpeg|gif|svg)$"]
       }
     ],
+    "react-native/no-raw-text": [
+      "error",
+      {
+        skip: ["ThemedText"]
+      }
+    ],
   },
 };
