@@ -37,7 +37,6 @@ const _styles = StyleSheet.create({
  * T가 클수록 → 웨이브가 천천히 움직임
  * T가 작을수록 → 웨이브가 빠르게 움직임
  */
-
 const wavesDict = [
   [
     { A: 15, T: 400, fill: "#555879" },
