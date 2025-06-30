@@ -2,6 +2,7 @@ import { HelloWave } from "@/components/HelloWave";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { H1, H2, HL1, HL2, T1, T2, T3 } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
+import { MaterialIcons } from "@expo/vector-icons";
 import { Image } from "expo-image";
 import "nativewind";
 import React, { useEffect, useRef, useState } from "react";
@@ -98,6 +99,7 @@ export default function HomeScreen() {
         <H2>Heading2</H2>
         <HL1>Headline1</HL1>
         <HL2>Headline2</HL2>
+        <MaterialIcons name="star" size={50} color="#ff0000" />
       </ThemedView>
       <View style={_styles.container}>
         <TouchableHighlight
