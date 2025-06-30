@@ -18,5 +18,17 @@ module.exports = {
     "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
     "no-console": "warn",
     "react-native/sort-styles": "off",
+    "@typescript-eslint/no-require-imports": [
+      "error",
+      {
+        allow: ["\\.(ttf|otf|woff|woff2|png|jpg|jpeg|gif|svg)$"],
+      },
+    ],
+    "react-native/no-raw-text": [
+      "error",
+      {
+        skip: ["ThemedText"],
+      },
+    ],
   },
 };
