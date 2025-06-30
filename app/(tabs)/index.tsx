@@ -67,7 +67,7 @@ const wavesDict = [
 
 export default function HomeScreen() {
   const waveRef = useRef<WaveView>(null);
-  const [waterHeight, setWaterHeight] = useState(50);
+  const [waterHeight, setWaterHeight] = useState(10);
   const [waveIdx, setWaveIdx] = useState(0);
 
   useEffect(() => {
