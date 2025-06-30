@@ -1,6 +1,6 @@
 import { HelloWave } from "@/components/HelloWave";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
-import { T1 } from "@/components/ThemedText";
+import { H1, H2, HL1, HL2, T1, T2, T3 } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { Image } from "expo-image";
 import "nativewind";
@@ -88,6 +88,16 @@ export default function HomeScreen() {
       <ThemedView style={styles.titleContainer}>
         <T1>Welcome</T1>
         <HelloWave />
+      </ThemedView>
+
+      <ThemedView>
+        <T1>Title1</T1>
+        <T2>Title2</T2>
+        <T3>Title3</T3>
+        <H1>Heading1</H1>
+        <H2>Heading2</H2>
+        <HL1>Headline1</HL1>
+        <HL2>Headline2</HL2>
       </ThemedView>
       <View style={_styles.container}>
         <TouchableHighlight
