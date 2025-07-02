@@ -1,3 +1,4 @@
+import CustomButton from "@/components/CustomButton";
 import { HelloWave } from "@/components/HelloWave";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { H1, H2, HL1, HL2, T1, T2, T3 } from "@/components/ThemedText";
@@ -89,6 +90,14 @@ export default function HomeScreen() {
       <ThemedView style={styles.titleContainer}>
         <T1>Welcome</T1>
         <HelloWave />
+      </ThemedView>
+
+      {/* 시연 이후 삭제 예정*/}
+      <ThemedView style={{ gap: 10 }}>
+        <CustomButton title={"PRIMARY(DEFAULT)"} variant={"primary"} />
+        <CustomButton title={"SECONDARY"} variant={"secondary"} />
+        <CustomButton title={"TERTIARY"} variant={"tertiary"} />
+        <CustomButton title={"WARNING"} variant={"warning"} />
       </ThemedView>
 
       <ThemedView>
