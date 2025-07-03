@@ -1,9 +1,20 @@
 import CustomButton from "@/components/CustomButton";
 import { HelloWave } from "@/components/HelloWave";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
-import { H1, H2, HL1, HL2, T1, T2, T3 } from "@/components/ThemedText";
+import {
+  H1,
+  H2,
+  HL1,
+  HL2,
+  T1,
+  T2,
+  T3,
+  ThemedText,
+} from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
+import { Colors } from "@/constants/Colors";
 import { MaterialIcons } from "@expo/vector-icons";
+import { Slider } from "@miblanchard/react-native-slider";
 import { Image } from "expo-image";
 import "nativewind";
 import React, { useEffect, useRef, useState } from "react";
@@ -67,10 +78,13 @@ const wavesDict = [
   ],
 ];
 
+const trackMarks = [100, 300, 500, 700, 1000];
+
 export default function HomeScreen() {
   const waveRef = useRef<WaveView>(null);
   const [waterHeight, setWaterHeight] = useState(10);
   const [waveIdx, setWaveIdx] = useState(0);
+  const [sliderVal, setSliderVal] = useState(250);
 
   useEffect(() => {
     waveRef.current?.setWaterHeight(waterHeight);
@@ -98,6 +112,56 @@ export default function HomeScreen() {
         <CustomButton title={"SECONDARY"} variant={"secondary"} />
         <CustomButton title={"TERTIARY"} variant={"tertiary"} />
         <CustomButton title={"WARNING"} variant={"warning"} />
+      </ThemedView>
+
+      <ThemedView>
+        <Slider
+          containerStyle={{
+            backgroundColor: Colors.primary_050,
+          }}
+          minimumValue={100}
+          maximumValue={1000}
+          onValueChange={(value) => setSliderVal(value[0])}
+          value={sliderVal}
+          step={10}
+          trackMarks={[100, 300, 500, 700, 1000]}
+          renderAboveThumbComponent={() => {
+            return (
+              <ThemedView>
+                <ThemedText>{sliderVal}</ThemedText>
+              </ThemedView>
+            );
+          }}
+          renderTrackMarkComponent={(index) => {
+            return (
+              <ThemedView
+                style={{
+                  backgroundColor: "transparent",
+                  height: 80,
+                  justifyContent: "flex-end",
+                }}
+              >
+                <ThemedText style={{ color: Colors.neutral_400 }}>
+                  {trackMarks[index]}
+                </ThemedText>
+              </ThemedView>
+            );
+          }}
+          thumbStyle={{
+            width: 40,
+            height: 40,
+            borderRadius: 48,
+            backgroundColor: Colors.neutral_600,
+            borderWidth: 8,
+            borderColor: Colors.neutral_000,
+            shadowColor: Colors.neutral_1000,
+            shadowRadius: 20,
+          }}
+          trackStyle={{
+            height: 6,
+            borderRadius: 16,
+          }}
+        />
       </ThemedView>
 
       <ThemedView>
