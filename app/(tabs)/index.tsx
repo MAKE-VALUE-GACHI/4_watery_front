@@ -78,13 +78,13 @@ const wavesDict = [
   ],
 ];
 
-const trackMarks = [100, 300, 500, 700, 1000];
+const trackMarks = [0, 200, 400, 600, 800, 1000];
 
 export default function HomeScreen() {
   const waveRef = useRef<WaveView>(null);
   const [waterHeight, setWaterHeight] = useState(10);
   const [waveIdx, setWaveIdx] = useState(0);
-  const [sliderVal, setSliderVal] = useState(250);
+  const [sliderVal, setSliderVal] = useState(500);
 
   useEffect(() => {
     waveRef.current?.setWaterHeight(waterHeight);
@@ -119,11 +119,11 @@ export default function HomeScreen() {
           containerStyle={{
             backgroundColor: Colors.primary_050,
           }}
-          minimumValue={100}
+          // minimumValue={100}
           maximumValue={1000}
           onValueChange={(value) => setSliderVal(value[0])}
           value={sliderVal}
-          step={10}
+          step={50}
           trackMarks={trackMarks}
           renderAboveThumbComponent={() => {
             return (
