@@ -17,6 +17,7 @@
     "@react-navigation/elements": "^2.3.8",
     "@react-navigation/native": "^7.1.6",
     "@tanstack/react-query": "^5.80.10",
+    "@types/styled-components-react-native": "^5.2.5",
     "axios": "^1.10.0",
     "expo": "53.0.13",
     "expo-blur": "~14.1.5",
@@ -45,6 +46,7 @@
     "react-native-waveview": "^1.1.0",
     "react-native-web": "~0.20.0",
     "react-native-webview": "13.13.5",
+    "styled-components": "^6.1.19",
     "zustand": "^5.0.5"
   },
   "devDependencies": {
