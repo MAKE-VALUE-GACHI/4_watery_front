@@ -124,7 +124,7 @@ export default function HomeScreen() {
           onValueChange={(value) => setSliderVal(value[0])}
           value={sliderVal}
           step={10}
-          trackMarks={[100, 300, 500, 700, 1000]}
+          trackMarks={trackMarks}
           renderAboveThumbComponent={() => {
             return (
               <ThemedView>
