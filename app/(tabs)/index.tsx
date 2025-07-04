@@ -1,16 +1,7 @@
 import CustomButton from "@/components/CustomButton";
 import { HelloWave } from "@/components/HelloWave";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
-import {
-  H1,
-  H2,
-  HL1,
-  HL2,
-  T1,
-  T2,
-  T3,
-  ThemedText,
-} from "@/components/ThemedText";
+import { H1, H2, HL1, HL2, T1, T2, T3, ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { Colors } from "@/constants/Colors";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -20,6 +11,10 @@ import "nativewind";
 import React, { useEffect, useRef, useState } from "react";
 import { StyleSheet, TouchableHighlight, View } from "react-native";
 import WaveView from "react-native-waveview";
+
+import { CustomTab } from "@/components/CustomTab";
+
+type TabType = "전체" | "물" | "커피" | "녹차";
 
 const WAVE_BACKGROUND_COLOR = "#ffffff";
 
@@ -80,16 +75,19 @@ const wavesDict = [
 
 const trackMarks = [0, 200, 400, 600, 800, 1000];
 
+
 export default function HomeScreen() {
   const waveRef = useRef<WaveView>(null);
   const [waterHeight, setWaterHeight] = useState(10);
   const [waveIdx, setWaveIdx] = useState(0);
   const [sliderVal, setSliderVal] = useState(500);
+  const [selectedTab, setSelectedTab] = useState<TabType>("전체");
 
   useEffect(() => {
     waveRef.current?.setWaterHeight(waterHeight);
     waveRef.current?.setWaveParams(wavesDict[waveIdx]);
   }, [waveIdx]);
+
 
   return (
     <ParallaxScrollView
@@ -104,6 +102,19 @@ export default function HomeScreen() {
       <ThemedView style={styles.titleContainer}>
         <T1>Welcome</T1>
         <HelloWave />
+      </ThemedView>
+
+      {/* 공용 컴포넌트 - Tabs */}
+      <ThemedView style={{ gap: 10 }}>
+        <CustomTab
+            selectedTab={selectedTab}
+            onSelectTab={setSelectedTab}
+        />
+        <CustomTab
+            selectedTab={selectedTab}
+            onSelectTab={setSelectedTab}
+            visibleTabs={["물", "커피", "녹차"]}
+        />
       </ThemedView>
 
       {/* 시연 이후 삭제 예정*/}
@@ -141,9 +152,7 @@ export default function HomeScreen() {
                   justifyContent: "flex-end",
                 }}
               >
-                <ThemedText style={{ color: Colors.neutral_400 }}>
-                  {trackMarks[index]}
-                </ThemedText>
+                <ThemedText style={{ color: Colors.neutral_400 }}>{trackMarks[index]}</ThemedText>
               </ThemedView>
             );
           }}
