@@ -12,7 +12,9 @@ import React, { useEffect, useRef, useState } from "react";
 import { StyleSheet, TouchableHighlight, View } from "react-native";
 import WaveView from "react-native-waveview";
 
+
 import { CustomTab } from "@/components/CustomTab";
+import { CustomToggle } from "@/components/CustomToggle";
 
 type TabType = "전체" | "물" | "커피" | "녹차";
 
@@ -81,7 +83,9 @@ export default function HomeScreen() {
   const [waterHeight, setWaterHeight] = useState(10);
   const [waveIdx, setWaveIdx] = useState(0);
   const [sliderVal, setSliderVal] = useState(500);
+
   const [selectedTab, setSelectedTab] = useState<TabType>("전체");
+  const [isEnabled, setIsEnabled] = useState(false);
 
   useEffect(() => {
     waveRef.current?.setWaterHeight(waterHeight);
@@ -104,7 +108,7 @@ export default function HomeScreen() {
         <HelloWave />
       </ThemedView>
 
-      {/* 공용 컴포넌트 - Tabs */}
+      {/* 공용 컴포넌트 - Tab */}
       <ThemedView style={{ gap: 10 }}>
         <CustomTab
             selectedTab={selectedTab}
@@ -115,6 +119,11 @@ export default function HomeScreen() {
             onSelectTab={setSelectedTab}
             visibleTabs={["물", "커피", "녹차"]}
         />
+      </ThemedView>
+
+      {/* 공용 컴포넌트 - Toggle */}
+      <ThemedView style={{ gap: 10 }}>
+        <CustomToggle value={isEnabled} onValueChange={setIsEnabled} />
       </ThemedView>
 
       {/* 시연 이후 삭제 예정*/}
