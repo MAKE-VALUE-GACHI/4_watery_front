@@ -1,25 +1,37 @@
 import styled from "styled-components/native";
 import { ThemedView } from "@/components/ThemedView";
 import { Colors } from "@/constants/Colors";
+import { LinearGradient } from "expo-linear-gradient";
 
-//  TODO: work on Linear gradient (check cursor)
-export const SlideContainer = styled(ThemedView)`
-  border-color: ${Colors.neutral_000};
-  border-radius: 24px;
-  border-width: 1px;
-  //background: linear-gradient(180deg, rgba(255, 255, 255, 0.48) 0%, rgba(145, 207, 234, 0.23) 100%);
-  //box-shadow: 0px 6px 12px 0px rgba(0, 0, 0, 0.1);
+export const TransparentView = styled(ThemedView)`
+  background-color: transparent;
 `;
 
-export const FlexRow = styled(ThemedView)<{ gap?: number }>`
+export const StyledLinearGradient = styled(LinearGradient)`
+  border-radius: 24px;
+`;
+
+export const SlideContainer = styled(TransparentView)`
+  border-radius: 24px;
+  border-width: 1px;
+  border-color: ${Colors.neutral_000};
+  background-color: transparent;
+  margin: 1px;
+  padding: 12px;
+`;
+
+export const FlexRow = styled(TransparentView)<{ gap?: number }>`
   flex-direction: row;
   ${(gap: number) => gap && `gap: ${gap}px;`}
 `;
 
 export const SlideHeader = styled(FlexRow)`
   justify-content: space-between;
+  background-color: transparent;
+  padding: 12px 20px;
 `;
 
-export const SlideBody = styled(ThemedView)`
+export const SlideBody = styled(TransparentView)`
   height: 436px;
+  background-color: transparent;
 `;

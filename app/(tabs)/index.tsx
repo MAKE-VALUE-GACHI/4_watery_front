@@ -137,7 +137,7 @@ export default function HomeScreen() {
         />
       </ThemedView>
 
-      <CustomSlide />
+      <CustomSlide variant={"water"} />
 
       <ThemedView>
         <T1>Title1</T1>
