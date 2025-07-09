@@ -12,7 +12,7 @@ interface CustomSliderProps
   trackMarks?: number[];
 }
 
-const StyledCSlider = styled(Slider).attrs(() => ({
+const StyledSlider = styled(Slider).attrs(() => ({
   containerStyle: {
     backgroundColor: Colors.primary_050,
   },
@@ -42,7 +42,7 @@ export const CustomSlider: React.FC<CustomSliderProps> = ({
   const renderAboveThumb = () => <AboveThumb sliderVal={sliderVal} />;
 
   return (
-    <StyledCSlider
+    <StyledSlider
       value={sliderVal}
       onValueChange={onValueChange}
       trackMarks={trackMarks}
