@@ -11,7 +11,7 @@ interface CustomSliderProps
   trackMarks?: number[];
 }
 
-export const CustomSlider: React.FC<CustomSliderProps> = ({
+const CustomSlider: React.FC<CustomSliderProps> = ({
   sliderVal,
   onValueChange,
   trackMarks = [0, 200, 400, 600, 800, 1000],
@@ -31,3 +31,5 @@ export const CustomSlider: React.FC<CustomSliderProps> = ({
     />
   );
 };
+
+export default CustomSlider;

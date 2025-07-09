@@ -12,7 +12,8 @@ import WaveView from "react-native-waveview";
 
 import { CustomTab } from "@/components/CustomTab";
 import { CustomToggle } from "@/components/CustomToggle";
-import { CustomSlider } from "@/components/CustomSlider/CustomSlider";
+import CustomSlide from "@/components/CustomSlide/CustomSlide";
+import CustomSlider from "@/components/CustomSlider/CustomSlider";
 
 type TabType = "전체" | "물" | "커피" | "녹차";
 
@@ -135,6 +136,8 @@ export default function HomeScreen() {
           minimumValue={0}
         />
       </ThemedView>
+
+      <CustomSlide />
 
       <ThemedView>
         <T1>Title1</T1>
