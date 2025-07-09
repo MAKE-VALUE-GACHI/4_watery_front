@@ -1,20 +1,18 @@
-import CustomButton from "@/components/CustomButton";
+import CustomButton from "@/components/CustomButton/CustomButton";
 import { HelloWave } from "@/components/HelloWave";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
-import { H1, H2, HL1, HL2, T1, T2, T3, ThemedText } from "@/components/ThemedText";
+import { H1, H2, HL1, HL2, T1, T2, T3 } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
-import { Colors } from "@/constants/Colors";
 import { MaterialIcons } from "@expo/vector-icons";
-import { Slider } from "@miblanchard/react-native-slider";
 import { Image } from "expo-image";
 import "nativewind";
 import React, { useEffect, useRef, useState } from "react";
 import { StyleSheet, TouchableHighlight, View } from "react-native";
 import WaveView from "react-native-waveview";
 
-
 import { CustomTab } from "@/components/CustomTab";
 import { CustomToggle } from "@/components/CustomToggle";
+import { CustomSlider } from "@/components/CustomSlider/CustomSlider";
 
 type TabType = "전체" | "물" | "커피" | "녹차";
 
@@ -75,9 +73,6 @@ const wavesDict = [
   ],
 ];
 
-const trackMarks = [0, 200, 400, 600, 800, 1000];
-
-
 export default function HomeScreen() {
   const waveRef = useRef<WaveView>(null);
   const [waterHeight, setWaterHeight] = useState(10);
@@ -91,7 +86,6 @@ export default function HomeScreen() {
     waveRef.current?.setWaterHeight(waterHeight);
     waveRef.current?.setWaveParams(wavesDict[waveIdx]);
   }, [waveIdx]);
-
 
   return (
     <ParallaxScrollView
@@ -110,14 +104,11 @@ export default function HomeScreen() {
 
       {/* 공용 컴포넌트 - Tab */}
       <ThemedView style={{ gap: 10 }}>
+        <CustomTab selectedTab={selectedTab} onSelectTab={setSelectedTab} />
         <CustomTab
-            selectedTab={selectedTab}
-            onSelectTab={setSelectedTab}
-        />
-        <CustomTab
-            selectedTab={selectedTab}
-            onSelectTab={setSelectedTab}
-            visibleTabs={["물", "커피", "녹차"]}
+          selectedTab={selectedTab}
+          onSelectTab={setSelectedTab}
+          visibleTabs={["물", "커피", "녹차"]}
         />
       </ThemedView>
 
@@ -135,50 +126,13 @@ export default function HomeScreen() {
       </ThemedView>
 
       <ThemedView>
-        <Slider
-          containerStyle={{
-            backgroundColor: Colors.primary_050,
-          }}
-          // minimumValue={100}
-          maximumValue={1000}
-          onValueChange={(value) => setSliderVal(value[0])}
-          value={sliderVal}
+        <CustomSlider
+          sliderVal={sliderVal}
+          onValueChange={(val) => setSliderVal(val[0])}
           step={50}
-          trackMarks={trackMarks}
-          renderAboveThumbComponent={() => {
-            return (
-              <ThemedView>
-                <ThemedText>{sliderVal}</ThemedText>
-              </ThemedView>
-            );
-          }}
-          renderTrackMarkComponent={(index) => {
-            return (
-              <ThemedView
-                style={{
-                  backgroundColor: "transparent",
-                  height: 80,
-                  justifyContent: "flex-end",
-                }}
-              >
-                <ThemedText style={{ color: Colors.neutral_400 }}>{trackMarks[index]}</ThemedText>
-              </ThemedView>
-            );
-          }}
-          thumbStyle={{
-            width: 40,
-            height: 40,
-            borderRadius: 48,
-            backgroundColor: Colors.neutral_600,
-            borderWidth: 8,
-            borderColor: Colors.neutral_000,
-            shadowColor: Colors.neutral_1000,
-            shadowRadius: 20,
-          }}
-          trackStyle={{
-            height: 6,
-            borderRadius: 16,
-          }}
+          animationType={"spring"}
+          maximumValue={1000}
+          minimumValue={0}
         />
       </ThemedView>
 
