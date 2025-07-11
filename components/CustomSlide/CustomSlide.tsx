@@ -24,7 +24,7 @@ const beverageColors: Record<BeverageVariantType, [string, string]> = {
   water: ["rgba(255,255,255,0.48)", "#91CFEA7A"],
   coffee: ["rgba(255,255,255,0.48)", "#EBC58F52"],
   greenTea: ["rgba(255,255,255,0.48)", "#90EE908F"],
-  cola: ["rgba(255,255,255,0.48)", "#4D4D4D7A"],
+  cola: ["rgba(255,255,255,0.48)", "#CD853F7A"],
 };
 
 const defaultColors: [string, string] = ["rgba(255,255,255,0.48)", "#91CFEA7A"];
@@ -77,7 +77,7 @@ const CustomSlide: React.FC<CustomSlideProps> = ({ beverageVariant }) => {
               <WaveView
                 ref={waveRef}
                 style={{ width: BOTTLE_WIDTH, height: BOTTLE_HEIGHT, backgroundColor: "white" }}
-                H={100}
+                H={waterHeight}
                 waveParams={wavesDict[beverageVariant]}
                 animated={true}
               />

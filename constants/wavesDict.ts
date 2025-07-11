@@ -15,23 +15,23 @@ import {Colors} from "@/constants/Colors";
  */
 export const wavesDict = {
   water: [
-    { A: 15, T: 350, fill: Colors.waves.water[0] },
-    { A: 20, T: 325, fill: Colors.waves.water[1] },
-    { A: 25, T: 300, fill: Colors.waves.water[2] },
+    { A: 30, T: 350, fill: Colors.waves.water[2] },
+    { A: 25, T: 325, fill: Colors.waves.water[1] },
+    { A: 20, T: 300, fill: Colors.waves.water[0] },
   ],
   coffee: [
-    { A: 15, T: 350, fill: Colors.waves.coffee[0] },
-    { A: 20, T: 325, fill: Colors.waves.coffee[1] },
-    { A: 25, T: 300, fill: Colors.waves.coffee[2] },
+    { A: 30, T: 350, fill: Colors.waves.coffee[2] },
+    { A: 25, T: 325, fill: Colors.waves.coffee[1] },
+    { A: 20, T: 300, fill: Colors.waves.coffee[0] },
   ],
   greenTea: [
-    { A: 15, T: 350, fill: Colors.waves.green_tea[0] },
-    { A: 20, T: 325, fill: Colors.waves.green_tea[1] },
-    { A: 25, T: 300, fill: Colors.waves.green_tea[2] },
+    { A: 30, T: 350, fill: Colors.waves.green_tea[2] },
+    { A: 25, T: 325, fill: Colors.waves.green_tea[1] },
+    { A: 20, T: 300, fill: Colors.waves.green_tea[0] },
   ],
   cola: [
-    { A: 15, T: 350, fill: Colors.waves.cola[0] },
-    { A: 20, T: 325, fill: Colors.waves.cola[1] },
-    { A: 25, T: 300, fill: Colors.waves.cola[2] },
+    { A: 30, T: 350, fill: Colors.waves.cola[2] },
+    { A: 25, T: 325, fill: Colors.waves.cola[1] },
+    { A: 20, T: 300, fill: Colors.waves.cola[0] },
   ],
 };
