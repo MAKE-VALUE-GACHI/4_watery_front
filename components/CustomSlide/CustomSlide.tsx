@@ -38,12 +38,11 @@ const CustomSlide: React.FC<CustomSlideProps> = ({ beverageVariant }) => {
 
   const waveRef = useRef<WaveView>(null);
   const [waterHeight, setWaterHeight] = useState(50);
-  const [waveIdx, setWaveIdx] = useState(0);
 
   useEffect(() => {
     waveRef.current?.setWaterHeight(waterHeight);
     waveRef.current?.setWaveParams(wavesDict[beverageVariant]);
-  }, [waveIdx, beverageVariant]);
+  }, [beverageVariant]);
 
   return (
     <StyledLinearGradient colors={colors} start={{ x: 0.5, y: 0 }} end={{ x: 0.5, y: 1 }}>
@@ -53,7 +52,7 @@ const CustomSlide: React.FC<CustomSlideProps> = ({ beverageVariant }) => {
           <View style={{ width: BOTTLE_WIDTH, height: BOTTLE_HEIGHT, position: "relative" }}>
             {/* 1. 병 안쪽만 보이게 하는 마스크 */}
             <MaskedView
-              style={{ width: BOTTLE_WIDTH, height: BOTTLE_HEIGHT, position: "absolute" }}
+              style={{ width: BOTTLE_WIDTH, height: BOTTLE_HEIGHT }}
               maskElement={
                 <Image
                   source={require("@/assets/images/bottle-mask.png")}
