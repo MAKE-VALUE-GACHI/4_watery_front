@@ -1,7 +1,7 @@
-import styled from "styled-components/native";
 import { ThemedView } from "@/components/ThemedView";
 import { Colors } from "@/constants/Colors";
 import { LinearGradient } from "expo-linear-gradient";
+import styled from "styled-components/native";
 
 export const TransparentView = styled(ThemedView)`
   background-color: transparent;
@@ -22,7 +22,7 @@ export const SlideContainer = styled(TransparentView)`
 
 export const FlexRow = styled(TransparentView)<{ gap?: number }>`
   flex-direction: row;
-  ${(gap: number) => gap && `gap: ${gap}px;`}
+  ${({ gap }) => gap && `gap: ${gap}px;`}
 `;
 
 export const SlideBody = styled(TransparentView)`

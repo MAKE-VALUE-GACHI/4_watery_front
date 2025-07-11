@@ -1,7 +1,7 @@
 import AboveThumb from "@/components/CustomSlider/AboveThumb";
-import { StyledSlider } from "@/components/CustomSlider/CustomSlider.styles";
 import TrackMark from "@/components/CustomSlider/TrackMark";
-import { SliderProps } from "@miblanchard/react-native-slider";
+import { Colors } from "@/constants/Colors";
+import { Slider, SliderProps } from "@miblanchard/react-native-slider";
 import React from "react";
 
 interface CustomSliderProps
@@ -28,19 +28,34 @@ interface CustomSliderProps
 const CustomSlider: React.FC<CustomSliderProps> = ({
   sliderVal,
   onValueChange,
-  trackMarks = [0, 200, 400, 600, 800, 1000],
+  trackMarks = [0, 1000],
   ...props
 }) => {
   const renderTrackMark = (index: number) => <TrackMark value={trackMarks[index]} />;
   const renderAboveThumb = () => <AboveThumb sliderVal={sliderVal} />;
 
   return (
-    <StyledSlider
+    <Slider
       value={sliderVal}
       onValueChange={onValueChange}
       trackMarks={trackMarks}
       renderAboveThumbComponent={renderAboveThumb}
       renderTrackMarkComponent={renderTrackMark}
+      containerStyle={{ paddingTop: 40, paddingBottom: 40 }}
+      thumbStyle={{
+        width: 40,
+        height: 40,
+        borderRadius: 48,
+        backgroundColor: Colors.neutral_600,
+        borderWidth: 4,
+        borderColor: Colors.neutral_000,
+        shadowColor: Colors.neutral_1000,
+        shadowRadius: 20,
+      }}
+      trackStyle={{
+        height: 6,
+        borderRadius: 16,
+      }}
       {...props}
     />
   );
