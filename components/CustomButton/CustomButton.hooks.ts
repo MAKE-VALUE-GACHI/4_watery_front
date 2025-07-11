@@ -21,7 +21,7 @@ export const getButtonBorderColor = (variant: string, pressed: boolean) => {
     case "secondary":
       return !pressed ? Colors.primary_100 : Colors.primary_200;
     case "tertiary":
-      return Colors.neutral_100;
+      return !pressed ? Colors.neutral_000 : Colors.neutral_100;
     case "warning":
       return !pressed ? Colors.neutral_100 : Colors.danger_100;
     case "primary":

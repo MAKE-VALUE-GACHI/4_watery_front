@@ -11,6 +11,7 @@ interface StyledButtonProps {
 export const StyledButton = styled.TouchableOpacity<StyledButtonProps>`
   padding: 12px 30px;
   border-radius: 12px;
+  border-width: 1px;
   border-color: ${({ variant, pressed }) => getButtonBorderColor(variant, pressed)};
   flex-direction: row;
   gap: 8px;
