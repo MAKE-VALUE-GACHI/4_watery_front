@@ -25,13 +25,14 @@ export const FlexRow = styled(TransparentView)<{ gap?: number }>`
   ${(gap: number) => gap && `gap: ${gap}px;`}
 `;
 
-export const SlideHeader = styled(FlexRow)`
-  justify-content: space-between;
-  background-color: transparent;
-  padding: 12px 20px;
-`;
-
 export const SlideBody = styled(TransparentView)`
   height: 436px;
+  background-color: transparent;
+`;
+
+export const IconWrapper = styled(ThemedView)`
+  border-radius: 100%;
+  border-width: 2px;
+  border-color: ${Colors.neutral_000};
   background-color: transparent;
 `;

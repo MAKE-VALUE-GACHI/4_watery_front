@@ -98,6 +98,8 @@ export default function HomeScreen() {
         />
       }
     >
+      <CustomSlide beverageVariant={"greenTea"} />
+
       <ThemedView style={styles.titleContainer}>
         <T1>Welcome</T1>
         <HelloWave />
@@ -136,8 +138,6 @@ export default function HomeScreen() {
           minimumValue={0}
         />
       </ThemedView>
-
-      <CustomSlide variant={"water"} />
 
       <ThemedView>
         <T1>Title1</T1>

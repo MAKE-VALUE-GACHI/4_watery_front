@@ -1,53 +1,49 @@
-import CustomButton from "@/components/CustomButton/CustomButton";
-import { HL2 } from "@/components/ThemedText";
-import { Colors } from "@/constants/Colors";
-import React from "react";
 import {
+  IconWrapper,
   SlideBody,
   SlideContainer,
-  SlideHeader,
   StyledLinearGradient,
   TransparentView,
 } from "@/components/CustomSlide/CustomSlide.styles";
-import Measurement from "@/components/CustomSlide/Measurement";
+import { BeverageVariantType } from "@/components/CustomSlide/CustomSlide.types";
+import SlideHeader from "@/components/CustomSlide/SlideHeader";
+import React from "react";
+import CustomButton from "@/components/CustomButton/CustomButton";
+import { MaterialIcons } from "@expo/vector-icons";
 
 interface CustomSlideProps {
-  variant: "water" | "coffee" | "greenTea" | "coke";
+  beverageVariant: BeverageVariantType;
 }
 
-const CustomSlide: React.FC<CustomSlideProps> = ({ variant }) => {
-  const renderName = (variantType: "water" | "coffee" | "greenTea" | "coke") => {
-    switch (variantType) {
-      case "water":
-        return "물";
+const beverageColors: Record<BeverageVariantType, [string, string]> = {
+  water: ["rgba(255,255,255,0.48)", "#91CFEA7A"],
+  coffee: ["rgba(255,255,255,0.48)", "#EBC58F52"],
+  greenTea: ["rgba(255,255,255,0.48)", "#90EE908F"],
+  cola: ["rgba(255,255,255,0.48)", "#CD853F7A"],
+};
 
-      case "coffee":
-        return "커피";
+const defaultColors: [string, string] = ["rgba(255,255,255,0.48)", "#91CFEA7A"];
 
-      case "greenTea":
-        return "녹차";
+const CustomSlide: React.FC<CustomSlideProps> = ({ beverageVariant }) => {
+  const colors = beverageColors[beverageVariant] ?? defaultColors;
 
-      case "coke":
-        return "콜라";
-
-      default:
-        return "물";
-    }
-  };
   return (
-    <StyledLinearGradient
-      colors={["rgba(255,255,255,0.48)", "rgba(145,207,234,0.48)"]}
-      start={{ x: 0.5, y: 0 }}
-      end={{ x: 0.5, y: 1 }}
-    >
+    <StyledLinearGradient colors={colors} start={{ x: 0.5, y: 0 }} end={{ x: 0.5, y: 1 }}>
       <SlideContainer>
-        <SlideHeader>
-          <HL2 style={{ color: Colors.primary_800 }}>{renderName(variant)}</HL2>
-          <Measurement />
-        </SlideHeader>
+        <SlideHeader beverageVariant={beverageVariant} />
         <SlideBody />
         <TransparentView>
-          <CustomButton title={"마신 기록 추가"} variant={"primary"} />
+          <CustomButton
+            icon={
+              <IconWrapper>
+                <MaterialIcons name="add" size={20} color="white" />
+              </IconWrapper>
+            }
+            title={"마신 기록 추가"}
+            variant={"primary"}
+            textType={"BN1"}
+            textStyle={{ fontWeight: "bold" }}
+          />
         </TransparentView>
       </SlideContainer>
     </StyledLinearGradient>
