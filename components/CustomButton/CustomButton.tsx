@@ -1,14 +1,18 @@
-import { ThemedText } from "@/components/ThemedText";
-import React from "react";
-import { TextStyle, TouchableOpacityProps } from "react-native";
 import { getTextColor } from "@/components/CustomButton/CustomButton.hooks";
 import { StyledButton } from "@/components/CustomButton/CustomButton.styles";
+import { BN2 } from "@/components/ThemedText";
+import React from "react";
+import { TextStyle, TouchableOpacityProps } from "react-native";
+import { TextType } from "@/types/text";
+import { textComponentMap } from "@/constants/textComponent";
 
 interface CustomButtonProps extends TouchableOpacityProps {
   title: string;
   variant?: "primary" | "secondary" | "tertiary" | "warning";
   disabled?: boolean;
   textStyle?: TextStyle;
+  icon?: React.ReactNode;
+  textType?: TextType;
 }
 
 const CustomButton: React.FC<CustomButtonProps> = ({
@@ -17,8 +21,12 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   disabled,
   style,
   textStyle,
+  icon,
+  textType = "BN2",
   ...props
 }) => {
+  const TextComponent = textComponentMap[textType] || BN2;
+
   return (
     <StyledButton
       variant={variant}
@@ -27,13 +35,14 @@ const CustomButton: React.FC<CustomButtonProps> = ({
       activeOpacity={0.8}
       {...props}
     >
-      <ThemedText
+      {icon ?? icon}
+      <TextComponent
         style={textStyle}
         lightColor={getTextColor(variant)}
         darkColor={getTextColor(variant)}
       >
         {title}
-      </ThemedText>
+      </TextComponent>
     </StyledButton>
   );
 };
