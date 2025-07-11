@@ -3,7 +3,7 @@ import { StyledButton } from "@/components/CustomButton/CustomButton.styles";
 import { BN2 } from "@/components/ThemedText";
 import { textComponentMap } from "@/constants/textComponent";
 import { TextType } from "@/types/text";
-import React from "react";
+import React, { useState } from "react";
 import { TextStyle, TouchableOpacityProps } from "react-native";
 
 interface CustomButtonProps extends TouchableOpacityProps {
@@ -28,14 +28,18 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   ...props
 }) => {
   const TextComponent = textComponentMap[textType] || BN2;
+  const [pressed, setPressed] = useState(false);
 
   return (
     <StyledButton
       variant={variant}
       disabled={disabled}
       style={style}
-      activeOpacity={0.8}
+      pressed={pressed}
+      activeOpacity={1}
       customBgColor={backgroundColor}
+      onPressIn={() => setPressed(true)}
+      onPressOut={() => setPressed(false)}
       {...props}
     >
       {icon ?? icon}
