@@ -27,6 +27,8 @@ export const FlexRow = styled(TransparentView)<{ gap?: number }>`
 
 export const SlideBody = styled(TransparentView)`
   height: 436px;
+  justify-content: center;
+  align-items: center;
   background-color: transparent;
 `;
 
