@@ -15,6 +15,7 @@ import { useRouter } from "expo-router";
 
 import { CustomTab } from "@/components/CustomTab";
 import { CustomToggle } from "@/components/CustomToggle";
+import TodayGoal from "@/components/TodayGoalMoisture/TodayGoal";
 
 type TabType = "전체" | "물" | "커피" | "녹차";
 
@@ -112,6 +113,9 @@ export default function HomeScreen() {
       </ThemedView>
 
       <Button title="Go to Login" onPress={onLoginSuccess} />
+
+      {/* Main - Today Goal */}
+      <TodayGoal />
 
       {/* 공용 컴포넌트 - Tab */}
       <ThemedView style={{ gap: 10 }}>
