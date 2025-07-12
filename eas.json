@@ -1,0 +1,34 @@
+{
+  "cli": {
+    "version": ">= 6.3.1"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_NATIVE_APP_KEY": "86065be64edd6e7d4f24c9077ab52f07"
+      }
+    },
+    "preview": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_NATIVE_APP_KEY": "${EXPO_PUBLIC_NATIVE_APP_KEY}"
+      }
+    },
+    "production": {
+      "android": {
+        "buildType": "app-bundle"
+      },
+      "env": {
+        "EXPO_PUBLIC_NATIVE_APP_KEY": "${EXPO_PUBLIC_NATIVE_APP_KEY}"
+      }
+    }
+  }
+}

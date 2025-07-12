@@ -9,9 +9,9 @@ import { Slider } from "@miblanchard/react-native-slider";
 import { Image } from "expo-image";
 import "nativewind";
 import React, { useEffect, useRef, useState } from "react";
-import { StyleSheet, TouchableHighlight, View } from "react-native";
+import { StyleSheet, TouchableHighlight, View, Button } from "react-native";
 import WaveView from "react-native-waveview";
-
+import { useRouter } from "expo-router";
 
 import { CustomTab } from "@/components/CustomTab";
 import { CustomToggle } from "@/components/CustomToggle";
@@ -77,7 +77,6 @@ const wavesDict = [
 
 const trackMarks = [0, 200, 400, 600, 800, 1000];
 
-
 export default function HomeScreen() {
   const waveRef = useRef<WaveView>(null);
   const [waterHeight, setWaterHeight] = useState(10);
@@ -87,11 +86,15 @@ export default function HomeScreen() {
   const [selectedTab, setSelectedTab] = useState<TabType>("전체");
   const [isEnabled, setIsEnabled] = useState(false);
 
+  const router = useRouter();
+  const onLoginSuccess = () => {
+    router.push("/(auth)/login"); // Splash → 메인으로 이동
+  };
+
   useEffect(() => {
     waveRef.current?.setWaterHeight(waterHeight);
     waveRef.current?.setWaveParams(wavesDict[waveIdx]);
   }, [waveIdx]);
-
 
   return (
     <ParallaxScrollView
@@ -108,16 +111,15 @@ export default function HomeScreen() {
         <HelloWave />
       </ThemedView>
 
+      <Button title="Go to Login" onPress={onLoginSuccess} />
+
       {/* 공용 컴포넌트 - Tab */}
       <ThemedView style={{ gap: 10 }}>
+        <CustomTab selectedTab={selectedTab} onSelectTab={setSelectedTab} />
         <CustomTab
-            selectedTab={selectedTab}
-            onSelectTab={setSelectedTab}
-        />
-        <CustomTab
-            selectedTab={selectedTab}
-            onSelectTab={setSelectedTab}
-            visibleTabs={["물", "커피", "녹차"]}
+          selectedTab={selectedTab}
+          onSelectTab={setSelectedTab}
+          visibleTabs={["물", "커피", "녹차"]}
         />
       </ThemedView>
 
