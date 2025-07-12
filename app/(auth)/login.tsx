@@ -1,8 +1,15 @@
+import React, { useEffect } from "react";
+import { Button, View, Text } from "react-native";
+import { useRouter } from "expo-router";
 import { useAuthManager } from "@/libs/auth/authManager";
 import * as Notifications from "expo-notifications";
-import { Button, View, Text } from "react-native";
 
 export default function LoginScreen() {
+  const router = useRouter();
+  const onMoveHome = () => {
+    router.push("/(tabs)"); // Splash → 메인으로 이동
+  };
+
   const { loginWithProvider, googlePromptAsync, googleRequest } = useAuthManager();
 
   const handleLogin = async (type: "GOOGLE" | "KAKAO") => {
@@ -18,9 +25,11 @@ export default function LoginScreen() {
 
   return (
     <View>
+      <Text>Watery 로그인</Text>
       <Text>로그인 페이지</Text>
       <Button title="Google 로그인" disabled={!googleRequest} onPress={() => googlePromptAsync()} />
       <Button title="Kakao 로그인" onPress={() => handleLogin("KAKAO")} />
+      <Button title="Home 이동" onPress={onMoveHome} />
     </View>
   );
 }
