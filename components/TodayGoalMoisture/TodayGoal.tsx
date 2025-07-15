@@ -1,40 +1,71 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 import styles from "./TodayGoal.styles";
 
-const TodayGoal = () => {
+import { Colors } from "@/constants/Colors";
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
+
+export default function TodayGoalCard() {
   return (
     <LinearGradient
-      colors={["#FFFFFF", "rgba(205, 209, 213, 0.48)"]} // "#CDD1D57A"
+      colors={["#FFFFFFFF", "#CDD1D57A"]}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 1 }}
       style={styles.gradientBorder}
     >
-      <View style={styles.container}>
-        {/* Title Section */}
-        <View style={styles.titleRow}>
-          <Text style={styles.titleText}>오늘의 목표 수분</Text>
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>설정</Text>
+      <View style={styles.innerContainer}>
+        <ThemedView style={styles.cardBackground}>
+          {/* Top Row: 텍스트 + 버튼 */}
+          <View style={styles.topRow}>
+            <ThemedText style={styles.goalText}>오늘의 목표 수분</ThemedText>
+            <TouchableOpacity style={styles.settingButton}>
+              <View style={styles.settingContent}>
+                <ThemedText style={styles.settingText}>개인설정</ThemedText>
+                <MaterialIcons
+                  name="keyboard-arrow-right"
+                  size={16}
+                  color={Colors.primary_300}
+                  style={styles.icon}
+                />
+              </View>
+            </TouchableOpacity>
           </View>
-        </View>
 
-        {/* Status Box */}
-        <View style={styles.statusBox}>
-          <View style={styles.statusRow}>
-            <Text style={styles.statusText}>오늘 목표를 달성했어요 !</Text>
-            <View style={styles.amountRow}>
-              <Text style={styles.amountCurrent}>2600</Text>
-              <Text style={styles.slash}>/</Text>
-              <Text style={styles.amountTarget}>2500</Text>
-              <Text style={styles.ml}>ml</Text>
-            </View>
+          {/* Spacer between Text and ProgressBar */}
+          <View style={{ height: 10 }} />
+
+          {/* Progress Bar */}
+          <View style={styles.progressWrapper}>
+            <LinearGradient
+              colors={["#E6E8EA", "#FFFFFF8F"]}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}
+              style={styles.progressGradientBorder}
+            >
+              <View style={styles.progressInner}>
+                <View style={styles.progressContent}>
+                  <MaterialCommunityIcons
+                    name="crown"
+                    size={16}
+                    color={Colors.neutral_000}
+                    style={styles.crownIcon}
+                  />
+                  <ThemedText style={styles.progressText}>오늘 목표를 달성했어요 !</ThemedText>
+                  <View style={styles.statusGroup}>
+                    <ThemedText style={styles.currentAmount}>2600</ThemedText>
+                    <ThemedText style={styles.slash}>/</ThemedText>
+                    <ThemedText style={styles.goalAmount}>2500</ThemedText>
+                    <ThemedText style={styles.ml}>ml</ThemedText>
+                  </View>
+                </View>
+              </View>
+            </LinearGradient>
           </View>
-        </View>
+        </ThemedView>
       </View>
     </LinearGradient>
   );
-};
-
-export default TodayGoal;
+}

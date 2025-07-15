@@ -18,6 +18,7 @@ export default function LoginScreen() {
     try {
       const user = await loginWithProvider(type, expoPushToken);
       console.log("✅ 로그인 성공:", user);
+      router.replace("/(tabs)"); // 로그인 후 메인 탭으로 이동
     } catch (e) {
       console.error("❌ 로그인 실패:", e);
     }
