@@ -7,7 +7,6 @@ import { Colors } from "@/constants/Colors";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Slider } from "@miblanchard/react-native-slider";
 import { Image } from "expo-image";
-import "nativewind";
 import React, { useEffect, useRef, useState } from "react";
 import { StyleSheet, TouchableHighlight, View, Button } from "react-native";
 import WaveView from "react-native-waveview";

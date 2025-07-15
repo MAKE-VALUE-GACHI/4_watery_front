@@ -27,7 +27,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       foregroundImage: "./assets/images/adaptive-icon.png",
       backgroundColor: "#ffffff",
     },
-    edgeToEdge: true,
   },
   ios: {
     supportsTablet: true,

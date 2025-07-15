@@ -26,7 +26,6 @@ export default function LoginScreen() {
 
   return (
     <View>
-      <Text>Watery 로그인</Text>
       <Text>로그인 페이지</Text>
       <Button title="Google 로그인" disabled={!googleRequest} onPress={() => googlePromptAsync()} />
       <Button title="Kakao 로그인" onPress={() => handleLogin("KAKAO")} />

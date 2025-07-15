@@ -10,9 +10,6 @@
       },
       "env": {
         "EXPO_PUBLIC_NATIVE_APP_KEY": "86065be64edd6e7d4f24c9077ab52f07"
-      },
-      "node": {
-        "installCommand": "npm install"
       }
     },
     "preview": {
