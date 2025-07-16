@@ -9,6 +9,7 @@ interface StyledButtonProps {
 }
 
 export const StyledButton = styled.TouchableOpacity<StyledButtonProps>`
+  height: 56px;
   padding: 12px 30px;
   border-radius: 12px;
   border-width: 1px;
