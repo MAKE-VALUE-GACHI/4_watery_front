@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import * as Google from "expo-auth-session/providers/google";
 import * as WebBrowser from "expo-web-browser";
 import { loginToBackend } from "../api/auth";
@@ -16,13 +16,29 @@ export const useGoogleLogin = () => {
     }),
   });
 
-  const login = async (pushToken: string): Promise<{ token: string }> => {
-    if (response?.type === "success" && response.authentication?.accessToken) {
-      const token = response.authentication.accessToken;
-      const backendRes = await loginToBackend("GOOGLE", pushToken, token);
-      return backendRes;
+  const [accessToken, setAccessToken] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (response?.type === "success") {
+      const token = response.authentication?.accessToken;
+      if (token) {
+        setAccessToken(token);
+      }
     }
-    throw new Error("Google 로그인 실패 또는 accessToken 없음");
+  }, [response]);
+
+  const login = async (pushToken: string): Promise<{ token: string }> => {
+    if (!accessToken) throw new Error("accessToken 없음");
+
+    const result = await promptAsync(); // ✅ Google 인증창 열기
+
+    if (result.type !== "success" || !result.authentication?.accessToken) {
+      throw new Error("Google 로그인 실패 또는 accessToken 없음");
+    }
+
+    const token = result.authentication.accessToken;
+    const backendRes = await loginToBackend("GOOGLE", pushToken, token);
+    return backendRes;
   };
 
   return { request, promptAsync, login };
