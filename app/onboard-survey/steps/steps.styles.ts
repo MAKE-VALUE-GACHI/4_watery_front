@@ -3,8 +3,8 @@ import { ThemedView } from "@/components/ThemedView";
 
 export const StepContainer = styled(ThemedView)`
   flex: 1;
-  justify-content: center;
-  align-items: center;
+  padding-top: 48px;
+  gap: 16px;
 `;
 
 export default StepContainer;

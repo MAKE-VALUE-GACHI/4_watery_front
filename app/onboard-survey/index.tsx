@@ -1,7 +1,9 @@
 import SurveyHeader from "@/app/onboard-survey/components/SurveyHeader";
 import SurveyProgressBar from "@/app/onboard-survey/components/SurveyProgressBar";
 import { SurveyContentWrapper, SurveyPageContainer } from "@/app/onboard-survey/index.styles";
-import { useState } from "react";
+import CustomButton from "@/components/CustomButton/CustomButton";
+import { useOnboardStepStore } from "@/stores/onboardStepStore";
+import { FormProvider, useForm } from "react-hook-form";
 import ActivityStep from "./steps/ActivityStep";
 import BirthYearStep from "./steps/BirthYearStep";
 import GenderStep from "./steps/GenderStep";
@@ -12,22 +14,52 @@ const categories = ["성별", "출생연도", "체중", "하루 평균 활동량
 const stepComponents = [GenderStep, BirthYearStep, WeightStep, ActivityStep];
 
 const OnboardSurvey = () => {
-  const [currentStep, setCurrentStep] = useState(1);
-
+  const { currentStep, nextStep, setCurrentStep } = useOnboardStepStore();
   const CurrentStepComponent = stepComponents[currentStep - 1];
 
+  const methods = useForm({
+    defaultValues: {
+      gender: "",
+      birthYear: "",
+      weight: "",
+      activity: "",
+    },
+  });
+
+  // 최종 제출 함수
+  const onSubmit = (data: any) => {
+    console.log("최종 제출 데이터:", data);
+  };
+
+  // 버튼 핸들러
+  const handleButtonPress = () => {
+    if (currentStep === stepComponents.length) {
+      // 제출 로직
+      setCurrentStep(1);
+      methods.handleSubmit(onSubmit)();
+    } else {
+      nextStep();
+    }
+  };
+
   return (
-    <SurveyPageContainer>
-      <SurveyProgressBar currentStep={currentStep} totalSteps={stepComponents.length} />
-      <SurveyContentWrapper>
-        <SurveyHeader
-          currentStep={currentStep}
-          totalSteps={stepComponents.length}
-          categoryName={categories[currentStep - 1]}
-        />
-        <CurrentStepComponent />
-      </SurveyContentWrapper>
-    </SurveyPageContainer>
+    <FormProvider {...methods}>
+      <SurveyPageContainer>
+        <SurveyProgressBar currentStep={currentStep} totalSteps={stepComponents.length} />
+        <SurveyContentWrapper>
+          <SurveyHeader
+            currentStep={currentStep}
+            totalSteps={stepComponents.length}
+            categoryName={categories[currentStep - 1]}
+          />
+          <CurrentStepComponent />
+          <CustomButton
+            title={currentStep === stepComponents.length ? "시작하기" : "다음 단계"}
+            onPress={handleButtonPress}
+          />
+        </SurveyContentWrapper>
+      </SurveyPageContainer>
+    </FormProvider>
   );
 };
 

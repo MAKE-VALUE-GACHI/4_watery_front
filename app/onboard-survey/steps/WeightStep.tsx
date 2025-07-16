@@ -1,5 +1,5 @@
 import { H1 } from "@/components/ThemedText";
-import StepContainer from "@/app/onboard-survey/steps/steps.styles";
+import { StepContainer } from "@/app/onboard-survey/steps/steps.styles";
 
 const WeightStep = () => {
   return (
