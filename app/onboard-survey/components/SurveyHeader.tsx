@@ -1,6 +1,8 @@
+import { FlexRow, SurveyHeaderWrapper } from "@/app/onboard-survey/components/SurveyHeader.styles";
+import { LR1, T3 } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
+import { Colors } from "@/constants/Colors";
 import React from "react";
-import { BN2, H2 } from "@/components/ThemedText";
 
 interface SurveyHeaderProps {
   currentStep: number;
@@ -11,9 +13,14 @@ interface SurveyHeaderProps {
 const SurveyHeader: React.FC<SurveyHeaderProps> = ({ currentStep, totalSteps, categoryName }) => {
   return (
     <ThemedView>
-      <H2>{categoryName}을</H2>
-      <H2>선택해 주세요.</H2>
-      <BN2>정확한 목표 수분량을 얻기 위해 필요해요.</BN2>
+      <SurveyHeaderWrapper>
+        <FlexRow>
+          <T3 lightColor={Colors.neutral_900}>{categoryName}</T3>
+          <T3 lightColor={Colors.neutral_500}>을</T3>
+        </FlexRow>
+        <T3 lightColor={Colors.neutral_500}>선택해 주세요.</T3>
+      </SurveyHeaderWrapper>
+      <LR1 lightColor={Colors.neutral_600}>정확한 목표 수분량을 얻기 위해 필요해요.</LR1>
     </ThemedView>
   );
 };
