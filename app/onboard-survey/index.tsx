@@ -15,7 +15,7 @@ const OnboardSurvey = () => {
         <SurveyHeader
           currentStep={currentStep}
           totalSteps={4}
-          categoryName={categories[currentStep]}
+          categoryName={categories[currentStep - 1]}
         />
       </SurveyContentWrapper>
     </SurveyPageContainer>
