@@ -1,20 +1,20 @@
 import { StepContainer } from "@/app/onboard-survey/steps/steps.styles";
-import { useFormContext } from "react-hook-form";
-import { useEffect, useState } from "react";
 import SurveyOption from "@/components/SurveyOption/SurveyOption";
+import { useEffect, useState } from "react";
+import { useFormContext } from "react-hook-form";
 
 const activityOptions = ["low", "normal", "active", "very_active"];
 
 const ActivityStep = () => {
   const { setValue, watch } = useFormContext();
   const activity = watch("activity");
-  const [selectedOptionIdx, setSelectedOptionIdx] = useState(
-    activity ? activityOptions.indexOf(activity) + 1 : 1,
-  );
+  const [selectedOptionIdx, setSelectedOptionIdx] = useState(0);
 
   useEffect(() => {
     if (activity) {
       setSelectedOptionIdx(activityOptions.indexOf(activity) + 1);
+    } else {
+      setSelectedOptionIdx(0);
     }
   }, [activity]);
 
@@ -39,7 +39,7 @@ const ActivityStep = () => {
 
   const changeSelectedOption = (idx: number) => {
     setSelectedOptionIdx(idx);
-    setValue("activity", activityOptions[idx - 1]);
+    setValue("activity", idx === 0 ? undefined : activityOptions[idx - 1]);
   };
 
   return (

@@ -15,10 +15,13 @@ const SurveyOption: React.FC<SurveyOptionProps> = ({ title, isSelected, onPress 
     <SurveyOptionWrapper
       onPress={onPress}
       style={() => ({
-        backgroundColor: isSelected ? Colors.primary_050 : Colors.primary_010,
+        backgroundColor: isSelected ? Colors.primary_600 : Colors.primary_010,
       })}
     >
-      <BN1 lightColor={Colors.primary_700} style={{ fontWeight: "bold" }}>
+      <BN1
+        lightColor={isSelected ? Colors.neutral_000 : Colors.primary_700}
+        style={{ fontWeight: "bold" }}
+      >
         {title}
       </BN1>
     </SurveyOptionWrapper>

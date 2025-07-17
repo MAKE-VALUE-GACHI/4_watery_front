@@ -8,19 +8,19 @@ const genderOptions = ["남성", "여성", "선택하지 않음"];
 const GenderStep = () => {
   const { setValue, watch } = useFormContext();
   const gender = watch("gender");
-  const [selectedOptionIdx, setSelectedOptionIdx] = useState(
-    gender ? genderOptions.indexOf(gender) + 1 : 1,
-  );
+  const [selectedOptionIdx, setSelectedOptionIdx] = useState(0);
 
   useEffect(() => {
     if (gender) {
       setSelectedOptionIdx(genderOptions.indexOf(gender) + 1);
+    } else {
+      setSelectedOptionIdx(0);
     }
   }, [gender]);
 
   const changeSelectedOption = (idx: number) => {
     setSelectedOptionIdx(idx);
-    setValue("gender", genderOptions[idx - 1]);
+    setValue("gender", idx === 0 ? undefined : genderOptions[idx - 1]);
   };
 
   return (
