@@ -7,14 +7,10 @@ import { presetStyles } from "@/components/styles/TextPresets";
 export type ThemedTextProps = TextProps & {
   lightColor?: string;
   darkColor?: string;
+  type?: "title" | "link";
 };
 
-export function ThemedText({
-  style,
-  lightColor,
-  darkColor,
-  ...rest
-}: ThemedTextProps) {
+export function ThemedText({ style, lightColor, darkColor, ...rest }: ThemedTextProps) {
   const color = useThemeColor({ light: lightColor, dark: darkColor }, "text");
 
   return <Text style={[{ color }, style]} {...rest} />;

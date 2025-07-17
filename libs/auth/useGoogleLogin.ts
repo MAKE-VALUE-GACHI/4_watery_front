@@ -4,16 +4,27 @@ import * as WebBrowser from "expo-web-browser";
 import { loginToBackend } from "../api/auth";
 import { saveAccessToken } from "../secure/token";
 import * as AuthSession from "expo-auth-session";
+import Constants from "expo-constants";
 
 WebBrowser.maybeCompleteAuthSession();
 
+const isExpoGo = Constants.appOwnership === "expo";
+
+// const redirectUri = AuthSession.makeRedirectUri({
+//   useProxy: Constants.appOwnership === "expo", // 자동 분기
+// });
+const redirectUri = AuthSession.makeRedirectUri({
+  native: "watery://redirect",
+});
+// const redirectUri = AuthSession.makeRedirectUri({
+//   native: "watery://redirect", // 앱에서 받을 수 있는 URI
+// });
+// const redirectUri = AuthSession.makeRedirectUri({ useProxy: false });
 export const useGoogleLogin = () => {
   const [request, response, promptAsync] = Google.useAuthRequest({
     clientId: process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID,
     androidClientId: process.env.EXPO_PUBLIC_GOOGLE_ANDROID_CLIENT_ID,
-    redirectUri: AuthSession.makeRedirectUri({
-      useProxy: true,
-    }),
+    redirectUri, // 위에서 설정한 분기된 redirectUri 사용
   });
 
   const [accessToken, setAccessToken] = useState<string | null>(null);
@@ -28,12 +39,9 @@ export const useGoogleLogin = () => {
   }, [response]);
 
   const login = async (pushToken: string): Promise<{ token: string }> => {
-    if (!accessToken) throw new Error("accessToken 없음");
-
-    const result = await promptAsync(); // ✅ Google 인증창 열기
-
+    const result = await promptAsync();
     if (result.type !== "success" || !result.authentication?.accessToken) {
-      throw new Error("Google 로그인 실패 또는 accessToken 없음");
+      throw new Error("Google 로그인 실패 또는 취소됨");
     }
 
     const token = result.authentication.accessToken;

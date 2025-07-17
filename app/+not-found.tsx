@@ -1,20 +1,22 @@
 import { Link, Stack } from "expo-router";
-import { StyleSheet } from "react-native";
+import { SafeAreaView, StyleSheet, View } from "react-native";
 
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 
 export default function NotFoundScreen() {
   return (
-    <>
+    <SafeAreaView>
       <Stack.Screen options={{ title: "Oops!" }} />
       <ThemedView style={styles.container}>
         <ThemedText type="title">This screen does not exist.</ThemedText>
-        <Link href="/" style={styles.link}>
-          <ThemedText type="link">Go to home screen!</ThemedText>
-        </Link>
+        <View style={styles.link}>
+          <Link href="/">
+            <ThemedText type="link">Go to home screen!</ThemedText>
+          </Link>
+        </View>
       </ThemedView>
-    </>
+    </SafeAreaView>
   );
 }
 
