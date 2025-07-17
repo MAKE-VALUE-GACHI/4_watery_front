@@ -13,7 +13,16 @@ import WeightStep from "./steps/WeightStep";
 
 const categories = ["성별", "출생연도", "체중", "하루 평균 활동량"];
 
-const stepComponents = [GenderStep, BirthYearStep, WeightStep, ActivityStep];
+interface StepProps {
+  onSelectionChange?: (selected: boolean) => void;
+}
+
+const stepComponents: React.ComponentType<StepProps>[] = [
+  GenderStep,
+  BirthYearStep,
+  WeightStep,
+  ActivityStep,
+];
 
 const OnboardSurvey = () => {
   const router = useRouter();
@@ -45,7 +54,7 @@ const OnboardSurvey = () => {
   };
 
   const renderStep = () => {
-    const stepProps: any = {};
+    const stepProps: StepProps = {};
     if (currentStep === 1) stepProps.onSelectionChange = setIsGenderSelected;
     if (currentStep === 4) stepProps.onSelectionChange = setIsActivitySelected;
     const StepComponent = stepComponents[currentStep - 1];

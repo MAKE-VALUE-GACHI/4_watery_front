@@ -27,7 +27,7 @@ const ActivityStep = ({ onSelectionChange }: ActivityStepProps) => {
   const { selectedIdx, changeSelectedOption } = useStepSelection(
     "activity",
     activityOptions,
-    onSelectionChange
+    onSelectionChange,
   );
 
   return (

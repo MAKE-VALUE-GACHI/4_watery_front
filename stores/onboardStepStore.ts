@@ -1,6 +1,6 @@
 import { create } from "zustand/react";
 
-interface OnboardStepState {
+export interface OnboardStepState {
   currentStep: number;
   setCurrentStep: (step: number) => void;
   nextStep: () => void;
