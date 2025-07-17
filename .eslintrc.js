@@ -45,8 +45,15 @@ module.exports = {
           "C1",
           "C2",
           "ThemedText",
+          "SlideHeaderMeasurement",
         ],
       },
     ],
+    "react-native/no-inline-styles": [
+      "error",
+      {
+        "allow": ["CustomButton"]
+      }
+    ]
   },
 };

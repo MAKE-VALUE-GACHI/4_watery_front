@@ -1,0 +1,17 @@
+export type TextType =
+  | "T1"
+  | "T2"
+  | "T3"
+  | "H1"
+  | "H2"
+  | "HL1"
+  | "HL2"
+  | "BN1"
+  | "BR1"
+  | "BN2"
+  | "BR2"
+  | "LN1"
+  | "LR1"
+  | "L2"
+  | "C1"
+  | "C2";

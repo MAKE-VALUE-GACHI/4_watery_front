@@ -1,7 +1,9 @@
+import type { SocialProvider } from "@/types/auth";
+
 const BASE_URL = "http://52.78.70.177:8080/api/v1";
 
 export const loginToBackend = async (
-  social: "GOOGLE" | "KAKAO",
+  social: SocialProvider,
   pushToken: string,
   socialAccessToken: string,
 ) => {

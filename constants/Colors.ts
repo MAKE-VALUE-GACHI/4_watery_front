@@ -46,7 +46,7 @@ export const Colors = {
   primary_600: "#1C8EDA",
   primary_700: "#187DC7",
   primary_800: "#146DB6",
-  primary_900: "#B2E0EE",
+  primary_900: "#0C5099",
   danger_100: "#F48771",
   danger_200: "#DE3412",
   danger_300: "#8A240F",

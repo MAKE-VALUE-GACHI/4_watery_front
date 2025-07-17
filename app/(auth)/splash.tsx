@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, Button } from "react-native";
-import { horizontalScale, verticalScale, moderateScale, scaleFont } from "@/utils/scaling";
+import { horizontalScale, verticalScale, moderateScale, scaleFont } from "@/libs/utils/scaling";
 import { useRouter } from "expo-router";
 
 export default function SplashScreen() {

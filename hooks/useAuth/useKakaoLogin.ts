@@ -1,5 +1,5 @@
 import { login as kakaoLogin } from "@react-native-kakao/user";
-import { loginToBackend } from "../api/auth";
+import { loginToBackend } from "@/libs/api/auth";
 
 export const useKakaoLogin = () => {
   const login = async (pushToken: string): Promise<{ token: string }> => {

@@ -1,12 +1,14 @@
 import { useKakaoLogin } from "./useKakaoLogin";
 import { useGoogleLogin } from "./useGoogleLogin";
-import { saveAccessToken } from "../secure/token";
+import { saveAccessToken } from "@/libs/secure/token";
+
+import type { SocialProvider } from "@/types/auth";
 
 export const useAuthManager = () => {
   const { login: kakaoLogin } = useKakaoLogin();
   const { request, promptAsync, login: googleLogin } = useGoogleLogin();
 
-  const loginWithProvider = async (provider: "GOOGLE" | "KAKAO", pushToken: string) => {
+  const loginWithProvider = async (provider: SocialProvider, pushToken: string) => {
     if (provider === "GOOGLE") {
       const backendRes = await googleLogin(pushToken);
       await saveAccessToken(backendRes.token);

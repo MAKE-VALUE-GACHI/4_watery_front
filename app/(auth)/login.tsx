@@ -1,10 +1,13 @@
 import React, { useEffect } from "react";
 import { Button, View, Text } from "react-native";
 import { useRouter } from "expo-router";
-import { useAuthManager } from "@/libs/auth/authManager";
+import { useAuthManager } from "@/hooks/useAuth/authManager";
 import * as Notifications from "expo-notifications";
 import { loginToBackend } from "@/libs/api/auth";
 import { saveAccessToken } from "@/libs/secure/token";
+import { initializeKakao } from "@react-native-kakao/core";
+
+import type { SocialProvider } from "@/types/auth";
 
 export default function LoginScreen() {
   const router = useRouter();
@@ -12,9 +15,13 @@ export default function LoginScreen() {
     router.push("/(tabs)"); // Splash → 메인으로 이동
   };
 
+  useEffect(() => {
+    initializeKakao(process.env.EXPO_PUBLIC_NATIVE_APP_KEY);
+  }, []);
+
   const { loginWithProvider, googlePromptAsync, googleRequest } = useAuthManager();
 
-  const handleLogin = async (type: "GOOGLE" | "KAKAO") => {
+  const handleLogin = async (type: SocialProvider) => {
     const { data: expoPushToken } = await Notifications.getDevicePushTokenAsync();
 
     try {

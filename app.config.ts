@@ -45,12 +45,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       "@react-native-kakao/core",
       {
         nativeAppKey: kakaoNativeAppKey,
-        android: {
-          authCodeHandlerActivity: true,
-        },
-        ios: {
-          handleKakaoOpenUrl: true,
-        },
+        android: { authCodeHandlerActivity: true },
+        ios: { handleKakaoOpenUrl: true },
       },
     ],
     [
@@ -64,5 +60,10 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ],
   experiments: {
     typedRoutes: true,
+  },
+  extra: {
+    eas: {
+      projectId: "c10a5711-66eb-4578-a69f-ce6026703c16",
+    },
   },
 });
