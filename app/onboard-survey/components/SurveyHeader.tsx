@@ -1,11 +1,11 @@
 import {
-  FlexRow,
   SurveyHeaderContainer,
   SurveyHeaderWrapper,
 } from "@/app/onboard-survey/components/SurveyHeader.styles";
 import { LR1, T3 } from "@/components/ThemedText";
 import { Colors } from "@/constants/Colors";
 import React from "react";
+import { FlexRow } from "@/components/common.styles";
 
 interface SurveyHeaderProps {
   currentStep: number;
