@@ -23,6 +23,15 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   android: {
     package: "com.anonymous.Watery",
+    intentFilters: [
+      {
+        action: "VIEW",
+        data: {
+          scheme: "exp+watery",
+        },
+        category: ["BROWSABLE", "DEFAULT"],
+      },
+    ],
     adaptiveIcon: {
       foregroundImage: "./assets/images/adaptive-icon.png",
       backgroundColor: "#ffffff",
