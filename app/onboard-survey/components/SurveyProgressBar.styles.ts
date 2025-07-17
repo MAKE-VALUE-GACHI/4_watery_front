@@ -13,7 +13,8 @@ export const ProgressBar = styled(ThemedView)<{ isActive: boolean }>`
   height: 5px;
   border-radius: 7px;
   flex: 1;
-  background-color: ${(props) => (props.isActive ? Colors.primary_800 : Colors.primary_050)};
+  background-color: ${(props: { isActive: boolean }) =>
+    props.isActive ? Colors.primary_800 : Colors.primary_050};
 `;
 
 export default ProgressBar;
