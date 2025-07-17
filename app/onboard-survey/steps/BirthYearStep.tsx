@@ -10,7 +10,7 @@ const BirthYearStep = () => {
   const { setValue, watch } = useFormContext();
   const birthYear = watch("birthYear");
   const [selectedIndex, setSelectedIndex] = useState(
-    birthYear ? years.indexOf(Number(birthYear)) : 0,
+    birthYear ? years.indexOf(Number(birthYear)) : 25,
   );
 
   useEffect(() => {
