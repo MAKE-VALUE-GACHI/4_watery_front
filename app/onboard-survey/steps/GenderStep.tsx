@@ -5,7 +5,11 @@ import { useFormContext } from "react-hook-form";
 
 const genderOptions = ["남성", "여성", "선택하지 않음"];
 
-const GenderStep = () => {
+interface GenderStepProps {
+  onSelectionChange?: (selected: boolean) => void;
+}
+
+const GenderStep = ({ onSelectionChange }: GenderStepProps) => {
   const { setValue, watch } = useFormContext();
   const gender = watch("gender");
   const [selectedOptionIdx, setSelectedOptionIdx] = useState(0);
@@ -17,6 +21,12 @@ const GenderStep = () => {
       setSelectedOptionIdx(0);
     }
   }, [gender]);
+
+  useEffect(() => {
+    if (onSelectionChange) {
+      onSelectionChange(selectedOptionIdx !== 0);
+    }
+  }, [selectedOptionIdx, onSelectionChange]);
 
   const changeSelectedOption = (idx: number) => {
     setSelectedOptionIdx(idx);

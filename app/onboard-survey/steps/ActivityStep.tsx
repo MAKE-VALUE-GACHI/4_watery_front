@@ -5,7 +5,11 @@ import { useFormContext } from "react-hook-form";
 
 const activityOptions = ["low", "normal", "active", "very_active"];
 
-const ActivityStep = () => {
+interface ActivityStepProps {
+  onSelectionChange?: (selected: boolean) => void;
+}
+
+const ActivityStep = ({ onSelectionChange }: ActivityStepProps) => {
   const { setValue, watch } = useFormContext();
   const activity = watch("activity");
   const [selectedOptionIdx, setSelectedOptionIdx] = useState(0);
@@ -17,6 +21,12 @@ const ActivityStep = () => {
       setSelectedOptionIdx(0);
     }
   }, [activity]);
+
+  useEffect(() => {
+    if (onSelectionChange) {
+      onSelectionChange(selectedOptionIdx !== 0);
+    }
+  }, [selectedOptionIdx, onSelectionChange]);
 
   const optionToString = (option: string) => {
     switch (option) {
