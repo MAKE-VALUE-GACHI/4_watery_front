@@ -9,13 +9,13 @@ const years = Array.from({ length: 100 }, (_, i) => 2025 - i);
 const BirthYearStep = () => {
   const { setValue, watch } = useFormContext();
   const birthYear = watch("birthYear");
-  const [selectedIndex, setSelectedIndex] = useState(
-    birthYear ? years.indexOf(Number(birthYear)) : 25,
+  const [selectedIdx, setSelectedIdx] = useState(
+    birthYear ? Math.max(0, years.indexOf(Number(birthYear))) : 25
   );
 
   useEffect(() => {
     if (birthYear) {
-      setSelectedIndex(years.indexOf(Number(birthYear)));
+      setSelectedIdx(Math.max(0, years.indexOf(Number(birthYear))));
     }
   }, [birthYear]);
 
@@ -24,11 +24,11 @@ const BirthYearStep = () => {
       <WheelPicker
         height={300}
         width={150}
-        initialSelectedIndex={selectedIndex}
+        initialSelectedIndex={selectedIdx}
         selectedStyle={{ borderColor: Colors.neutral_200, borderWidth: 1 }}
         items={years.map((name) => ({ label: String(name), value: String(name) }))}
         onChange={({ index, item }) => {
-          setSelectedIndex(index);
+          setSelectedIdx(index);
           setValue("birthYear", item.label);
         }}
       />
