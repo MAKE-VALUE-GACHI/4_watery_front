@@ -28,11 +28,12 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <NavigationContainer>
-        <Stack initialRouteName="splash">
-          <Stack.Screen name="splash" options={{ headerShown: false }} />
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="+not-found" />
-        </Stack>
+        {/*<Stack initialRouteName="splash">*/}
+        {/*  <Stack.Screen name="splash" options={{ headerShown: false }} />*/}
+        {/*  <Stack.Screen name="(tabs)" options={{ headerShown: false }} />*/}
+        {/*  <Stack.Screen name="+not-found" />*/}
+        {/*</Stack>*/}
+        <Stack screenOptions={{ headerShown: false }} />
       </NavigationContainer>
       <StatusBar style="auto" />
     </ThemeProvider>

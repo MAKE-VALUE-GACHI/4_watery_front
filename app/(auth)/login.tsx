@@ -14,6 +14,9 @@ export default function LoginScreen() {
   const onMoveHome = () => {
     router.push("/(tabs)"); // Splash → 메인으로 이동
   };
+  const onMoveSplash = () => {
+    router.push("//(auth)/splash)"); // Splash → 메인으로 이동
+  };
 
   useEffect(() => {
     const key = process.env.EXPO_PUBLIC_NATIVE_APP_KEY;
@@ -80,6 +83,7 @@ export default function LoginScreen() {
       <Text>{googleRequest ? "Google ready" : "Google not ready"}</Text>
 
       <Button title="Kakao 로그인" onPress={() => handleLogin("KAKAO")} />
+      <Button title="Splash 이동" onPress={onMoveSplash} />
       <Button title="Home 이동" onPress={onMoveHome} />
     </View>
   );

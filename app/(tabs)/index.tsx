@@ -26,7 +26,7 @@ export default function HomeScreen() {
 
   const router = useRouter();
   const onLoginSuccess = () => {
-    router.push("/(auth)/login"); // Splash → 메인으로 이동
+    router.push("/(auth)/splash"); // Splash → 메인으로 이동
   };
 
   return (
