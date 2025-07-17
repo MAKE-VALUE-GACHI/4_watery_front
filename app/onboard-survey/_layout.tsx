@@ -25,7 +25,10 @@ export default function OnboardSurveyLayout() {
         headerLeft: () => (
           <TouchableOpacity onPress={handleBack}>
             <ThemedView>
-              <MaterialIcons name={"arrow-back"} size={24} color={Colors.neutral_400} />
+              {/*  TODO: 최초 단계 시 스플래시 화면으로 이동 로직 추가 및 아이콘 되돌리기 */}
+              {currentStep > 1 && (
+                <MaterialIcons name={"arrow-back"} size={24} color={Colors.neutral_400} />
+              )}
             </ThemedView>
           </TouchableOpacity>
         ),
