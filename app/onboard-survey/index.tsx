@@ -8,12 +8,14 @@ import ActivityStep from "./steps/ActivityStep";
 import BirthYearStep from "./steps/BirthYearStep";
 import GenderStep from "./steps/GenderStep";
 import WeightStep from "./steps/WeightStep";
+import { useRouter } from "expo-router";
 
 const categories = ["성별", "출생연도", "체중", "하루 평균 활동량"];
 
 const stepComponents = [GenderStep, BirthYearStep, WeightStep, ActivityStep];
 
 const OnboardSurvey = () => {
+  const router = useRouter();
   const { currentStep, nextStep, setCurrentStep } = useOnboardStepStore();
   const CurrentStepComponent = stepComponents[currentStep - 1];
 
@@ -26,15 +28,13 @@ const OnboardSurvey = () => {
     },
   });
 
-  // 최종 제출 함수
   const onSubmit = (data: any) => {
+    router.replace("/(tabs)");
     console.log("최종 제출 데이터:", data);
   };
 
-  // 버튼 핸들러
   const handleButtonPress = () => {
     if (currentStep === stepComponents.length) {
-      // 제출 로직
       setCurrentStep(1);
       methods.handleSubmit(onSubmit)();
     } else {

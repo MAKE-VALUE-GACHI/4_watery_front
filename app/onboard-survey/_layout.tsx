@@ -1,4 +1,3 @@
-// app/onboard-survey/_layout.tsx
 import { ThemedView } from "@/components/ThemedView";
 import { Colors } from "@/constants/Colors";
 import { useOnboardStepStore } from "@/stores/onboardStepStore";

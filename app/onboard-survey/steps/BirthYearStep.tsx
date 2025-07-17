@@ -4,13 +4,13 @@ import { useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import WheelPicker from "react-native-wheel-picker-expo";
 
-const years = Array.from({ length: 100 }, (_, i) => 2025 - i);
+const years = Array.from({ length: 100 }, (_, i) => 2025 - i); // 1925 ~ 2025
 
 const BirthYearStep = () => {
   const { setValue, watch } = useFormContext();
   const birthYear = watch("birthYear");
   const [selectedIdx, setSelectedIdx] = useState(
-    birthYear ? Math.max(0, years.indexOf(Number(birthYear))) : 25
+    birthYear ? Math.max(0, years.indexOf(Number(birthYear))) : 25, // 2000년이 기본값
   );
 
   useEffect(() => {
