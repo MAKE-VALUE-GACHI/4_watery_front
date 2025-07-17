@@ -18,7 +18,6 @@ const stepComponents = [GenderStep, BirthYearStep, WeightStep, ActivityStep];
 const OnboardSurvey = () => {
   const router = useRouter();
   const { currentStep, nextStep, setCurrentStep } = useOnboardStepStore();
-  const CurrentStepComponent = stepComponents[currentStep - 1];
   const [isGenderSelected, setIsGenderSelected] = useState(false);
   const [isActivitySelected, setIsActivitySelected] = useState(false);
 
@@ -46,14 +45,11 @@ const OnboardSurvey = () => {
   };
 
   const renderStep = () => {
-    if (currentStep === 1) {
-      return <GenderStep onSelectionChange={setIsGenderSelected} />;
-    }
-    if (currentStep === 4) {
-      return <ActivityStep onSelectionChange={setIsActivitySelected} />;
-    }
-
-    return <CurrentStepComponent />;
+    const stepProps: any = {};
+    if (currentStep === 1) stepProps.onSelectionChange = setIsGenderSelected;
+    if (currentStep === 4) stepProps.onSelectionChange = setIsActivitySelected;
+    const StepComponent = stepComponents[currentStep - 1];
+    return <StepComponent {...stepProps} />;
   };
 
   const isButtonDisabled =
