@@ -22,7 +22,7 @@ export const SlideContainer = styled(TransparentView)`
 
 export const FlexRow = styled(TransparentView)<{ gap?: number }>`
   flex-direction: row;
-  ${({ gap }) => gap && `gap: ${gap}px;`}
+  ${({ gap }: { gap: number }) => gap && `gap: ${gap}px;`}
 `;
 
 export const SlideBody = styled(TransparentView)`
