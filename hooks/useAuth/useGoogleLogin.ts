@@ -14,6 +14,7 @@ export const useGoogleLogin = () => {
     androidClientId: process.env.EXPO_PUBLIC_GOOGLE_ANDROID_CLIENT_ID,
     redirectUri: AuthSession.makeRedirectUri({
       useProxy: true, // Expo Go 사용 시 필수
+      // native: "watery://redirect",
     }),
   });
 

@@ -5,7 +5,7 @@ import { useAuthManager } from "@/hooks/useAuth/authManager";
 import * as Notifications from "expo-notifications";
 import { loginToBackend } from "@/libs/api/auth";
 import { saveAccessToken } from "@/libs/secure/token";
-import { initializeKakao } from "@react-native-kakao/core";
+import { initializeKakaoSDK } from "@react-native-kakao/core";
 
 import type { SocialProvider } from "@/types/auth";
 
@@ -16,7 +16,13 @@ export default function LoginScreen() {
   };
 
   useEffect(() => {
-    initializeKakao(process.env.EXPO_PUBLIC_NATIVE_APP_KEY);
+    const key = process.env.EXPO_PUBLIC_NATIVE_APP_KEY;
+    console.log("KAKAO KEY:", key);
+    if (key) {
+      initializeKakaoSDK(key);
+    } else {
+      console.warn("Kakao App Key is undefined");
+    }
   }, []);
 
   const { loginWithProvider, googlePromptAsync, googleRequest } = useAuthManager();
@@ -63,7 +69,10 @@ export default function LoginScreen() {
         title="Google 로그인"
         disabled={!googleRequest}
         onPress={() => {
-          console.log("👉 Google 로그인 버튼 눌림");
+          if (!googleRequest) {
+            console.warn("❗ googleRequest가 아직 준비되지 않음");
+            return;
+          }
           handleLogin("GOOGLE");
         }}
       />

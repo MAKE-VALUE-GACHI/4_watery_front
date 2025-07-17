@@ -25,7 +25,10 @@
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
         <data android:scheme="watery" android:host="redirect"/>
-        <data android:scheme="exp+watery"/>
+        <data
+                android:scheme="exp+watery"
+                android:host="expo-development-client"
+        />
       </intent-filter>
     </activity>
     <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity" android:exported="true">
