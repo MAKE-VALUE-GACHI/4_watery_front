@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
-import { BottomTabBarHeightContext } from "@react-navigation/bottom-tabs";
-// import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
+import React from "react";
+import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import { BlurView } from "expo-blur";
 import { StyleSheet } from "react-native";
 
@@ -16,12 +15,6 @@ export default function BlurTabBarBackground() {
   );
 }
 
-// export function useBottomTabOverflow() {
-//   return useBottomTabBarHeight();
-// }
-
-// ✅ 수정된 안전한 훅
-export function useBottomTabOverflow(): number {
-  const height = useContext(BottomTabBarHeightContext);
-  return height ?? 0;
+export function useBottomTabOverflow() {
+  return useBottomTabBarHeight();
 }
