@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { View, Button, StyleSheet, Image } from "react-native";
+import { TouchableOpacity, View, Button, StyleSheet, Image } from "react-native";
 import { useRouter } from "expo-router";
 import * as Notifications from "expo-notifications";
 import { initializeKakaoSDK } from "@react-native-kakao/core";
@@ -11,6 +11,12 @@ import { horizontalScale, verticalScale } from "@/libs/utils/scaling";
 import type { SocialProvider } from "@/types/auth";
 
 import BottomSheet from "@/components/common/BottomSheet";
+import GoogleLoginButton from "@/components/buttons/GoogleLoginButton";
+import KakaoLoginButton from "@/components/buttons/KakaoLoginButton";
+import SocialLoginButtons from "@/components/login/SocialLoginButtons";
+
+import KakaoLoginImage from "@/assets/images/buttons/kakaoLogins/kakao_login_large_wide.png";
+import GoogleLoginImage from "@/assets/images/buttons/googleLogins/android_light_sq_ctn.png";
 
 import LogoSvg from "@/components/svgs/LogoSvg";
 import BubbleImage06 from "@/components/bubbles/BubbleImage06";
@@ -19,6 +25,10 @@ import { LR1 } from "@/components/ThemedText";
 import BubbleImage04 from "@/components/bubbles/BubbleImage04";
 import BubbleImage05 from "@/components/bubbles/BubbleImage05";
 import BubbleImage03 from "@/components/bubbles/BubbleImage03";
+import Ellipse07 from "@/components/ellipses/Ellipse07";
+import Ellipse09 from "@/components/ellipses/Ellipse09";
+import Ellipse10 from "@/components/ellipses/Ellipse10";
+import Ellipse08 from "@/components/ellipses/Ellipse08";
 
 export default function SplashScreen() {
   const router = useRouter();
@@ -61,6 +71,12 @@ export default function SplashScreen() {
 
   return (
     <View style={styles.container}>
+      {/* 배경 원형 */}
+      <Ellipse07 />
+      <Ellipse08 />
+      <Ellipse09 />
+      <Ellipse10 />
+
       {/* 배경 물방울 */}
       <BubbleImage06 />
       <BubbleImage04 />
@@ -74,7 +90,31 @@ export default function SplashScreen() {
       <LR1 style={styles.subText}>오늘의 수분 기록</LR1>
 
       {/* 소셜 로그인 버튼 */}
-      <BottomSheet></BottomSheet>
+      <BottomSheet>
+        <View style={{ gap: verticalScale(16), alignItems: "center" }}>
+          {/*<GoogleLoginButton />*/}
+          {/*<KakaoLoginButton />*/}
+
+          <SocialLoginButtons />
+
+          {/*<Image*/}
+          {/*  source={GoogleLoginImage}*/}
+          {/*  style={{*/}
+          {/*    width: horizontalScale(300),*/}
+          {/*    height: verticalScale(40),*/}
+          {/*    resizeMode: "contain",*/}
+          {/*  }}*/}
+          {/*/>*/}
+          {/*<Image*/}
+          {/*  source={KakaoLoginImage}*/}
+          {/*  style={{*/}
+          {/*    width: horizontalScale(300),*/}
+          {/*    height: verticalScale(40),*/}
+          {/*    resizeMode: "contain",*/}
+          {/*  }}*/}
+          {/*/>*/}
+        </View>
+      </BottomSheet>
 
       {/* 로그인 버튼 영역 */}
       <View style={styles.buttonGroup}>

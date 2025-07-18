@@ -11,15 +11,15 @@ export default function BottomSheet({ children, style, ...rest }: BottomSheetPro
   return (
     <View style={[styles.wrapper, style]} {...rest}>
       <LinearGradient
-        colors={["#FFFFFF", "#91CFEAA3"]}
+        colors={["#FFFFFF90", "#D4EFF790"]} // ← 투명도 추가됨
         start={{ x: 0.5, y: 0 }}
-        end={{ x: 0.5, y: 1 }}
+        end={{ x: 0.5, y: 1 }} // 위 → 아래 방향
         style={styles.background}
       >
         <LinearGradient
-          colors={["#FFFFFF", "#D4EFF7"]}
-          start={{ x: 0, y: 0.5 }}
-          end={{ x: 1, y: 0.5 }}
+          colors={["#FFFFFF", "#D4EFF7"]} // 테두리는 불투명
+          start={{ x: 0.5, y: 0 }}
+          end={{ x: 0.5, y: 1 }}
           style={styles.border}
         >
           <View style={styles.inner}>{children}</View>
@@ -32,7 +32,7 @@ export default function BottomSheet({ children, style, ...rest }: BottomSheetPro
 const styles = StyleSheet.create({
   wrapper: {
     position: "absolute",
-    top: verticalScale(458),
+    top: verticalScale(450),
     left: horizontalScale(12),
     right: horizontalScale(12),
     bottom: verticalScale(24),
