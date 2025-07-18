@@ -5,12 +5,14 @@ import { H1, H2, HL1, HL2, T1, T2, T3 } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Image } from "expo-image";
-import "nativewind";
+
 import React, { useState } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Button } from "react-native";
+import { useRouter } from "expo-router";
 
 import { CustomTab } from "@/components/CustomTab";
 import { CustomToggle } from "@/components/CustomToggle";
+import TodayGoal from "@/components/TodayGoalMoisture/TodayGoal";
 import CustomSlide from "@/components/CustomSlide/CustomSlide";
 import CustomSlider from "@/components/CustomSlider/CustomSlider";
 
@@ -21,6 +23,11 @@ export default function HomeScreen() {
 
   const [selectedTab, setSelectedTab] = useState<TabType>("전체");
   const [isEnabled, setIsEnabled] = useState(false);
+
+  const router = useRouter();
+  const onLoginSuccess = () => {
+    router.push("/(auth)/splash"); // Splash → 메인으로 이동
+  };
 
   return (
     <ParallaxScrollView
@@ -36,6 +43,11 @@ export default function HomeScreen() {
         <T1>Welcome</T1>
         <HelloWave />
       </ThemedView>
+
+      <Button title="Go to Login" onPress={onLoginSuccess} />
+
+      {/* Main - Today Goal */}
+      <TodayGoal />
 
       {/* 공용 컴포넌트 - Tab */}
       <ThemedView style={{ gap: 10 }}>
