@@ -13,12 +13,12 @@ export const StyledButton = styled.TouchableOpacity<StyledButtonProps>`
   padding: 12px 30px;
   border-radius: 12px;
   border-width: 1px;
-  border-color: ${({ variant, pressed }) => getButtonBorderColor(variant, pressed)};
+  border-color: ${({ variant, pressed }: StyledButtonProps) => getButtonBorderColor(variant, pressed)};
   flex-direction: row;
   gap: 8px;
   align-items: center;
   justify-content: center;
-  opacity: ${({ disabled }) => (disabled ? 0.4 : 1)};
-  background-color: ${({ customBgColor, variant, pressed }) =>
+  opacity: ${({ disabled }: StyledButtonProps) => (disabled ? 0.4 : 1)};
+  background-color: ${({ customBgColor, variant, pressed }: StyledButtonProps) =>
     customBgColor ? customBgColor : getButtonBg(variant, pressed)};
 `;
