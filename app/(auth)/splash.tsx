@@ -1,29 +1,30 @@
 import React, { useEffect } from "react";
-import { TouchableOpacity, View, Button, StyleSheet, Image } from "react-native";
 import { useRouter } from "expo-router";
+import { View, Button, StyleSheet } from "react-native";
 import * as Notifications from "expo-notifications";
 import { initializeKakaoSDK } from "@react-native-kakao/core";
 
 import { loginToBackend } from "@/libs/api/auth";
 import { saveAccessToken } from "@/libs/secure/token";
 import { useAuthManager } from "@/hooks/useAuth/authManager";
+
 import { horizontalScale, verticalScale } from "@/libs/utils/scaling";
+import { Colors } from "@/constants/Colors";
 import type { SocialProvider } from "@/types/auth";
 
 import BottomSheet from "@/components/common/BottomSheet";
 import SocialLoginButtons from "@/components/login/SocialLoginButtons";
-
 import LogoSvg from "@/components/svgs/LogoSvg";
-import BubbleImage06 from "@/components/bubbles/BubbleImage06";
-import { Colors } from "@/constants/Colors";
 import { LR1 } from "@/components/ThemedText";
+
+import BubbleImage03 from "@/components/bubbles/BubbleImage03";
 import BubbleImage04 from "@/components/bubbles/BubbleImage04";
 import BubbleImage05 from "@/components/bubbles/BubbleImage05";
-import BubbleImage03 from "@/components/bubbles/BubbleImage03";
+import BubbleImage06 from "@/components/bubbles/BubbleImage06";
 import Ellipse07 from "@/components/ellipses/Ellipse07";
+import Ellipse08 from "@/components/ellipses/Ellipse08";
 import Ellipse09 from "@/components/ellipses/Ellipse09";
 import Ellipse10 from "@/components/ellipses/Ellipse10";
-import Ellipse08 from "@/components/ellipses/Ellipse08";
 
 export default function SplashScreen() {
   const router = useRouter();
@@ -78,10 +79,8 @@ export default function SplashScreen() {
       <BubbleImage05 />
       <BubbleImage03 />
 
-      {/* SVG 로고 */}
+      {/* SVG 로고 & TEXT */}
       <LogoSvg style={styles.logo} width={horizontalScale(125)} height={verticalScale(59)} />
-
-      {/* 서브 텍스트 */}
       <LR1 style={styles.subText}>오늘의 수분 기록</LR1>
 
       {/* 소셜 로그인 버튼 */}
@@ -91,7 +90,7 @@ export default function SplashScreen() {
         </View>
       </BottomSheet>
 
-      {/* 로그인 버튼 영역 */}
+      {/* 로그인 버튼 영역 -> 추후 제거 요망 */}
       <View style={styles.buttonGroup}>
         <Button title="메인 이동" onPress={() => router.replace("/(tabs)")} />
       </View>
