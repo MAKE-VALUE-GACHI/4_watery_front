@@ -5,7 +5,6 @@ import {
   SlideBody,
   SlideContainer,
   StyledLinearGradient,
-  TransparentView,
 } from "@/components/CustomSlide/CustomSlide.styles";
 import { BeverageVariantType } from "@/components/CustomSlide/CustomSlide.types";
 import SlideHeader from "@/components/CustomSlide/SlideHeader";
@@ -15,6 +14,7 @@ import MaskedView from "@react-native-masked-view/masked-view";
 import React, { useEffect, useRef, useState } from "react";
 import { Image, View } from "react-native";
 import WaveView from "react-native-waveview";
+import { TransparentView } from "@/components/common.styles";
 
 interface CustomSlideProps {
   beverageVariant: BeverageVariantType;

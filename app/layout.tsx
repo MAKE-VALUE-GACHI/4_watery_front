@@ -1,11 +1,15 @@
 import React, { useEffect } from "react";
 import { useColorScheme } from "@/hooks/useColorScheme";
-import { DarkTheme, DefaultTheme, ThemeProvider } from "@react-navigation/native";
+import {
+  DarkTheme,
+  DefaultTheme,
+  NavigationContainer,
+  ThemeProvider,
+} from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import "react-native-reanimated";
-import { NavigationContainer } from "@react-navigation/native";
 import { initializeKakaoSDK } from "@react-native-kakao/core";
 
 export default function RootLayout() {

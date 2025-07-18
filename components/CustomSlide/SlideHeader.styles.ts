@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
-import { FlexRow } from "@/components/CustomSlide/CustomSlide.styles";
 import { BN1 } from "@/components/ThemedText";
+import { FlexRow } from "@/components/common.styles";
 
 export const SlideHeaderContainer = styled(FlexRow)`
   justify-content: space-between;
