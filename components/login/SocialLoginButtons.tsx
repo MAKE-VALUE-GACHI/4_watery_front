@@ -3,18 +3,19 @@ import { View, TouchableOpacity, Text, StyleSheet, Image } from "react-native";
 import { horizontalScale, verticalScale } from "@/libs/utils/scaling";
 import GoogleIcon from "@/assets/icons/IconGoogle.svg";
 import KakaoIcon from "@/assets/icons/IconKakao.svg"; // 예: SVG를 컴포넌트로 사용하는 경우
+import { SocialLoginButtonsProps } from "@/types/button";
 
-export default function SocialLoginButtons() {
+export default function SocialLoginButtons({ handleLogin }: SocialLoginButtonsProps) {
   return (
     <View style={styles.container}>
       {/* 구글 로그인 */}
-      <TouchableOpacity style={styles.googleButton}>
+      <TouchableOpacity style={styles.googleButton} onPress={() => handleLogin("GOOGLE")}>
         <GoogleIcon width={horizontalScale(18)} height={verticalScale(18)} style={styles.icon} />
         <Text style={styles.googleText}>구글 계정으로 시작하기</Text>
       </TouchableOpacity>
 
       {/* 카카오 로그인 */}
-      <TouchableOpacity style={styles.kakaoButton}>
+      <TouchableOpacity style={styles.kakaoButton} onPress={() => handleLogin("KAKAO")}>
         <KakaoIcon width={horizontalScale(18)} height={verticalScale(18)} style={styles.icon} />
         <Text style={styles.kakaoText}>카카오톡으로 시작하기</Text>
       </TouchableOpacity>

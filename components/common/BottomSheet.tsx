@@ -32,7 +32,7 @@ export default function BottomSheet({ children, style, ...rest }: BottomSheetPro
 const styles = StyleSheet.create({
   wrapper: {
     position: "absolute",
-    top: verticalScale(450),
+    top: verticalScale(460),
     left: horizontalScale(12),
     right: horizontalScale(12),
     bottom: verticalScale(24),

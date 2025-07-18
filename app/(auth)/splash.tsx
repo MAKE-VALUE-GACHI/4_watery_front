@@ -11,12 +11,7 @@ import { horizontalScale, verticalScale } from "@/libs/utils/scaling";
 import type { SocialProvider } from "@/types/auth";
 
 import BottomSheet from "@/components/common/BottomSheet";
-import GoogleLoginButton from "@/components/buttons/GoogleLoginButton";
-import KakaoLoginButton from "@/components/buttons/KakaoLoginButton";
 import SocialLoginButtons from "@/components/login/SocialLoginButtons";
-
-import KakaoLoginImage from "@/assets/images/buttons/kakaoLogins/kakao_login_large_wide.png";
-import GoogleLoginImage from "@/assets/images/buttons/googleLogins/android_light_sq_ctn.png";
 
 import LogoSvg from "@/components/svgs/LogoSvg";
 import BubbleImage06 from "@/components/bubbles/BubbleImage06";
@@ -92,38 +87,12 @@ export default function SplashScreen() {
       {/* 소셜 로그인 버튼 */}
       <BottomSheet>
         <View style={{ gap: verticalScale(16), alignItems: "center" }}>
-          {/*<GoogleLoginButton />*/}
-          {/*<KakaoLoginButton />*/}
-
-          <SocialLoginButtons />
-
-          {/*<Image*/}
-          {/*  source={GoogleLoginImage}*/}
-          {/*  style={{*/}
-          {/*    width: horizontalScale(300),*/}
-          {/*    height: verticalScale(40),*/}
-          {/*    resizeMode: "contain",*/}
-          {/*  }}*/}
-          {/*/>*/}
-          {/*<Image*/}
-          {/*  source={KakaoLoginImage}*/}
-          {/*  style={{*/}
-          {/*    width: horizontalScale(300),*/}
-          {/*    height: verticalScale(40),*/}
-          {/*    resizeMode: "contain",*/}
-          {/*  }}*/}
-          {/*/>*/}
+          <SocialLoginButtons handleLogin={handleLogin} />
         </View>
       </BottomSheet>
 
       {/* 로그인 버튼 영역 */}
       <View style={styles.buttonGroup}>
-        <Button
-          title="Google 로그인"
-          disabled={!googleRequest}
-          onPress={() => handleLogin("GOOGLE")}
-        />
-        <Button title="Kakao 로그인" onPress={() => handleLogin("KAKAO")} />
         <Button title="메인 이동" onPress={() => router.replace("/(tabs)")} />
       </View>
     </View>
@@ -157,7 +126,7 @@ const styles = StyleSheet.create({
   },
   buttonGroup: {
     position: "absolute",
-    bottom: verticalScale(150),
+    bottom: verticalScale(300),
     alignSelf: "center",
     gap: verticalScale(12),
   },
