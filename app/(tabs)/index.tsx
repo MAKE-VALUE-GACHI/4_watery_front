@@ -1,13 +1,34 @@
-import { Image } from "expo-image";
-import "nativewind";
-import { Platform, StyleSheet, Text, View } from "react-native";
-
+import CustomButton from "@/components/CustomButton/CustomButton";
 import { HelloWave } from "@/components/HelloWave";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
-import { ThemedText } from "@/components/ThemedText";
+import { H1, H2, HL1, HL2, T1, T2, T3 } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
+import { MaterialIcons } from "@expo/vector-icons";
+import { Image } from "expo-image";
+
+import React, { useState } from "react";
+import { StyleSheet, Button } from "react-native";
+import { useRouter } from "expo-router";
+
+import { CustomTab } from "@/components/CustomTab";
+import { CustomToggle } from "@/components/CustomToggle";
+import TodayGoal from "@/components/TodayGoalMoisture/TodayGoal";
+import CustomSlide from "@/components/CustomSlide/CustomSlide";
+import CustomSlider from "@/components/CustomSlider/CustomSlider";
+
+type TabType = "전체" | "물" | "커피" | "녹차";
 
 export default function HomeScreen() {
+  const [sliderVal, setSliderVal] = useState(500);
+
+  const [selectedTab, setSelectedTab] = useState<TabType>("전체");
+  const [isEnabled, setIsEnabled] = useState(false);
+
+  const router = useRouter();
+  const onLoginSuccess = () => {
+    router.push("/(auth)/splash"); // Splash → 메인으로 이동
+  };
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
@@ -19,46 +40,60 @@ export default function HomeScreen() {
       }
     >
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
+        <T1>Welcome</T1>
         <HelloWave />
       </ThemedView>
-      <View>
-        <Text className={"text-red-800"}>Hello</Text>
-      </View>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit{" "}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText>{" "}
-          to see changes. Press{" "}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: "cmd + d",
-              android: "cmd + m",
-              web: "F12",
-            })}
-          </ThemedText>{" "}
-          to open developer tools.
-        </ThemedText>
+
+      <Button title="Go to Login" onPress={onLoginSuccess} />
+
+      {/* Main - Today Goal */}
+      <TodayGoal />
+
+      {/* 공용 컴포넌트 - Tab */}
+      <ThemedView style={{ gap: 10 }}>
+        <CustomTab selectedTab={selectedTab} onSelectTab={setSelectedTab} />
+        <CustomTab
+          selectedTab={selectedTab}
+          onSelectTab={setSelectedTab}
+          visibleTabs={["물", "커피", "녹차"]}
+        />
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
+
+      {/* 공용 컴포넌트 - Toggle */}
+      <ThemedView style={{ gap: 10 }}>
+        <CustomToggle value={isEnabled} onValueChange={setIsEnabled} />
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">
-            npm run reset-project
-          </ThemedText>{" "}
-          to get a fresh <ThemedText type="defaultSemiBold">app</ThemedText>{" "}
-          directory. This will move the current{" "}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{" "}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
+
+      <CustomSlide beverageVariant={"coffee"} />
+
+      {/* 시연 이후 삭제 예정*/}
+      <ThemedView style={{ gap: 10 }}>
+        <CustomButton title={"PRIMARY(DEFAULT)"} variant={"primary"} />
+        <CustomButton title={"SECONDARY"} variant={"secondary"} />
+        <CustomButton title={"TERTIARY"} variant={"tertiary"} />
+        <CustomButton title={"WARNING"} variant={"warning"} />
+      </ThemedView>
+
+      <ThemedView>
+        <CustomSlider
+          sliderVal={sliderVal}
+          onValueChange={(val) => setSliderVal(val[0])}
+          step={50}
+          animationType={"spring"}
+          maximumValue={1000}
+          minimumValue={0}
+        />
+      </ThemedView>
+
+      <ThemedView>
+        <T1>Title1</T1>
+        <T2>Title2</T2>
+        <T3>Title3</T3>
+        <H1>Heading1</H1>
+        <H2>Heading2</H2>
+        <HL1>Headline1</HL1>
+        <HL2>Headline2</HL2>
+        <MaterialIcons name="star" size={50} color="#ff0000" />
       </ThemedView>
     </ParallaxScrollView>
   );
@@ -69,10 +104,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
   },
   reactLogo: {
     height: 178,

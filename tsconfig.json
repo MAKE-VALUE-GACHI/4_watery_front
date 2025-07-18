@@ -2,9 +2,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./*"
-      ]
+      "@/*": ["./*"],
+      "@svgs/*": ["./src/components/svgs/*"]
     },
     "target": "esnext",
     "module": "commonjs",
@@ -18,8 +17,11 @@
     "isolatedModules": true
   },
   "include": [
-    "src",
-    "App.tsx",
+    "app/**/*",
+    "hooks/**/*",
+    "components/**/*",
+    "constants/**/*",
+    "types/**/*",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
   ],
