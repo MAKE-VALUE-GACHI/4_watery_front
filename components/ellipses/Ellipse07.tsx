@@ -6,7 +6,7 @@ export default function Ellipse07() {
   return (
     <View style={styles.container}>
       <Image
-        source={require("@/assets/images/ellipses/Ellipse7.png")}
+        source={require("@/assets/images/Ellipses/Ellipse7.png")}
         style={styles.ellipse}
         resizeMode="center" // ContentScale.None에 해당
       />

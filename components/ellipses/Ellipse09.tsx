@@ -6,7 +6,7 @@ export default function Ellipse09() {
   return (
     <View style={styles.container}>
       <Image
-        source={require("@/assets/images/ellipses/Ellipse9.png")}
+        source={require("@/assets/images/Ellipses/Ellipse9.png")}
         style={styles.ellipse}
         resizeMode="center" // Figma의 ContentScale.None에 해당
         blurRadius={12} // 대략 48dp에 해당하는 blur (조정 가능)

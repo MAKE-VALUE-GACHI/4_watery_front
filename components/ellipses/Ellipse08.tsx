@@ -6,7 +6,7 @@ export default function Ellipse08() {
   return (
     <View style={styles.container}>
       <Image
-        source={require("@/assets/images/ellipses/Ellipse8.png")}
+        source={require("@/assets/images/Ellipses/Ellipse8.png")}
         style={styles.ellipse}
         resizeMode="center" // ContentScale.None 대응
         blurRadius={16} // 80dp 대응 (1dp ≈ 0.2 blurRadius)
