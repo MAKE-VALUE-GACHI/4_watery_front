@@ -1,4 +1,3 @@
-import { TransparentView } from "@/components/common.styles";
 import CustomButton from "@/components/CustomButton/CustomButton";
 import { getButtonBgColor } from "@/components/CustomSlide/CustomSlide.hooks";
 import { customSlideStyles } from "@/components/CustomSlide/CustomSlide.styles";
@@ -11,6 +10,8 @@ import { LinearGradient } from "expo-linear-gradient";
 import React, { useEffect, useRef, useState } from "react";
 import { Image, View } from "react-native";
 import WaveView from "react-native-waveview";
+import { ThemedView } from "@/components/ThemedView";
+import { commonStyles } from "@/components/common.styles";
 
 interface CustomSlideProps {
   beverageVariant: BeverageVariantType;
@@ -100,7 +101,7 @@ const CustomSlide: React.FC<CustomSlideProps> = ({ beverageVariant }) => {
           </View>
         </View>
 
-        <TransparentView>
+        <ThemedView style={commonStyles.TransparentView}>
           <CustomButton
             icon={
               <View style={customSlideStyles.IconWrapper}>
@@ -115,7 +116,7 @@ const CustomSlide: React.FC<CustomSlideProps> = ({ beverageVariant }) => {
             activeOpacity={0.8}
             onPress={() => setWaterHeight(waterHeight + 15)}
           />
-        </TransparentView>
+        </ThemedView>
       </View>
     </LinearGradient>
   );

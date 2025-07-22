@@ -1,6 +1,6 @@
 import { stepsStyles } from "@/app/onboard-survey/steps/steps.styles";
 import { BN2 } from "@/components/ThemedText";
-import { FlexRow } from "@/components/common.styles";
+import { commonStyles } from "@/components/common.styles";
 import { Colors } from "@/constants/Colors";
 import React, { useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
@@ -24,7 +24,7 @@ const WeightStep = () => {
 
   return (
     <ThemedView style={stepsStyles.StepContainer}>
-      <FlexRow alignItems={"center"}>
+      <ThemedView style={{ ...commonStyles.FlexRow, alignItems: "center" }}>
         <WheelPicker
           height={300}
           width={150}
@@ -37,7 +37,7 @@ const WeightStep = () => {
           }}
         />
         <BN2 lightColor={Colors.neutral_600}>kg</BN2>
-      </FlexRow>
+      </ThemedView>
     </ThemedView>
   );
 };
