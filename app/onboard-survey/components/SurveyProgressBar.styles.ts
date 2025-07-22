@@ -12,7 +12,6 @@ export const progressBarStyles = StyleSheet.create({
     height: verticalScale(5),
     borderRadius: verticalScale(7),
     flex: 1,
-    // backgroundColor는 isActive prop에 따라 컴포넌트에서 동적으로 지정하세요
   },
 });
 
