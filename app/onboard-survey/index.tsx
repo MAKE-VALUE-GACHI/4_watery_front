@@ -1,15 +1,16 @@
 import SurveyHeader from "@/app/onboard-survey/components/SurveyHeader";
 import SurveyProgressBar from "@/app/onboard-survey/components/SurveyProgressBar";
-import { SurveyContentWrapper, SurveyPageContainer } from "@/app/onboard-survey/index.styles";
 import CustomButton from "@/components/CustomButton/CustomButton";
+import { ThemedView } from "@/components/ThemedView";
 import { useOnboardStepStore } from "@/stores/onboardStepStore";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import ActivityStep from "./steps/ActivityStep";
-import BirthYearStep from "./steps/BirthYearStep";
-import GenderStep from "./steps/GenderStep";
-import WeightStep from "./steps/WeightStep";
+import GenderStep from "@/app/onboard-survey/steps/GenderStep";
+import BirthYearStep from "@/app/onboard-survey/steps/BirthYearStep";
+import WeightStep from "@/app/onboard-survey/steps/WeightStep";
+import ActivityStep from "@/app/onboard-survey/steps/ActivityStep";
+import indexStyles from "@/app/onboard-survey/index.styles";
 
 const categories = ["성별", "출생연도", "체중", "하루 평균 활동량"];
 
@@ -66,9 +67,9 @@ const OnboardSurvey = () => {
 
   return (
     <FormProvider {...methods}>
-      <SurveyPageContainer>
+      <ThemedView style={indexStyles.SurveyPageContainer}>
         <SurveyProgressBar currentStep={currentStep} totalSteps={stepComponents.length} />
-        <SurveyContentWrapper>
+        <ThemedView style={indexStyles.SurveyContentWrapper}>
           <SurveyHeader
             currentStep={currentStep}
             totalSteps={stepComponents.length}
@@ -80,8 +81,8 @@ const OnboardSurvey = () => {
             title={currentStep === stepComponents.length ? "시작하기" : "다음 단계"}
             onPress={handleButtonPress}
           />
-        </SurveyContentWrapper>
-      </SurveyPageContainer>
+        </ThemedView>
+      </ThemedView>
     </FormProvider>
   );
 };

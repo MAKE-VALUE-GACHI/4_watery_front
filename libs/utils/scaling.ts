@@ -34,9 +34,9 @@ export const scaleFont = (size: number) => {
 };
 
 /**
- * padding shorthand 유틸리티 (styled-components/native용)
+ * padding shorthand 유틸리티 (StyleSheet.create용)
  * 1~4개의 인자를 받아 각각 top, right, bottom, left에 verticalScale/horizontalScale을 적용
- * 사용 예시: ${paddingScale(12)}, ${paddingScale(12, 32)}, ${paddingScale(12, 16, 20, 24)}
+ * 사용 예시: ...paddingScale(12), ...paddingScale(12, 32), ...paddingScale(12, 16, 20, 24)
  */
 export const paddingScale = (
   top: number,
@@ -44,23 +44,22 @@ export const paddingScale = (
   bottom?: number,
   left?: number
 ) => {
-  // CSS padding shorthand처럼 동작
   const t = verticalScale(top);
   const r = verticalScale(right ?? top);
   const b = verticalScale(bottom ?? top);
   const l = verticalScale(left ?? right ?? top);
-  return `
-    padding-top: ${t};
-    padding-right: ${r};
-    padding-bottom: ${b};
-    padding-left: ${l};
-  `;
+  return {
+    paddingTop: t,
+    paddingRight: r,
+    paddingBottom: b,
+    paddingLeft: l,
+  };
 };
 
 /**
- * margin shorthand 유틸리티 (styled-components/native용)
+ * margin shorthand 유틸리티 (StyleSheet.create용)
  * 1~4개의 인자를 받아 각각 top, right, bottom, left에 verticalScale/horizontalScale을 적용
- * 사용 예시: ${marginScale(12)}, ${marginScale(12, 32)}, ${marginScale(12, 16, 20, 24)}
+ * 사용 예시: ...marginScale(12), ...marginScale(12, 32), ...marginScale(12, 16, 20, 24)
  */
 export const marginScale = (
   top: number,
@@ -68,15 +67,14 @@ export const marginScale = (
   bottom?: number,
   left?: number
 ) => {
-  // CSS margin shorthand처럼 동작
   const t = verticalScale(top);
   const r = verticalScale(right ?? top);
   const b = verticalScale(bottom ?? top);
   const l = verticalScale(left ?? right ?? top);
-  return `
-    margin-top: ${t};
-    margin-right: ${r};
-    margin-bottom: ${b};
-    margin-left: ${l};
-  `;
+  return {
+    marginTop: t,
+    marginRight: r,
+    marginBottom: b,
+    marginLeft: l,
+  };
 };
