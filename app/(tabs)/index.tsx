@@ -15,8 +15,15 @@ import { CustomToggle } from "@/components/CustomToggle";
 import TodayGoal from "@/components/TodayGoalMoisture/TodayGoal";
 import CustomSlide from "@/components/CustomSlide/CustomSlide";
 import CustomSlider from "@/components/CustomSlider/CustomSlider";
+import HistoryScreen from "@/components/screens/HistoryScreen";
 
 type TabType = "전체" | "물" | "커피" | "녹차";
+
+const sampleData = [
+  { id: "1", title: "물 500ml" },
+  { id: "2", title: "커피 200ml" },
+  { id: "3", title: "녹차 150ml" },
+];
 
 export default function HomeScreen() {
   const [sliderVal, setSliderVal] = useState(500);
@@ -48,6 +55,9 @@ export default function HomeScreen() {
 
       {/* Main - Today Goal */}
       <TodayGoal />
+
+      {/* History */}
+      <HistoryScreen />
 
       {/* 공용 컴포넌트 - Tab */}
       <ThemedView style={{ gap: 10 }}>
