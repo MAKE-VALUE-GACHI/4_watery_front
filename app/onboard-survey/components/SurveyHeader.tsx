@@ -17,7 +17,7 @@ const SurveyHeader: React.FC<SurveyHeaderProps> = ({ currentStep, totalSteps, ca
       <ThemedView style={surveyHeaderStyles.SurveyHeaderWrapper}>
         <ThemedView style={commonStyles.FlexRow}>
           <T3 lightColor={Colors.neutral_900}>{categoryName}</T3>
-          <T3 lightColor={Colors.neutral_500}>을</T3>
+          <T3 lightColor={Colors.neutral_500}> 을</T3>
         </ThemedView>
         <T3 lightColor={Colors.neutral_500}>선택해 주세요.</T3>
       </ThemedView>

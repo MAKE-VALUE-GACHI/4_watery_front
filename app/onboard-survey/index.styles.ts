@@ -1,11 +1,10 @@
 import { paddingScale, verticalScale } from "@/libs/utils/scaling";
 import { StyleSheet } from "react-native";
 
-// margin-bottom = 24px + bottom-tab 48px
 export const indexStyles = StyleSheet.create({
   SurveyPageContainer: {
     flex: 1,
-    marginBottom: verticalScale(72),
+    paddingBottom: verticalScale(24),
   },
   SurveyContentWrapper: {
     flex: 1,
