@@ -1,13 +1,13 @@
-import styled from "styled-components/native";
-import { BN1 } from "@/components/ThemedText";
-import { FlexRow } from "@/components/common.styles";
+import { paddingScale } from "@/libs/utils/scaling";
+import { StyleSheet } from "react-native";
 
-export const SlideHeaderContainer = styled(FlexRow)`
-  justify-content: space-between;
-  background-color: transparent;
-  padding: 12px 20px;
-`;
-
-export const SlideHeaderMeasurement = styled(BN1)`
-  font-weight: bold;
-`;
+export const slideHeaderStyles = StyleSheet.create({
+  SlideHeaderContainer: {
+    justifyContent: "space-between",
+    backgroundColor: "transparent",
+    ...paddingScale(12, 20),
+  },
+  SlideHeaderMeasurement: {
+    fontWeight: "bold",
+  },
+});

@@ -1,12 +1,9 @@
+import { TransparentFlexRow } from "@/components/common.styles";
 import { BeverageVariantType } from "@/components/CustomSlide/CustomSlide.types";
-import {
-  SlideHeaderContainer,
-  SlideHeaderMeasurement,
-} from "@/components/CustomSlide/SlideHeader.styles";
-import { BN1, HL2 } from "@/components/ThemedText";
+import { slideHeaderStyles } from "@/components/CustomSlide/SlideHeader.styles";
+import { BN1 } from "@/components/ThemedText";
 import { Colors } from "@/constants/Colors";
 import React from "react";
-import { TransparentFlexRow } from "@/components/common.styles";
 
 interface SlideHeaderProps {
   beverageVariant: BeverageVariantType;
@@ -35,13 +32,15 @@ const SlideHeader: React.FC<SlideHeaderProps> = ({ beverageVariant }) => {
   const { label, color } = beverageMeta[beverageVariant] ?? beverageMeta.water;
 
   return (
-    <SlideHeaderContainer>
-      <HL2 style={{ color }}>{label}</HL2>
+    <TransparentFlexRow style={slideHeaderStyles.SlideHeaderContainer}>
+      <BN1 style={{ color }}>{label}</BN1>
       <TransparentFlexRow gap={4}>
-        <SlideHeaderMeasurement style={{ color }}>400</SlideHeaderMeasurement>
+        <BN1 style={[slideHeaderStyles.SlideHeaderMeasurement, { color }]}>
+          400
+        </BN1>
         <BN1 style={{ color: Colors.neutral_400 }}>ml</BN1>
       </TransparentFlexRow>
-    </SlideHeaderContainer>
+    </TransparentFlexRow>
   );
 };
 

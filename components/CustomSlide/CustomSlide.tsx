@@ -1,20 +1,16 @@
+import { TransparentView } from "@/components/common.styles";
 import CustomButton from "@/components/CustomButton/CustomButton";
 import { getButtonBgColor } from "@/components/CustomSlide/CustomSlide.hooks";
-import {
-  IconWrapper,
-  SlideBody,
-  SlideContainer,
-  StyledLinearGradient,
-} from "@/components/CustomSlide/CustomSlide.styles";
+import { customSlideStyles } from "@/components/CustomSlide/CustomSlide.styles";
 import { BeverageVariantType } from "@/components/CustomSlide/CustomSlide.types";
 import SlideHeader from "@/components/CustomSlide/SlideHeader";
 import { wavesDict } from "@/constants/wavesDict";
 import { MaterialIcons } from "@expo/vector-icons";
 import MaskedView from "@react-native-masked-view/masked-view";
+import { LinearGradient } from "expo-linear-gradient";
 import React, { useEffect, useRef, useState } from "react";
 import { Image, View } from "react-native";
 import WaveView from "react-native-waveview";
-import { TransparentView } from "@/components/common.styles";
 
 interface CustomSlideProps {
   beverageVariant: BeverageVariantType;
@@ -58,10 +54,15 @@ const CustomSlide: React.FC<CustomSlideProps> = ({ beverageVariant }) => {
   }, [waterHeight, beverageVariant]);
 
   return (
-    <StyledLinearGradient colors={colors} start={{ x: 0.5, y: 0 }} end={{ x: 0.5, y: 1 }}>
-      <SlideContainer>
+    <LinearGradient
+      colors={colors}
+      start={{ x: 0.5, y: 0 }}
+      end={{ x: 0.5, y: 1 }}
+      style={customSlideStyles.StyledLinearGradient}
+    >
+      <View style={customSlideStyles.SlideContainer}>
         <SlideHeader beverageVariant={beverageVariant} />
-        <SlideBody>
+        <View style={customSlideStyles.SlideBody}>
           <View style={{ width: BOTTLE_WIDTH, height: BOTTLE_HEIGHT, position: "relative" }}>
             {/* 1. 병 안쪽만 보이게 하는 마스크 */}
             <MaskedView
@@ -97,14 +98,14 @@ const CustomSlide: React.FC<CustomSlideProps> = ({ beverageVariant }) => {
               resizeMode="contain"
             />
           </View>
-        </SlideBody>
+        </View>
 
         <TransparentView>
           <CustomButton
             icon={
-              <IconWrapper>
+              <View style={customSlideStyles.IconWrapper}>
                 <MaterialIcons name="add" size={20} color="white" />
-              </IconWrapper>
+              </View>
             }
             title={"마신 기록 추가"}
             variant={"primary"}
@@ -115,8 +116,8 @@ const CustomSlide: React.FC<CustomSlideProps> = ({ beverageVariant }) => {
             onPress={() => setWaterHeight(waterHeight + 15)}
           />
         </TransparentView>
-      </SlideContainer>
-    </StyledLinearGradient>
+      </View>
+    </LinearGradient>
   );
 };
 

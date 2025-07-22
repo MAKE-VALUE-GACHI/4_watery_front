@@ -1,32 +1,31 @@
-import { ThemedView } from "@/components/ThemedView";
 import { Colors } from "@/constants/Colors";
-import { LinearGradient } from "expo-linear-gradient";
-import styled from "styled-components/native";
-import { TransparentView } from "@/components/common.styles";
+import { paddingScale, verticalScale } from "@/libs/utils/scaling";
+import { StyleSheet } from "react-native";
 
-export const StyledLinearGradient = styled(LinearGradient)`
-  border-radius: 24px;
-`;
-
-export const SlideContainer = styled(TransparentView)`
-  border-radius: 24px;
-  border-width: 1px;
-  border-color: ${Colors.neutral_000};
-  background-color: transparent;
-  margin: 1px;
-  padding: 12px;
-`;
-
-export const SlideBody = styled(TransparentView)`
-  height: 436px;
-  justify-content: center;
-  align-items: center;
-  background-color: transparent;
-`;
-
-export const IconWrapper = styled(ThemedView)`
-  border-radius: 100%;
-  border-width: 2px;
-  border-color: ${Colors.neutral_000};
-  background-color: transparent;
-`;
+export const customSlideStyles = StyleSheet.create({
+  StyledLinearGradient: {
+    borderRadius: verticalScale(24),
+    // 기타 스타일 필요시 추가
+  },
+  SlideContainer: {
+    borderRadius: verticalScale(24),
+    borderWidth: 1,
+    borderColor: Colors.neutral_000,
+    backgroundColor: "transparent",
+    margin: verticalScale(1),
+    ...paddingScale(12),
+  },
+  SlideBody: {
+    height: verticalScale(436),
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "transparent",
+  },
+  IconWrapper: {
+    borderRadius: 100,
+    borderWidth: 2,
+    borderColor: Colors.neutral_000,
+    backgroundColor: "transparent",
+    // 동적 스타일은 style 배열로 합성
+  },
+});
