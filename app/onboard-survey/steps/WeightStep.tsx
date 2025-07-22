@@ -1,10 +1,11 @@
-import { StepContainer } from "@/app/onboard-survey/steps/steps.styles";
+import { stepsStyles } from "@/app/onboard-survey/steps/steps.styles";
 import { BN2 } from "@/components/ThemedText";
 import { FlexRow } from "@/components/common.styles";
 import { Colors } from "@/constants/Colors";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import WheelPicker from "react-native-wheel-picker-expo";
+import { ThemedView } from "@/components/ThemedView";
 
 const weightRange = Array.from({ length: 171 }, (_, i) => i + 30); // 30~200kg
 
@@ -12,7 +13,7 @@ const WeightStep = () => {
   const { setValue, watch } = useFormContext();
   const weight = watch("weight");
   const [selectedIdx, setSelectedIdx] = useState(
-    weight ? Math.max(0, weightRange.indexOf(Number(weight))) : 30 // 60kg이 기본값
+    weight ? Math.max(0, weightRange.indexOf(Number(weight))) : 30, // 60kg이 기본값
   );
 
   useEffect(() => {
@@ -22,7 +23,7 @@ const WeightStep = () => {
   }, [weight]);
 
   return (
-    <StepContainer>
+    <ThemedView style={stepsStyles.StepContainer}>
       <FlexRow alignItems={"center"}>
         <WheelPicker
           height={300}
@@ -37,7 +38,7 @@ const WeightStep = () => {
         />
         <BN2 lightColor={Colors.neutral_600}>kg</BN2>
       </FlexRow>
-    </StepContainer>
+    </ThemedView>
   );
 };
 

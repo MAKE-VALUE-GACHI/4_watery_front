@@ -1,22 +1,23 @@
-import styled from "styled-components/native";
-import { ThemedView } from "@/components/ThemedView";
 import { Colors } from "@/constants/Colors";
+import { paddingScale, verticalScale } from "@/libs/utils/scaling";
+import { StyleSheet } from "react-native";
 
-export const StepContainer = styled(ThemedView)`
-  flex: 1;
-  padding-top: 48px;
-  align-items: center;
-  gap: 16px;
-`;
+export const stepsStyles = StyleSheet.create({
+  StepContainer: {
+    flex: 1,
+    paddingTop: verticalScale(48),
+    alignItems: "center",
+    gap: verticalScale(16),
+  },
+  ActivityIconWrapper: {
+    width: verticalScale(40),
+    height: verticalScale(40),
+    borderRadius: verticalScale(8),
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: Colors.neutral_000,
+    ...paddingScale(8),
+  },
+});
 
-export const ActivityIconWrapper = styled(ThemedView)`
-  width: 40px;
-  height: 40px;
-  padding: 8px;
-  border-radius: 8px;
-  align-items: center;
-  justify-content: center;
-  background-color: ${Colors.neutral_000};
-`;
-
-export default StepContainer;
+export default stepsStyles;

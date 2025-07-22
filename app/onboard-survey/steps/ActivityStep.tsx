@@ -1,7 +1,8 @@
-import { ActivityIconWrapper, StepContainer } from "@/app/onboard-survey/steps/steps.styles";
+import { stepsStyles } from "@/app/onboard-survey/steps/steps.styles";
 import { useStepSelection } from "@/app/onboard-survey/utils/useStepSelection";
 import SurveyOption from "@/components/SurveyOption/SurveyOption";
 import { Image } from "react-native";
+import { ThemedView } from "@/components/ThemedView";
 
 const activityOptions = ["low", "normal", "active", "very_active"] as const;
 
@@ -40,7 +41,7 @@ const ActivityStep = ({ onSelectionChange }: ActivityStepProps) => {
   );
 
   return (
-    <StepContainer>
+    <ThemedView style={stepsStyles.StepContainer}>
       {activityOptions.map((option, idx) => (
         <SurveyOption
           key={`activity_option_${idx}`}
@@ -49,18 +50,18 @@ const ActivityStep = ({ onSelectionChange }: ActivityStepProps) => {
           isSelected={selectedIdx === idx + 1}
           optionIdx={idx + 1}
           icon={
-            <ActivityIconWrapper>
+            <ThemedView style={stepsStyles.ActivityIconWrapper}>
               <Image
                 source={activityMeta[option].icon}
                 style={{ width: 24, height: 24 }}
                 resizeMode="contain"
               />
-            </ActivityIconWrapper>
+            </ThemedView>
           }
           onPress={() => changeSelectedOption(idx + 1)}
         />
       ))}
-    </StepContainer>
+    </ThemedView>
   );
 };
 

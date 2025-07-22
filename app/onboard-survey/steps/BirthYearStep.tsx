@@ -1,8 +1,9 @@
-import { StepContainer } from "@/app/onboard-survey/steps/steps.styles";
+import { stepsStyles } from "@/app/onboard-survey/steps/steps.styles";
 import { Colors } from "@/constants/Colors";
 import { useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import WheelPicker from "react-native-wheel-picker-expo";
+import { ThemedView } from "@/components/ThemedView";
 
 const years = Array.from({ length: 100 }, (_, i) => 2025 - i); // 1925 ~ 2025
 
@@ -20,7 +21,7 @@ const BirthYearStep = () => {
   }, [birthYear]);
 
   return (
-    <StepContainer>
+    <ThemedView style={stepsStyles.StepContainer}>
       <WheelPicker
         height={300}
         width={150}
@@ -32,7 +33,7 @@ const BirthYearStep = () => {
           setValue("birthYear", item.label);
         }}
       />
-    </StepContainer>
+    </ThemedView>
   );
 };
 

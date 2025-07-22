@@ -1,7 +1,8 @@
-import { StepContainer } from "@/app/onboard-survey/steps/steps.styles";
+import { stepsStyles } from "@/app/onboard-survey/steps/steps.styles";
 import { useStepSelection } from "@/app/onboard-survey/utils/useStepSelection";
 import SurveyOption from "@/components/SurveyOption/SurveyOption";
 import React from "react";
+import { ThemedView } from "@/components/ThemedView";
 
 const genderOptions = ["남성", "여성", "선택하지 않음"];
 
@@ -17,7 +18,7 @@ const GenderStep: React.FC<GenderStepProps> = ({ onSelectionChange }) => {
   );
 
   return (
-    <StepContainer>
+    <ThemedView style={stepsStyles.StepContainer}>
       {genderOptions.map((option, idx) => (
         <SurveyOption
           key={`gender_option_${idx}`}
@@ -27,7 +28,7 @@ const GenderStep: React.FC<GenderStepProps> = ({ onSelectionChange }) => {
           onPress={() => changeSelectedOption(idx + 1)}
         />
       ))}
-    </StepContainer>
+    </ThemedView>
   );
 };
 
