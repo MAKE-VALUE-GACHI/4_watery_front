@@ -1,10 +1,10 @@
-import { getTextColor } from "@/components/CustomButton/CustomButton.hooks";
-import { StyledButton } from "@/components/CustomButton/CustomButton.styles";
+import { getButtonBg, getButtonBorderColor, getTextColor } from "@/components/CustomButton/CustomButton.hooks";
+import { customButtonStyles } from "@/components/CustomButton/CustomButton.styles";
 import { BN2 } from "@/components/ThemedText";
 import { textComponentMap } from "@/constants/textComponent";
 import { TextType } from "@/types/text";
 import React, { useState } from "react";
-import { TextStyle, TouchableOpacityProps } from "react-native";
+import { TextStyle, TouchableOpacity, TouchableOpacityProps } from "react-native";
 
 interface CustomButtonProps extends TouchableOpacityProps {
   title: string;
@@ -20,7 +20,7 @@ interface CustomButtonProps extends TouchableOpacityProps {
  * CustomButton
  *
  * 다양한 프리셋(variant) 또는 커스텀 배경색을 지원하는 커스텀 버튼 컴포넌트입니다.
- * - styled-components로 스타일링됩니다.
+ * - StyleSheet.create로 스타일링됩니다.
  * - 아이콘, 텍스트 스타일, 텍스트 타입(타이포그래피) 지정이 가능합니다.
  * - `backgroundColor`를 지정하면 variant보다 우선 적용됩니다.
  * - 눌림(pressed) 상태에 따라 시각적 피드백을 제공합니다.
@@ -50,14 +50,19 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   const TextComponent = textComponentMap[textType] || BN2;
   const [pressed, setPressed] = useState(false);
 
+  const borderColor = getButtonBorderColor(variant, pressed);
+  const bgColor = backgroundColor ? backgroundColor : getButtonBg(variant, pressed);
+  const buttonOpacity = disabled ? 0.4 : 1;
+
   return (
-    <StyledButton
-      variant={variant}
+    <TouchableOpacity
       disabled={disabled}
-      style={style}
-      pressed={pressed}
+      style={[
+        customButtonStyles.StyledButton,
+        { borderColor, backgroundColor: bgColor, opacity: buttonOpacity },
+        style,
+      ]}
       activeOpacity={1}
-      customBgColor={backgroundColor}
       onPressIn={() => setPressed(true)}
       onPressOut={() => setPressed(false)}
       {...props}
@@ -70,7 +75,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
       >
         {title}
       </TextComponent>
-    </StyledButton>
+    </TouchableOpacity>
   );
 };
 
