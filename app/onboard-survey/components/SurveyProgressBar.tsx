@@ -1,8 +1,6 @@
-import {
-  ProgressBar,
-  ProgressBarWrapper,
-} from "@/app/onboard-survey/components/SurveyProgressBar.styles";
-import React from "react";
+import { ThemedView } from "@/components/ThemedView";
+import { Colors } from "@/constants/Colors";
+import progressBarStyles from "@/app/onboard-survey/components/SurveyProgressBar.styles";
 
 interface SurveyProgressBarProps {
   currentStep: number;
@@ -12,11 +10,17 @@ interface SurveyProgressBarProps {
 const SurveyProgressBar: React.FC<SurveyProgressBarProps> = ({ currentStep, totalSteps }) => {
   const arr = Array.from({ length: totalSteps });
   return (
-    <ProgressBarWrapper>
+    <ThemedView style={progressBarStyles.ProgressBarWrapper}>
       {arr.map((_, idx) => (
-        <ProgressBar key={idx} isActive={idx === currentStep - 1} />
+        <ThemedView
+          key={idx}
+          style={[
+            progressBarStyles.ProgressBar,
+            { backgroundColor: idx === currentStep - 1 ? Colors.primary_800 : Colors.primary_050 },
+          ]}
+        />
       ))}
-    </ProgressBarWrapper>
+    </ThemedView>
   );
 };
 
