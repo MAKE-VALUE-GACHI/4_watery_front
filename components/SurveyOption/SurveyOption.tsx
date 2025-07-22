@@ -1,10 +1,10 @@
-import {
-  SurveyOptionWrapper,
-  SurveyTextWrapper,
-} from "@/components/SurveyOption/SurveyOption.styles";
+import { surveyOptionStyles } from "@/components/SurveyOption/SurveyOption.styles";
 import { BN1, LN1 } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
 import { Colors } from "@/constants/Colors";
 import React from "react";
+import { Pressable } from "react-native";
+import { horizontalScale } from "@/libs/utils/scaling";
 
 interface SurveyOptionProps {
   optionIdx: number;
@@ -23,14 +23,23 @@ const SurveyOption: React.FC<SurveyOptionProps> = ({
   description,
 }) => {
   return (
-    <SurveyOptionWrapper
+    <Pressable
       onPress={onPress}
-      style={() => ({
-        backgroundColor: isSelected ? Colors.primary_600 : Colors.primary_010,
-      })}
+      style={({ pressed }) => [
+        surveyOptionStyles.SurveyOptionWrapper,
+        {
+          backgroundColor: isSelected ? Colors.primary_600 : Colors.primary_010,
+          gap: horizontalScale(6),
+        },
+      ]}
     >
       {icon ? icon : null}
-      <SurveyTextWrapper hasDescription={description !== undefined}>
+      <ThemedView
+        style={[
+          surveyOptionStyles.SurveyTextWrapper,
+          { gap: 6, alignItems: description !== undefined ? "flex-start" : "center" },
+        ]}
+      >
         <BN1
           lightColor={isSelected ? Colors.neutral_000 : Colors.primary_700}
           style={{ fontWeight: "bold" }}
@@ -40,8 +49,8 @@ const SurveyOption: React.FC<SurveyOptionProps> = ({
         {description ? (
           <LN1 lightColor={isSelected ? Colors.neutral_000 : Colors.neutral_500}>{description}</LN1>
         ) : null}
-      </SurveyTextWrapper>
-    </SurveyOptionWrapper>
+      </ThemedView>
+    </Pressable>
   );
 };
 

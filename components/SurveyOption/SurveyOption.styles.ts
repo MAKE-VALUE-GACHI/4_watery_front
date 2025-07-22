@@ -1,24 +1,21 @@
-import styled from "styled-components/native";
 import { Colors } from "@/constants/Colors";
-import { Pressable } from "react-native";
-import { ThemedView } from "@/components/ThemedView";
+import { paddingScale, verticalScale } from "@/libs/utils/scaling";
+import { StyleSheet } from "react-native";
 
-export const SurveyOptionWrapper = styled(Pressable)`
-  width: 100%;
-  padding: 18px 16px;
-  border: solid 1px ${Colors.primary_100};
-  border-radius: 12px;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-  height: 81px;
-`;
-
-export const SurveyTextWrapper = styled(ThemedView)<{ hasDescription: boolean }>`
-  background-color: transparent;
-  gap: 6px;
-  flex: 1;
-  align-items: ${(props: { hasDescription: boolean }) =>
-    props.hasDescription ? "flex-start" : "center"};
-`;
+export const surveyOptionStyles = StyleSheet.create({
+  SurveyOptionWrapper: {
+    width: "100%",
+    ...paddingScale(18, 16),
+    borderWidth: 1,
+    borderColor: Colors.primary_100,
+    borderRadius: verticalScale(12),
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    height: verticalScale(81),
+  },
+  SurveyTextWrapper: {
+    backgroundColor: "transparent",
+    flex: 1,
+  },
+});
