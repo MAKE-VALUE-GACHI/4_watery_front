@@ -17,5 +17,5 @@ console.warn = (...args) => {
 LogBox.ignoreLogs(["Expected style", "to contain units"]);
 
 export default function Index() {
-  return <Redirect href="/onboard-survey" />;
+  return <Redirect href="/splash" />;
 }
