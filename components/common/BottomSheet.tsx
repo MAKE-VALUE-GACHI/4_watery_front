@@ -2,12 +2,50 @@ import React from "react";
 import { View, StyleSheet, ViewProps } from "react-native";
 import { horizontalScale, verticalScale } from "@/libs/utils/scaling";
 import { LinearGradient } from "expo-linear-gradient";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 interface BottomSheetProps extends ViewProps {
   children?: React.ReactNode;
 }
 
 export default function BottomSheet({ children, style, ...rest }: BottomSheetProps) {
+  const insets = useSafeAreaInsets();
+
+  const styles = StyleSheet.create({
+    wrapper: {
+      position: "absolute",
+      top: verticalScale(608 + insets.top),
+      left: horizontalScale(12),
+      right: horizontalScale(12),
+      bottom: verticalScale(24) + insets.bottom,
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    background: {
+      width: horizontalScale(351),
+      height: verticalScale(180),
+      borderRadius: horizontalScale(32),
+    },
+    border: {
+      flex: 1,
+      borderRadius: horizontalScale(32),
+      borderWidth: 1,
+      borderColor: "transparent", // borderGradient 대체
+      paddingHorizontal: horizontalScale(1),
+      paddingVertical: verticalScale(1),
+    },
+    inner: {
+      flex: 1,
+      borderRadius: horizontalScale(32),
+      backgroundColor: "transparent",
+      paddingHorizontal: horizontalScale(20),
+      paddingVertical: verticalScale(32),
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+  });
+
   return (
     <View style={[styles.wrapper, style]} {...rest}>
       <LinearGradient
@@ -28,38 +66,3 @@ export default function BottomSheet({ children, style, ...rest }: BottomSheetPro
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  wrapper: {
-    position: "absolute",
-    top: verticalScale(460),
-    left: horizontalScale(12),
-    right: horizontalScale(12),
-    bottom: verticalScale(24),
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  background: {
-    width: horizontalScale(351),
-    height: verticalScale(180),
-    borderRadius: horizontalScale(32),
-  },
-  border: {
-    flex: 1,
-    borderRadius: horizontalScale(32),
-    borderWidth: 1,
-    borderColor: "transparent", // borderGradient 대체
-    paddingHorizontal: horizontalScale(1),
-    paddingVertical: verticalScale(1),
-  },
-  inner: {
-    flex: 1,
-    borderRadius: horizontalScale(32),
-    backgroundColor: "transparent",
-    paddingHorizontal: horizontalScale(20),
-    paddingVertical: verticalScale(32),
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

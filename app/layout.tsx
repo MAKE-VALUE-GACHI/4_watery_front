@@ -11,6 +11,7 @@ import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import "react-native-reanimated";
 import { initializeKakaoSDK } from "@react-native-kakao/core";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -30,16 +31,18 @@ export default function RootLayout() {
   }, []);
 
   return (
-    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <NavigationContainer>
-        {/*<Stack initialRouteName="splash">*/}
-        {/*  <Stack.Screen name="splash" options={{ headerShown: false }} />*/}
-        {/*  <Stack.Screen name="(tabs)" options={{ headerShown: false }} />*/}
-        {/*  <Stack.Screen name="+not-found" />*/}
-        {/*</Stack>*/}
-        <Stack screenOptions={{ headerShown: false }} />
-      </NavigationContainer>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <SafeAreaProvider>
+      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+        <NavigationContainer>
+          {/*<Stack initialRouteName="splash">*/}
+          {/*  <Stack.Screen name="splash" options={{ headerShown: false }} />*/}
+          {/*  <Stack.Screen name="(tabs)" options={{ headerShown: false }} />*/}
+          {/*  <Stack.Screen name="+not-found" />*/}
+          {/*</Stack>*/}
+          <Stack screenOptions={{ headerShown: false }} />
+        </NavigationContainer>
+        <StatusBar style="auto" />
+      </ThemeProvider>
+    </SafeAreaProvider>
   );
 }
