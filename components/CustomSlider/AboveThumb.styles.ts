@@ -1,21 +1,21 @@
-import styled from "styled-components/native";
-import { ThemedView } from "@/components/ThemedView";
 import { Colors } from "@/constants/Colors";
-import { BN1 } from "@/components/ThemedText";
+import { paddingScale, verticalScale } from "@/libs/utils/scaling";
+import { StyleSheet } from "react-native";
 
-export const AboveThumbContainer = styled(ThemedView)`
-  position: absolute;
-  top: -10px;
-  left: -32px;
-  min-width: 64px;
-  justify-content: center;
-  align-items: center;
-  padding: 4px 12px;
-  border-radius: 8px;
-  background-color: ${Colors.primary_050};
-`;
-
-export const AboveThumbText = styled(BN1)`
-  color: ${Colors.primary_900};
-  font-weight: bold;
-`;
+export const aboveThumbStyles = StyleSheet.create({
+  AboveThumbContainer: {
+    position: "absolute",
+    top: verticalScale(-10),
+    left: verticalScale(-32),
+    minWidth: verticalScale(64),
+    justifyContent: "center",
+    alignItems: "center",
+    ...paddingScale(4, 12),
+    borderRadius: verticalScale(8),
+    backgroundColor: Colors.primary_050,
+  },
+  AboveThumbText: {
+    color: Colors.primary_900,
+    fontWeight: "bold",
+  },
+});

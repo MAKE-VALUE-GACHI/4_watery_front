@@ -1,5 +1,7 @@
+import { aboveThumbStyles } from "@/components/CustomSlider/AboveThumb.styles";
+import { BN1 } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
 import React from "react";
-import { AboveThumbContainer, AboveThumbText } from "@/components/CustomSlider/AboveThumb.styles";
 
 interface AboveThumbProps {
   sliderVal: number;
@@ -7,9 +9,9 @@ interface AboveThumbProps {
 
 const AboveThumb: React.FC<AboveThumbProps> = ({ sliderVal }) => {
   return (
-    <AboveThumbContainer>
-      <AboveThumbText>{sliderVal}</AboveThumbText>
-    </AboveThumbContainer>
+    <ThemedView style={aboveThumbStyles.AboveThumbContainer}>
+      <BN1 style={aboveThumbStyles.AboveThumbText}>{sliderVal}</BN1>
+    </ThemedView>
   );
 };
 

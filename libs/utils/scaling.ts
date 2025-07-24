@@ -32,3 +32,49 @@ export const scaleFont = (size: number) => {
   const newSize = size * scale;
   return Math.round(PixelRatio.roundToNearestPixel(newSize));
 };
+
+/**
+ * padding shorthand 유틸리티 (StyleSheet.create용)
+ * 1~4개의 인자를 받아 각각 top, right, bottom, left에 verticalScale/horizontalScale을 적용
+ * 사용 예시: ...paddingScale(12), ...paddingScale(12, 32), ...paddingScale(12, 16, 20, 24)
+ */
+export const paddingScale = (
+  top: number,
+  right?: number,
+  bottom?: number,
+  left?: number
+) => {
+  const t = verticalScale(top);
+  const r = verticalScale(right ?? top);
+  const b = verticalScale(bottom ?? top);
+  const l = verticalScale(left ?? right ?? top);
+  return {
+    paddingTop: t,
+    paddingRight: r,
+    paddingBottom: b,
+    paddingLeft: l,
+  };
+};
+
+/**
+ * margin shorthand 유틸리티 (StyleSheet.create용)
+ * 1~4개의 인자를 받아 각각 top, right, bottom, left에 verticalScale/horizontalScale을 적용
+ * 사용 예시: ...marginScale(12), ...marginScale(12, 32), ...marginScale(12, 16, 20, 24)
+ */
+export const marginScale = (
+  top: number,
+  right?: number,
+  bottom?: number,
+  left?: number
+) => {
+  const t = verticalScale(top);
+  const r = verticalScale(right ?? top);
+  const b = verticalScale(bottom ?? top);
+  const l = verticalScale(left ?? right ?? top);
+  return {
+    marginTop: t,
+    marginRight: r,
+    marginBottom: b,
+    marginLeft: l,
+  };
+};

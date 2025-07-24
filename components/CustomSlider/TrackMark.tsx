@@ -1,24 +1,26 @@
-import { ThemedView } from "@/components/ThemedView";
 import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
 import { Colors } from "@/constants/Colors";
 import React from "react";
-import styled from "styled-components/native";
+import { StyleSheet } from "react-native";
+
+export const trackMarkStyles = StyleSheet.create({
+  StyledThemedView: {
+    backgroundColor: "transparent",
+    height: 80,
+    justifyContent: "flex-end",
+  },
+});
 
 interface TrackMarkProps {
   value: number;
 }
 
-const StyledThemedView = styled(ThemedView)`
-  background-color: transparent;
-  height: 80px;
-  justify-content: flex-end;
-`;
-
 const TrackMark: React.FC<TrackMarkProps> = ({ value }) => {
   return (
-    <StyledThemedView>
+    <ThemedView style={trackMarkStyles.StyledThemedView}>
       <ThemedText style={{ color: Colors.neutral_400 }}>{value}</ThemedText>
-    </StyledThemedView>
+    </ThemedView>
   );
 };
 
