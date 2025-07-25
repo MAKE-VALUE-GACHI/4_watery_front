@@ -3,30 +3,46 @@ import { T1 } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { useRouter } from "expo-router";
 import React from "react";
-import { StyleSheet } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
+import { Dimensions, ImageBackground, ScrollView, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { commonStyles } from "@/components/common.styles";
+
+const { width: screenWidth } = Dimensions.get("window");
+const DESIGN_WIDTH = 375;
+const DESIGN_HEIGHT = 1040;
+const bgHeight = (screenWidth / DESIGN_WIDTH) * DESIGN_HEIGHT;
 
 export default function HomeScreen() {
   const router = useRouter();
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <ScrollView style={{ flex: 1 }}>
-        <ThemedView style={styles.titleContainer}>
-          <T1>Welcome</T1>
-          <HelloWave />
-        </ThemedView>
-      </ScrollView>
-    </SafeAreaView>
+    <ImageBackground
+      source={require("assets/images/main-bg.png")}
+      style={{ width: screenWidth, height: bgHeight }}
+      resizeMode="cover"
+    >
+      <SafeAreaView style={{ flex: 1 }}>
+        <ScrollView style={styles.pageContainer}>
+          <ThemedView style={styles.titleContainer}>
+            <T1>Welcome</T1>
+            <HelloWave />
+          </ThemedView>
+        </ScrollView>
+      </SafeAreaView>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
+  pageContainer: {
+    flex: 1,
+    ...commonStyles.TransparentView,
+  },
   titleContainer: {
     flexDirection: "row",
     alignItems: "center",
     gap: 8,
+    ...commonStyles.TransparentView,
   },
   reactLogo: {
     height: 178,
