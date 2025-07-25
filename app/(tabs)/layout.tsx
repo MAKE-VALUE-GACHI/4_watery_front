@@ -2,7 +2,6 @@ import React from "react";
 import { Tabs } from "expo-router";
 import { Platform } from "react-native";
 import { HapticTab } from "@/components/HapticTab";
-import { IconSymbol } from "@/components/ui/IconSymbol";
 import TabBarBackground from "@/components/ui/TabBarBackground";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
@@ -26,20 +25,22 @@ export default function TabLayout() {
         }),
       }}
     >
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: "Home",
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: "Explore",
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
-      />
+      {/*  추후 메인 페이지에서 탭 관련 분할 시 사용 */}
+
+      {/*<Tabs.Screen*/}
+      {/*  name="index"*/}
+      {/*  options={{*/}
+      {/*    title: "Home",*/}
+      {/*    tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,*/}
+      {/*  }}*/}
+      {/*/>*/}
+      {/*<Tabs.Screen*/}
+      {/*  name="explore"*/}
+      {/*  options={{*/}
+      {/*    title: "Explore",*/}
+      {/*    tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,*/}
+      {/*  }}*/}
+      {/*/>*/}
     </Tabs>
   );
 }
