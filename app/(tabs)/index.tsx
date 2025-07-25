@@ -22,7 +22,7 @@ export default function HomeScreen() {
       resizeMode="cover"
     >
       <SafeAreaView style={{ flex: 1 }}>
-        <ScrollView style={tabsStyles.pageContainer}>
+        <ScrollView style={tabsStyles.mainContainer}>
           <ThemedView style={tabsStyles.titleContainer}>
             <T1>Welcome</T1>
             <HelloWave />

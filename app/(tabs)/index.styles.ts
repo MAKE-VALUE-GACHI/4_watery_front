@@ -1,9 +1,10 @@
-import { StyleSheet } from "react-native";
 import { commonStyles } from "@/components/common.styles";
+import { StyleSheet } from "react-native";
 
 export const tabsStyles = StyleSheet.create({
-  pageContainer: {
+  mainContainer: {
     flex: 1,
+    ...commonStyles.pageContainer,
     ...commonStyles.transparentView,
   },
   titleContainer: {
