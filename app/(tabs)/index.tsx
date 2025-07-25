@@ -3,7 +3,7 @@ import { useRouter } from "expo-router";
 import React from "react";
 import { Dimensions, ImageBackground, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import MainHeader from "@/app/(tabs)/components/MainHeader";
+import TodayGoalCard from "@/components/TodayGoalMoisture/TodayGoal";
 
 const { width: screenWidth } = Dimensions.get("window");
 const DESIGN_WIDTH = 375;
@@ -21,7 +21,7 @@ export default function HomeScreen() {
     >
       <SafeAreaView style={{ flex: 1 }}>
         <ScrollView style={tabsStyles.mainContainer}>
-          <MainHeader />
+          <TodayGoalCard />
         </ScrollView>
       </SafeAreaView>
     </ImageBackground>
