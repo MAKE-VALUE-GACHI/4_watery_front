@@ -1,4 +1,5 @@
 import { commonStyles } from "@/components/common.styles";
+import { paddingScale, verticalScale } from "@/libs/utils/scaling";
 import { StyleSheet } from "react-native";
 
 export const tabsStyles = StyleSheet.create({
@@ -19,6 +20,12 @@ export const tabsStyles = StyleSheet.create({
     bottom: 0,
     left: 0,
     position: "absolute",
+  },
+  mainHeader: {
+    height: verticalScale(102),
+    borderRadius: verticalScale(16),
+    ...paddingScale(12),
+    ...commonStyles.blurCard,
   },
 });
 

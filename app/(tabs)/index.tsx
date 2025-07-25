@@ -1,11 +1,11 @@
+import tabsStyles from "@/app/(tabs)/index.styles";
 import { HelloWave } from "@/components/HelloWave";
 import { T1 } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
+import { BlurView } from "expo-blur";
 import { useRouter } from "expo-router";
 import React from "react";
 import { Dimensions, ImageBackground, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import tabsStyles from "@/app/(tabs)/index.styles";
 
 const { width: screenWidth } = Dimensions.get("window");
 const DESIGN_WIDTH = 375;
@@ -23,10 +23,10 @@ export default function HomeScreen() {
     >
       <SafeAreaView style={{ flex: 1 }}>
         <ScrollView style={tabsStyles.mainContainer}>
-          <ThemedView style={tabsStyles.titleContainer}>
+          <BlurView style={tabsStyles.mainHeader} intensity={100} tint={"default"}>
             <T1>Welcome</T1>
             <HelloWave />
-          </ThemedView>
+          </BlurView>
         </ScrollView>
       </SafeAreaView>
     </ImageBackground>

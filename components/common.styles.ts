@@ -1,5 +1,6 @@
-import { StyleSheet } from "react-native";
+import { Colors } from "@/constants/Colors";
 import { paddingScale } from "@/libs/utils/scaling";
+import { StyleSheet } from "react-native";
 
 export const commonStyles = StyleSheet.create({
   pageContainer: {
@@ -15,5 +16,11 @@ export const commonStyles = StyleSheet.create({
   },
   flexRow: {
     flexDirection: "row",
+  },
+  blurCard: {
+    borderWidth: 1,
+    borderColor: Colors.neutral_000,
+    backgroundColor: "#FFFFFF7A",
+    boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.03)",
   },
 });
