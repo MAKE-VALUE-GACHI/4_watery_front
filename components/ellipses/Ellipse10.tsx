@@ -18,8 +18,7 @@ export default function Ellipse10() {
 const styles = StyleSheet.create({
   container: {
     position: "absolute",
-    top: verticalScale(652),
-    right: horizontalScale(255), // pr 적용
+    bottom: verticalScale(-30),
     width: horizontalScale(120),
     height: verticalScale(120),
     backgroundColor: "#89CDED",

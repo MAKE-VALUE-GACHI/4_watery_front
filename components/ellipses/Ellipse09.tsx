@@ -18,7 +18,8 @@ export default function Ellipse09() {
 const styles = StyleSheet.create({
   container: {
     position: "absolute",
-    top: verticalScale(635),
+    // top: verticalScale(635),
+    bottom: verticalScale(30),
     left: horizontalScale(308),
     width: horizontalScale(70),
     height: verticalScale(70),

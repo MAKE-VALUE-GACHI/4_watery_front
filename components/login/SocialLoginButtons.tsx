@@ -29,6 +29,9 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    // paddingTop: verticalScale(32),   // ✅ Google 버튼 상단 여백
+    // paddingBottom: verticalScale(32),// ✅ Kakao 버튼 하단 여백
+    gap: verticalScale(8),
   },
   googleButton: {
     flexDirection: "row",
@@ -40,7 +43,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#E6E8EA",
     backgroundColor: "#FFFFFF",
-    marginBottom: verticalScale(16), // 버튼 사이 간격
+    // marginBottom: verticalScale(8), // 버튼 사이 간격
   },
   kakaoButton: {
     flexDirection: "row",
