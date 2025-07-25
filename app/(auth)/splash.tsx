@@ -14,11 +14,12 @@ import { Colors } from "@/constants/Colors";
 import type { SocialProvider } from "@/types/auth";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-import BottomSheet from "@/components/common/BottomSheet";
+import LoginBottomSheet from "@/components/common/LoginBottomSheet";
 import SocialLoginButtons from "@/components/login/SocialLoginButtons";
 import LogoSvg from "@/components/svgs/LogoSvg";
 import { LR1 } from "@/components/ThemedText";
 
+import BubbleImage01 from "@/components/bubbles/BubbleImage01";
 import BubbleImage03 from "@/components/bubbles/BubbleImage03";
 import BubbleImage04 from "@/components/bubbles/BubbleImage04";
 import BubbleImage05 from "@/components/bubbles/BubbleImage05";
@@ -88,11 +89,10 @@ export default function SplashScreen() {
       position: "absolute",
       top: verticalScale(229),
       left: horizontalScale(52),
-      width: horizontalScale(92),
+      width: horizontalScale(108), // 넉넉하게
       height: verticalScale(22),
+      flexShrink: 0,
       fontWeight: "600",
-      fontSize: scaleFont(14),
-      lineHeight: verticalScale(22),
       color: Colors.neutral_400, // #8A949E
     },
 
@@ -119,6 +119,7 @@ export default function SplashScreen() {
         <BubbleImage04 />
         <BubbleImage05 />
         <BubbleImage03 />
+        <BubbleImage01 />
 
         {/* SVG 로고 & TEXT */}
         <View style={styles.logoWrapper}>
@@ -127,11 +128,11 @@ export default function SplashScreen() {
         <LR1 style={styles.subText}>오늘의 수분 기록</LR1>
 
         {/* 소셜 로그인 버튼 */}
-        <BottomSheet>
-          <View style={{ gap: verticalScale(16), alignItems: "center" }}>
+        <LoginBottomSheet>
+          <View style={{ gap: verticalScale(8), alignItems: "center" }}>
             <SocialLoginButtons handleLogin={handleLogin} />
           </View>
-        </BottomSheet>
+        </LoginBottomSheet>
 
         {/* 로그인 버튼 영역 -> 추후 제거 요망 */}
         <View style={styles.buttonGroup}>

@@ -8,16 +8,16 @@ interface BottomSheetProps extends ViewProps {
   children?: React.ReactNode;
 }
 
-export default function BottomSheet({ children, style, ...rest }: BottomSheetProps) {
+export default function LoginBottomSheet({ children, style, ...rest }: BottomSheetProps) {
   const insets = useSafeAreaInsets();
 
   const styles = StyleSheet.create({
     wrapper: {
       position: "absolute",
-      top: verticalScale(608 + insets.top),
+      top: verticalScale(588),
       left: horizontalScale(12),
       right: horizontalScale(12),
-      bottom: verticalScale(24) + insets.bottom,
+      bottom: verticalScale(24),
       justifyContent: "center",
       alignItems: "center",
     },
