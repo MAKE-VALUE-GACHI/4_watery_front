@@ -101,7 +101,7 @@ const CustomSlide: React.FC<CustomSlideProps> = ({ beverageVariant }) => {
           </View>
         </View>
 
-        <ThemedView style={commonStyles.TransparentView}>
+        <ThemedView style={commonStyles.transparentView}>
           <CustomButton
             icon={
               <View style={customSlideStyles.IconWrapper}>

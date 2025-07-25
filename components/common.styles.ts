@@ -1,14 +1,14 @@
 import { StyleSheet } from "react-native";
 
 export const commonStyles = StyleSheet.create({
-  TransparentView: {
+  transparentView: {
     backgroundColor: "transparent",
   },
-  TransparentFlexRow: {
+  transparentFlexRow: {
     flexDirection: "row",
     backgroundColor: "transparent",
   },
-  FlexRow: {
+  flexRow: {
     flexDirection: "row",
   },
 });

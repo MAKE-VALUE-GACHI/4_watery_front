@@ -3,9 +3,9 @@ import { T1 } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { useRouter } from "expo-router";
 import React from "react";
-import { Dimensions, ImageBackground, ScrollView, StyleSheet } from "react-native";
+import { Dimensions, ImageBackground, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { commonStyles } from "@/components/common.styles";
+import tabsStyles from "@/app/(tabs)/index.styles";
 
 const { width: screenWidth } = Dimensions.get("window");
 const DESIGN_WIDTH = 375;
@@ -22,8 +22,8 @@ export default function HomeScreen() {
       resizeMode="cover"
     >
       <SafeAreaView style={{ flex: 1 }}>
-        <ScrollView style={styles.pageContainer}>
-          <ThemedView style={styles.titleContainer}>
+        <ScrollView style={tabsStyles.pageContainer}>
+          <ThemedView style={tabsStyles.titleContainer}>
             <T1>Welcome</T1>
             <HelloWave />
           </ThemedView>
@@ -32,23 +32,3 @@ export default function HomeScreen() {
     </ImageBackground>
   );
 }
-
-const styles = StyleSheet.create({
-  pageContainer: {
-    flex: 1,
-    ...commonStyles.TransparentView,
-  },
-  titleContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
-    ...commonStyles.TransparentView,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: "absolute",
-  },
-});

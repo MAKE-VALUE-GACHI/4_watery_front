@@ -34,9 +34,9 @@ const SlideHeader: React.FC<SlideHeaderProps> = ({ beverageVariant }) => {
   const { label, color } = beverageMeta[beverageVariant] ?? beverageMeta.water;
 
   return (
-    <ThemedView style={[commonStyles.TransparentFlexRow, slideHeaderStyles.SlideHeaderContainer]}>
+    <ThemedView style={[commonStyles.transparentFlexRow, slideHeaderStyles.SlideHeaderContainer]}>
       <BN1 style={{ color }}>{label}</BN1>
-      <ThemedView style={{ ...commonStyles.TransparentFlexRow, gap: horizontalScale(4) }}>
+      <ThemedView style={{ ...commonStyles.transparentFlexRow, gap: horizontalScale(4) }}>
         <BN1 style={[slideHeaderStyles.SlideHeaderMeasurement, { color }]}>400</BN1>
         <BN1 style={{ color: Colors.neutral_400 }}>ml</BN1>
       </ThemedView>
