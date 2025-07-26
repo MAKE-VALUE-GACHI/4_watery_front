@@ -3,18 +3,19 @@ import { getButtonBgColor } from "@/components/CustomSlide/CustomSlide.hooks";
 import { customSlideStyles } from "@/components/CustomSlide/CustomSlide.styles";
 import { BeverageVariantType } from "@/components/CustomSlide/CustomSlide.types";
 import SlideHeader from "@/components/CustomSlide/SlideHeader";
+import { ThemedView } from "@/components/ThemedView";
+import { commonStyles } from "@/components/common.styles";
 import { wavesDict } from "@/constants/wavesDict";
 import { MaterialIcons } from "@expo/vector-icons";
 import MaskedView from "@react-native-masked-view/masked-view";
 import { LinearGradient } from "expo-linear-gradient";
 import React, { useEffect, useRef, useState } from "react";
-import { Image, View } from "react-native";
+import { Image, StyleProp, View, ViewStyle } from "react-native";
 import WaveView from "react-native-waveview";
-import { ThemedView } from "@/components/ThemedView";
-import { commonStyles } from "@/components/common.styles";
 
 interface CustomSlideProps {
   beverageVariant: BeverageVariantType;
+  style?: StyleProp<ViewStyle>;
 }
 
 const beverageColors: Record<BeverageVariantType, [string, string]> = {
@@ -43,7 +44,7 @@ const BOTTLE_HEIGHT = 260;
  * @param {BeverageVariantType} props.beverageVariant - 표시할 음료 종류(색상, 파도에 영향)
  * @returns {JSX.Element}
  */
-const CustomSlide: React.FC<CustomSlideProps> = ({ beverageVariant }) => {
+const CustomSlide: React.FC<CustomSlideProps> = ({ beverageVariant, style }) => {
   const colors = beverageColors[beverageVariant] ?? defaultColors;
 
   const waveRef = useRef<WaveView>(null);
@@ -59,9 +60,9 @@ const CustomSlide: React.FC<CustomSlideProps> = ({ beverageVariant }) => {
       colors={colors}
       start={{ x: 0.5, y: 0 }}
       end={{ x: 0.5, y: 1 }}
-      style={customSlideStyles.StyledLinearGradient}
+      style={[customSlideStyles.StyledLinearGradient, style]}
     >
-      <View style={customSlideStyles.SlideContainer}>
+      <View>
         <SlideHeader beverageVariant={beverageVariant} />
         <View style={customSlideStyles.SlideBody}>
           <View style={{ width: BOTTLE_WIDTH, height: BOTTLE_HEIGHT, position: "relative" }}>

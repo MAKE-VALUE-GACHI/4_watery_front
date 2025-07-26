@@ -17,5 +17,6 @@ console.warn = (...args) => {
 LogBox.ignoreLogs(["Expected style", "to contain units"]);
 
 export default function Index() {
-  return <Redirect href="/splash" />;
+  // TODO: revert to /splash
+  return <Redirect href="/(tabs)" />;
 }

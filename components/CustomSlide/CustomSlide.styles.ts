@@ -5,6 +5,7 @@ import { StyleSheet } from "react-native";
 export const customSlideStyles = StyleSheet.create({
   StyledLinearGradient: {
     borderRadius: verticalScale(24),
+    height: verticalScale(436),
   },
   SlideContainer: {
     borderRadius: verticalScale(24),
