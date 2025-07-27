@@ -15,6 +15,7 @@ import WaveView from "react-native-waveview";
 interface CustomSlideProps {
   beverageVariant: BeverageVariantType;
   style?: StyleProp<ViewStyle>;
+  onPress?: () => void;
 }
 
 const beverageColors: Record<BeverageVariantType, [string, string]> = {
@@ -43,7 +44,7 @@ const BOTTLE_HEIGHT = 260;
  * @param {BeverageVariantType} props.beverageVariant - 표시할 음료 종류(색상, 파도에 영향)
  * @returns {JSX.Element}
  */
-const CustomSlide: React.FC<CustomSlideProps> = ({ beverageVariant, style }) => {
+const CustomSlide: React.FC<CustomSlideProps> = ({ beverageVariant, style, onPress }) => {
   const colors = beverageColors[beverageVariant] ?? defaultColors;
 
   const waveRef = useRef<WaveView>(null);
@@ -114,7 +115,7 @@ const CustomSlide: React.FC<CustomSlideProps> = ({ beverageVariant, style }) => 
             textStyle={{ fontWeight: "bold" }}
             backgroundColor={getButtonBgColor(beverageVariant)}
             activeOpacity={0.8}
-            onPress={() => setWaterHeight(waterHeight + 15)}
+            onPress={onPress}
           />
         </View>
       </View>

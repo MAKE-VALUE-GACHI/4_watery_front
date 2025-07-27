@@ -8,6 +8,7 @@ import beverageDataSet from "@/app/(tabs)/constants/beverageDataSet";
 
 interface renderItemProps {
   style?: StyleProp<ImageStyle>;
+  onPress?: () => void;
 }
 
 const renderItem = (options: renderItemProps = {}): CarouselRenderItem<any> => {
@@ -23,6 +24,7 @@ const renderItem = (options: renderItemProps = {}): CarouselRenderItem<any> => {
         key={index}
         beverageVariant={beverageDataSet[index] as BeverageVariantType}
         style={options.style}
+        onPress={options.onPress}
       />
     );
   };

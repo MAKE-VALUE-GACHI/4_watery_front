@@ -29,59 +29,44 @@
  * @param {React.ReactNode} children - 바텀시트 내부에 렌더링할 내용
  * @param {...BottomSheetProps} rest - @gorhom/bottom-sheet의 모든 props를 그대로 전달 가능
  */
-import type { SNAP_POINT_TYPE } from "@gorhom/bottom-sheet";
-import BottomSheet, { BottomSheetProps } from "@gorhom/bottom-sheet";
 import React, { useEffect } from "react";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { Dimensions, View } from "react-native";
+import Modal from "react-native-modal";
+import { customBottomSheetStyles } from "@/components/CustomBottomSheet/CustomBottomSheet.styles";
 
-interface CustomBottomSheetProps extends Omit<BottomSheetProps, "ref"> {
-  bottomSheetRef: React.RefObject<any>;
+interface CustomBottomSheetProps {
   isOpen?: boolean;
   onOpen?: () => void;
   onClose?: () => void;
-  snapIndex?: number;
+  snapPoints?: (string | number)[];
   children: React.ReactNode;
+  style?: any;
 }
 
+const { width: screenWidth } = Dimensions.get("window");
+
 const CustomBottomSheet: React.FC<CustomBottomSheetProps> = ({
-  bottomSheetRef,
-  isOpen,
+  isOpen = false,
   onOpen,
   onClose,
-  snapIndex,
   children,
-  ...rest
+  style,
 }) => {
-  // 열고 닫기
   useEffect(() => {
-    if (!bottomSheetRef.current || isOpen === undefined) return;
-    if (isOpen) {
-      bottomSheetRef.current.expand();
-    } else {
-      bottomSheetRef.current.close();
-    }
-  }, [isOpen, bottomSheetRef]);
-
-  // snapIndex 제어
-  useEffect(() => {
-    if (bottomSheetRef.current && typeof snapIndex === "number") {
-      bottomSheetRef.current.snapToIndex(snapIndex);
-    }
-  }, [snapIndex, bottomSheetRef]);
-
-  // onChange 핸들러
-  const handleChange = (index: number, lastIndex: number, type: SNAP_POINT_TYPE) => {
-    rest.onChange?.(index, lastIndex, type);
-    if (index === -1) onClose?.();
-    if (index === 0 && onOpen) onOpen();
-  };
+    if (isOpen && onOpen) onOpen();
+    if (!isOpen && onClose) onClose();
+  }, [isOpen]);
 
   return (
-    <GestureHandlerRootView>
-      <BottomSheet ref={bottomSheetRef} onChange={handleChange} {...rest}>
-        {children}
-      </BottomSheet>
-    </GestureHandlerRootView>
+    <Modal
+      isVisible={isOpen}
+      onBackdropPress={onClose}
+      style={customBottomSheetStyles.modal}
+      backdropTransitionOutTiming={0}
+      useNativeDriver
+    >
+      <View style={[customBottomSheetStyles.sheet, style]}>{children}</View>
+    </Modal>
   );
 };
 
