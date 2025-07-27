@@ -9,8 +9,8 @@ interface AboveThumbProps {
 
 const AboveThumb: React.FC<AboveThumbProps> = ({ sliderVal }) => {
   return (
-    <ThemedView style={aboveThumbStyles.AboveThumbContainer}>
-      <BN1 style={aboveThumbStyles.AboveThumbText}>{sliderVal}</BN1>
+    <ThemedView style={aboveThumbStyles.aboveThumbContainer}>
+      <BN1 style={aboveThumbStyles.aboveThumbText}>{sliderVal}</BN1>
     </ThemedView>
   );
 };

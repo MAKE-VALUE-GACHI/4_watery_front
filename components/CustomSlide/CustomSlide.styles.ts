@@ -3,11 +3,12 @@ import { horizontalScale, paddingScale, verticalScale } from "@/libs/utils/scali
 import { StyleSheet } from "react-native";
 
 export const customSlideStyles = StyleSheet.create({
-  StyledLinearGradient: {
+  styledLinearGradient: {
     borderRadius: verticalScale(24),
     height: verticalScale(436),
+    boxShadow: "0 6px 12px 0 rgba(0, 0, 0, 0.10)",
   },
-  SlideContainer: {
+  slideContainer: {
     flex: 1,
     borderWidth: horizontalScale(1),
     borderColor: Colors.neutral_000,
@@ -15,13 +16,13 @@ export const customSlideStyles = StyleSheet.create({
     margin: verticalScale(1),
     ...paddingScale(12),
   },
-  SlideBody: {
+  slideBody: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "transparent",
   },
-  IconWrapper: {
+  iconWrapper: {
     borderRadius: 100,
     borderWidth: 2,
     borderColor: Colors.neutral_000,

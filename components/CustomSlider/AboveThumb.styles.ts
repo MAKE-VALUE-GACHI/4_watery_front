@@ -3,7 +3,7 @@ import { paddingScale, verticalScale } from "@/libs/utils/scaling";
 import { StyleSheet } from "react-native";
 
 export const aboveThumbStyles = StyleSheet.create({
-  AboveThumbContainer: {
+  aboveThumbContainer: {
     position: "absolute",
     top: verticalScale(-10),
     left: verticalScale(-32),
@@ -14,7 +14,7 @@ export const aboveThumbStyles = StyleSheet.create({
     borderRadius: verticalScale(8),
     backgroundColor: Colors.primary_050,
   },
-  AboveThumbText: {
+  aboveThumbText: {
     color: Colors.primary_900,
     fontWeight: "bold",
   },

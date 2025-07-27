@@ -59,11 +59,11 @@ const CustomSlide: React.FC<CustomSlideProps> = ({ beverageVariant, style }) => 
       colors={colors}
       start={{ x: 0.5, y: 0 }}
       end={{ x: 0.5, y: 1 }}
-      style={[customSlideStyles.StyledLinearGradient, style]}
+      style={[customSlideStyles.styledLinearGradient, style]}
     >
-      <View style={customSlideStyles.SlideContainer}>
+      <View style={customSlideStyles.slideContainer}>
         <SlideHeader beverageVariant={beverageVariant} />
-        <View style={customSlideStyles.SlideBody}>
+        <View style={customSlideStyles.slideBody}>
           <View style={{ width: BOTTLE_WIDTH, height: BOTTLE_HEIGHT, position: "relative" }}>
             {/* 1. 병 안쪽만 보이게 하는 마스크 */}
             <MaskedView
@@ -104,7 +104,7 @@ const CustomSlide: React.FC<CustomSlideProps> = ({ beverageVariant, style }) => 
         <View style={commonStyles.transparentView}>
           <CustomButton
             icon={
-              <View style={customSlideStyles.IconWrapper}>
+              <View style={customSlideStyles.iconWrapper}>
                 <MaterialIcons name="add" size={20} color="white" />
               </View>
             }

@@ -2,12 +2,12 @@ import { paddingScale } from "@/libs/utils/scaling";
 import { StyleSheet } from "react-native";
 
 export const slideHeaderStyles = StyleSheet.create({
-  SlideHeaderContainer: {
+  slideHeaderContainer: {
     justifyContent: "space-between",
     backgroundColor: "transparent",
     ...paddingScale(12, 20),
   },
-  SlideHeaderMeasurement: {
+  slideHeaderMeasurement: {
     fontWeight: "bold",
   },
 });
