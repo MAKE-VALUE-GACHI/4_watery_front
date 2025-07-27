@@ -3,7 +3,6 @@ import { getButtonBgColor } from "@/components/CustomSlide/CustomSlide.hooks";
 import { customSlideStyles } from "@/components/CustomSlide/CustomSlide.styles";
 import { BeverageVariantType } from "@/components/CustomSlide/CustomSlide.types";
 import SlideHeader from "@/components/CustomSlide/SlideHeader";
-import { ThemedView } from "@/components/ThemedView";
 import { commonStyles } from "@/components/common.styles";
 import { wavesDict } from "@/constants/wavesDict";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -62,7 +61,7 @@ const CustomSlide: React.FC<CustomSlideProps> = ({ beverageVariant, style }) => 
       end={{ x: 0.5, y: 1 }}
       style={[customSlideStyles.StyledLinearGradient, style]}
     >
-      <View>
+      <View style={customSlideStyles.SlideContainer}>
         <SlideHeader beverageVariant={beverageVariant} />
         <View style={customSlideStyles.SlideBody}>
           <View style={{ width: BOTTLE_WIDTH, height: BOTTLE_HEIGHT, position: "relative" }}>
@@ -102,7 +101,7 @@ const CustomSlide: React.FC<CustomSlideProps> = ({ beverageVariant, style }) => 
           </View>
         </View>
 
-        <ThemedView style={commonStyles.transparentView}>
+        <View style={commonStyles.transparentView}>
           <CustomButton
             icon={
               <View style={customSlideStyles.IconWrapper}>
@@ -117,7 +116,7 @@ const CustomSlide: React.FC<CustomSlideProps> = ({ beverageVariant, style }) => 
             activeOpacity={0.8}
             onPress={() => setWaterHeight(waterHeight + 15)}
           />
-        </ThemedView>
+        </View>
       </View>
     </LinearGradient>
   );

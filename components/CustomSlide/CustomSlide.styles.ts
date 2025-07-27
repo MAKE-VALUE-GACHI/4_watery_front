@@ -1,5 +1,5 @@
 import { Colors } from "@/constants/Colors";
-import { paddingScale, verticalScale } from "@/libs/utils/scaling";
+import { horizontalScale, paddingScale, verticalScale } from "@/libs/utils/scaling";
 import { StyleSheet } from "react-native";
 
 export const customSlideStyles = StyleSheet.create({
@@ -8,15 +8,15 @@ export const customSlideStyles = StyleSheet.create({
     height: verticalScale(436),
   },
   SlideContainer: {
-    borderRadius: verticalScale(24),
-    borderWidth: 1,
+    flex: 1,
+    borderWidth: horizontalScale(1),
     borderColor: Colors.neutral_000,
-    backgroundColor: "transparent",
+    borderRadius: verticalScale(24),
     margin: verticalScale(1),
     ...paddingScale(12),
   },
   SlideBody: {
-    height: verticalScale(436),
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "transparent",
