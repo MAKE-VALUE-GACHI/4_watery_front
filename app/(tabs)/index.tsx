@@ -5,8 +5,8 @@ import React from "react";
 import { Dimensions, ImageBackground, ScrollView, View } from "react-native";
 import Carousel from "react-native-reanimated-carousel";
 import { SafeAreaView } from "react-native-safe-area-context";
-import beverageDataSet from "@/app/(tabs)/const/beverageDataSet";
 import renderItem from "@/app/(tabs)/utils/renderItem";
+import beverageDataSet from "@/app/(tabs)/constants/beverageDataSet";
 
 const { width: screenWidth } = Dimensions.get("window");
 const DESIGN_WIDTH = 375;

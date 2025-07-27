@@ -1,10 +1,10 @@
 import AddYourselfSlide from "@/app/(tabs)/components/AddYourselfSlide";
-import beverageDataSet from "@/app/(tabs)/const/beverageDataSet";
 import CustomSlide from "@/components/CustomSlide/CustomSlide";
 import { BeverageVariantType } from "@/components/CustomSlide/CustomSlide.types";
 import React from "react";
 import { ImageStyle, StyleProp } from "react-native";
 import { CarouselRenderItem } from "react-native-reanimated-carousel";
+import beverageDataSet from "@/app/(tabs)/constants/beverageDataSet";
 
 interface renderItemProps {
   style?: StyleProp<ImageStyle>;
