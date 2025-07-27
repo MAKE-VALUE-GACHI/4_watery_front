@@ -13,7 +13,7 @@ const DESIGN_WIDTH = 375;
 const DESIGN_HEIGHT = 1040;
 const bgHeight = (screenWidth / DESIGN_WIDTH) * DESIGN_HEIGHT;
 
-const testDataSet: BeverageVariantType[] = ["water", "coffee", "greenTea", "cola"];
+const beverageDataSet: BeverageVariantType[] = ["water", "coffee", "greenTea", "cola"];
 
 export default function HomeScreen() {
   return (
@@ -32,12 +32,9 @@ export default function HomeScreen() {
               height={500}
               snapEnabled={true}
               pagingEnabled={true}
-              autoPlayInterval={2000}
-              data={testDataSet}
+              data={beverageDataSet}
               style={{ width: "100%" }}
-              onSnapToItem={(index) => console.log("current index:", index)}
               renderItem={renderItem({
-                rounded: true,
                 style: { marginRight: horizontalScale(10) },
               })}
             />
@@ -54,7 +51,7 @@ interface Options {
 }
 
 const renderItem =
-  ({ rounded = false, style }: Options = {}): CarouselRenderItem<any> =>
+  ({ style }: Options = {}): CarouselRenderItem<any> =>
   ({ index }: { index: number }) => (
-    <CustomSlide key={index} beverageVariant={testDataSet[index]} style={style} />
+    <CustomSlide key={index} beverageVariant={beverageDataSet[index]} style={style} />
   );
