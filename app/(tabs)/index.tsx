@@ -1,19 +1,26 @@
+import AddYourselfSlide from "@/app/(tabs)/components/AddYourselfSlide";
 import tabsStyles from "@/app/(tabs)/index.styles";
 import CustomSlide from "@/components/CustomSlide/CustomSlide";
 import { BeverageVariantType } from "@/components/CustomSlide/CustomSlide.types";
 import TodayGoalCard from "@/components/TodayGoalMoisture/TodayGoal";
+import { horizontalScale } from "@/libs/utils/scaling";
 import React from "react";
 import { Dimensions, ImageBackground, ImageStyle, ScrollView, StyleProp, View } from "react-native";
 import Carousel, { CarouselRenderItem } from "react-native-reanimated-carousel";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { horizontalScale } from "@/libs/utils/scaling";
 
 const { width: screenWidth } = Dimensions.get("window");
 const DESIGN_WIDTH = 375;
 const DESIGN_HEIGHT = 1040;
 const bgHeight = (screenWidth / DESIGN_WIDTH) * DESIGN_HEIGHT;
 
-const beverageDataSet: BeverageVariantType[] = ["water", "coffee", "greenTea", "cola"];
+const beverageDataSet: (BeverageVariantType | "addYourself")[] = [
+  "water",
+  "coffee",
+  "greenTea",
+  "cola",
+  "addYourself",
+];
 
 export default function HomeScreen() {
   return (
@@ -52,6 +59,13 @@ interface Options {
 
 const renderItem =
   ({ style }: Options = {}): CarouselRenderItem<any> =>
-  ({ index }: { index: number }) => (
-    <CustomSlide key={index} beverageVariant={beverageDataSet[index]} style={style} />
-  );
+  ({ index }: { index: number }) =>
+    beverageDataSet[index] === "addYourself" ? (
+      <AddYourselfSlide key={index} style={style} />
+    ) : (
+      <CustomSlide
+        key={index}
+        beverageVariant={beverageDataSet[index] as BeverageVariantType}
+        style={style}
+      />
+    );
