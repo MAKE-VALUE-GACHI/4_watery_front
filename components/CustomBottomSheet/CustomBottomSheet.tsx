@@ -29,21 +29,26 @@
  * @param {React.ReactNode} children - 바텀시트 내부에 렌더링할 내용
  * @param {...BottomSheetProps} rest - @gorhom/bottom-sheet의 모든 props를 그대로 전달 가능
  */
-import React, { useEffect } from "react";
-import { Dimensions, View } from "react-native";
-import Modal from "react-native-modal";
 import { customBottomSheetStyles } from "@/components/CustomBottomSheet/CustomBottomSheet.styles";
+import React, { useEffect } from "react";
+import { View } from "react-native";
+import Modal, { ModalProps } from "react-native-modal";
 
-interface CustomBottomSheetProps {
+interface CustomBottomSheetProps
+  extends Omit<
+    ModalProps,
+    | "isVisible"
+    | "onBackdropPress"
+    | "onBackButtonPress"
+    | "backdropTransitionOutTiming"
+    | "useNativeDriver"
+  > {
   isOpen?: boolean;
   onOpen?: () => void;
   onClose?: () => void;
-  snapPoints?: (string | number)[];
   children: React.ReactNode;
   style?: any;
 }
-
-const { width: screenWidth } = Dimensions.get("window");
 
 const CustomBottomSheet: React.FC<CustomBottomSheetProps> = ({
   isOpen = false,
@@ -51,6 +56,7 @@ const CustomBottomSheet: React.FC<CustomBottomSheetProps> = ({
   onClose,
   children,
   style,
+  ...rest
 }) => {
   useEffect(() => {
     if (isOpen && onOpen) onOpen();
@@ -64,6 +70,7 @@ const CustomBottomSheet: React.FC<CustomBottomSheetProps> = ({
       style={customBottomSheetStyles.modal}
       backdropTransitionOutTiming={0}
       useNativeDriver
+      {...rest}
     >
       <View style={[customBottomSheetStyles.sheet, style]}>{children}</View>
     </Modal>
