@@ -5,7 +5,7 @@ import { StyleSheet } from "react-native";
 export const aboveThumbStyles = StyleSheet.create({
   aboveThumbContainer: {
     position: "absolute",
-    top: verticalScale(-10),
+    top: verticalScale(8),
     left: verticalScale(-32),
     minWidth: verticalScale(64),
     justifyContent: "center",
