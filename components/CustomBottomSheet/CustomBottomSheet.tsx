@@ -3,17 +3,7 @@ import React, { useEffect } from "react";
 import { View } from "react-native";
 import Modal, { ModalProps } from "react-native-modal";
 
-interface CustomBottomSheetProps
-  extends Partial<
-    Omit<
-      ModalProps,
-      | "isVisible"
-      | "onBackdropPress"
-      | "onBackButtonPress"
-      | "backdropTransitionOutTiming"
-      | "useNativeDriver"
-    >
-  > {
+interface CustomBottomSheetProps extends Partial<ModalProps> {
   isOpen?: boolean;
   onOpen?: () => void;
   onClose?: () => void;
@@ -62,15 +52,20 @@ const CustomBottomSheet: React.FC<CustomBottomSheetProps> = ({
   }, [isOpen]);
 
   return (
+    // useNativeDriver, onSwipeComplete 동시 사용 불가 - 공식 문서 참조
     <Modal
       isVisible={isOpen}
       onBackdropPress={onClose}
+      onSwipeComplete={onClose}
+      swipeDirection="down"
       style={customBottomSheetStyles.modal}
       backdropTransitionOutTiming={0}
-      useNativeDriver
       {...rest}
     >
-      <View style={[customBottomSheetStyles.sheet, style]}>{children}</View>
+      <View style={[customBottomSheetStyles.sheet, style || {}]}>
+        <View style={customBottomSheetStyles.handle} />
+        {children}
+      </View>
     </Modal>
   );
 };
