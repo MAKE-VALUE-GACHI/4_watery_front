@@ -1,4 +1,7 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
+import { paddingScale, verticalScale } from "@/libs/utils/scaling";
+
+const { width: screenWidth } = Dimensions.get("window");
 
 export const customBottomSheetStyles = StyleSheet.create({
   modal: {
@@ -7,10 +10,18 @@ export const customBottomSheetStyles = StyleSheet.create({
   },
   sheet: {
     backgroundColor: "white",
-    borderTopLeftRadius: 16,
-    borderTopRightRadius: 16,
-    minHeight: 120,
-    paddingBottom: 24,
-    paddingTop: 12,
+    borderTopLeftRadius: verticalScale(24),
+    borderTopRightRadius: verticalScale(24),
+    minHeight: verticalScale(330),
+    width: screenWidth,
+    ...paddingScale(16, 32),
+  },
+  handle: {
+    alignSelf: "center",
+    width: 40,
+    height: 5,
+    borderRadius: 2.5,
+    backgroundColor: "#ccc",
+    marginBottom: 12,
   },
 });

@@ -62,7 +62,7 @@ const CustomBottomSheet: React.FC<CustomBottomSheetProps> = ({
       backdropTransitionOutTiming={0}
       {...rest}
     >
-      <View style={[customBottomSheetStyles.sheet, style || {}]}>
+      <View style={[customBottomSheetStyles.sheet, style]}>
         <View style={customBottomSheetStyles.handle} />
         {children}
       </View>
