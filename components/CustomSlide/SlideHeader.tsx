@@ -36,10 +36,10 @@ const SlideHeader: React.FC<SlideHeaderProps> = ({ beverageVariant, currentValue
 
   return (
     <ThemedView style={[commonStyles.transparentFlexRow, slideHeaderStyles.slideHeaderContainer]}>
-      <BN1 style={{ color }}>{label}</BN1>
+      <BN1 style={{ color, fontWeight: "bold" }}>{label}</BN1>
       <ThemedView style={{ ...commonStyles.transparentFlexRow, gap: horizontalScale(4) }}>
         <BN1 style={[slideHeaderStyles.slideHeaderMeasurement, { color }]}>{currentValue}</BN1>
-        <BN1 style={{ color: Colors.neutral_400 }}>ml</BN1>
+        <BN1 style={{ color: Colors.neutral_400, fontWeight: "500" }}>ml</BN1>
       </ThemedView>
     </ThemedView>
   );
