@@ -8,14 +8,17 @@ import { wavesDict } from "@/constants/wavesDict";
 import { MaterialIcons } from "@expo/vector-icons";
 import MaskedView from "@react-native-masked-view/masked-view";
 import { LinearGradient } from "expo-linear-gradient";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { Image, StyleProp, View, ViewStyle } from "react-native";
 import WaveView from "react-native-waveview";
+import { useBeverageStore } from "@/stores/beverageStore";
 
 interface CustomSlideProps {
   beverageVariant: BeverageVariantType;
+  currentValue: number;
   style?: StyleProp<ViewStyle>;
   onPress?: () => void;
+  index?: number; // TODO: 음료량 기록 API 연동 시 삭제
 }
 
 const beverageColors: Record<BeverageVariantType, [string, string]> = {
@@ -44,16 +47,27 @@ const BOTTLE_HEIGHT = 260;
  * @param {BeverageVariantType} props.beverageVariant - 표시할 음료 종류(색상, 파도에 영향)
  * @returns {JSX.Element}
  */
-const CustomSlide: React.FC<CustomSlideProps> = ({ beverageVariant, style, onPress }) => {
+const CustomSlide: React.FC<CustomSlideProps> = ({
+  beverageVariant,
+  style,
+  onPress,
+  currentValue,
+  index,
+}) => {
   const colors = beverageColors[beverageVariant] ?? defaultColors;
-
   const waveRef = useRef<WaveView>(null);
-  const [waterHeight, setWaterHeight] = useState(50);
+  const { setCurrentIndex } = useBeverageStore();
 
   useEffect(() => {
-    waveRef.current?.setWaterHeight(waterHeight);
+    waveRef.current?.setWaterHeight((currentValue / 2500) * 200);
     waveRef.current?.setWaveParams(wavesDict[beverageVariant]);
-  }, [waterHeight, beverageVariant]);
+  }, [currentValue, beverageVariant]);
+
+  const handleOnPress = () => {
+    // TODO: 음료량 기록 API 연동 시 삭제
+    setCurrentIndex(index as number);
+    onPress && onPress();
+  };
 
   return (
     <LinearGradient
@@ -63,7 +77,7 @@ const CustomSlide: React.FC<CustomSlideProps> = ({ beverageVariant, style, onPre
       style={[customSlideStyles.styledLinearGradient, style]}
     >
       <View style={customSlideStyles.slideContainer}>
-        <SlideHeader beverageVariant={beverageVariant} />
+        <SlideHeader beverageVariant={beverageVariant} currentValue={currentValue} />
         <View style={customSlideStyles.slideBody}>
           <View style={{ width: BOTTLE_WIDTH, height: BOTTLE_HEIGHT, position: "relative" }}>
             {/* 1. 병 안쪽만 보이게 하는 마스크 */}
@@ -80,7 +94,7 @@ const CustomSlide: React.FC<CustomSlideProps> = ({ beverageVariant, style, onPre
               <WaveView
                 ref={waveRef}
                 style={{ width: BOTTLE_WIDTH, height: BOTTLE_HEIGHT, backgroundColor: "white" }}
-                H={waterHeight}
+                H={50}
                 waveParams={wavesDict[beverageVariant]}
                 animated={true}
               />
@@ -115,7 +129,7 @@ const CustomSlide: React.FC<CustomSlideProps> = ({ beverageVariant, style, onPre
             textStyle={{ fontWeight: "bold" }}
             backgroundColor={getButtonBgColor(beverageVariant)}
             activeOpacity={0.8}
-            onPress={onPress}
+            onPress={handleOnPress}
           />
         </View>
       </View>

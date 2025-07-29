@@ -8,6 +8,8 @@ import CustomSlider from "@/components/CustomSlider/CustomSlider";
 import { BN1, LN1 } from "@/components/ThemedText";
 import { Colors } from "@/constants/Colors";
 import CustomButton from "@/components/CustomButton/CustomButton";
+import { useBeverageStore } from "@/stores/beverageStore";
+import { dummyBeverages } from "@/app/(tabs)/constants/beverageDataSet";
 
 interface addNewRecordProps {
   isOpen: boolean;
@@ -17,6 +19,13 @@ interface addNewRecordProps {
 const AddNewRecord: React.FC<addNewRecordProps> = ({ isOpen, onClose }) => {
   const [currentTab, setCurrentTab] = useState<TabType>("물");
   const [currentVal, setCurrentVal] = useState(500);
+  const { currentIndex } = useBeverageStore();
+
+  const addAmount = () => {
+    // TODO: 음료량 기록 API 연동 시 삭제 + 연동하기
+    dummyBeverages[currentIndex].totalAmount += currentVal;
+    onClose();
+  };
 
   return (
     <CustomBottomSheet isOpen={isOpen} onClose={onClose}>
@@ -51,7 +60,7 @@ const AddNewRecord: React.FC<addNewRecordProps> = ({ isOpen, onClose }) => {
           minimumValue={0}
         />
 
-        <CustomButton title={"확인"} textStyle={{ fontWeight: "bold" }} />
+        <CustomButton title={"확인"} textStyle={{ fontWeight: "bold" }} onPress={addAmount} />
       </View>
     </CustomBottomSheet>
   );
