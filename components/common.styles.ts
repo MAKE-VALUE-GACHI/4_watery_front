@@ -5,6 +5,7 @@ import { StyleSheet } from "react-native";
 export const commonStyles = StyleSheet.create({
   pageContainer: {
     // main 페이지 기준 패딩 적용
+    flex: 1,
     ...paddingScale(8, 16),
   },
   transparentView: {

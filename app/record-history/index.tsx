@@ -1,11 +1,17 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { commonStyles } from "@/components/common.styles";
+import { ThemedView } from "@/components/ThemedView";
+import CustomButton from "@/components/CustomButton/CustomButton";
 
 const RecordHistory = () => {
   return (
-    <View>
-      <Text>RecordHistory</Text>
-    </View>
+    <ThemedView style={commonStyles.pageContainer}>
+      <CustomButton
+        title={"지난 기록 추가"}
+        variant={"secondary"}
+        textStyle={{ fontWeight: "bold" }}
+      />
+    </ThemedView>
   );
 };
 
