@@ -6,8 +6,7 @@ export default function RecordHistoryLayout() {
   return (
     <Stack
       screenOptions={{
-        header: () => <CommonHeader />,
-        headerTitle: "",
+        header: () => <CommonHeader title={"지난 섭취 기록"} />,
       }}
     />
   );

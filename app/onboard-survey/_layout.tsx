@@ -19,7 +19,6 @@ export default function OnboardSurveyLayout() {
     <Stack
       screenOptions={{
         header: () => <CommonHeader onPressIcon={handleBack} isEmpty={currentStep === 1} />,
-        headerTitle: "",
       }}
     />
   );
