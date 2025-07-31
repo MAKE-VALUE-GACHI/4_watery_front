@@ -29,6 +29,7 @@ const AddNewRecord: React.FC<addNewRecordProps> = ({ isOpen, onClose }) => {
   };
 
   const addTime = () => {
+    // TODO: 완료 시 submit API 연동
     onClose();
   };
 
@@ -36,8 +37,15 @@ const AddNewRecord: React.FC<addNewRecordProps> = ({ isOpen, onClose }) => {
     setAddTimeMode(false);
   };
 
+  const handleClose = () => {
+    // 기존 값은 유지, setTimeMode 만 false 처리
+    // TODO: 이 부분에 대한 로직 논의
+    setAddTimeMode(false);
+    onClose();
+  };
+
   return (
-    <CustomBottomSheet isOpen={isOpen} onClose={onClose}>
+    <CustomBottomSheet isOpen={isOpen} onClose={handleClose}>
       {!addTimeMode ? (
         <View style={addNewRecordStyles.bottomSheetContainer}>
           <View style={commonStyles.flexRow}>
