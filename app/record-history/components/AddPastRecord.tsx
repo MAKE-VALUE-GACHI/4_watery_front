@@ -11,6 +11,7 @@ import { TouchableOpacity, View } from "react-native";
 import RecordAmountSection from "@/components/CustomBottomSheet/RecordAmountSection";
 import RecordTimePickerSection from "@/components/CustomBottomSheet/RecordTimePickerSection";
 import addPastRecordStyles from "@/app/record-history/components/AddPastRecord.styles";
+import { verticalScale } from "@/libs/utils/scaling";
 
 interface addNewRecordProps {
   isOpen: boolean;
@@ -68,7 +69,11 @@ const AddNewRecord: React.FC<addNewRecordProps> = ({ isOpen, onClose }) => {
         <View style={addNewRecordStyles.bottomSheetContainer}>
           <View style={addPastRecordStyles.timeModeHeader}>
             <TouchableOpacity onPress={goBack}>
-              <MaterialIcons name={"arrow-back"} size={16} color={Colors.neutral_400} />
+              <MaterialIcons
+                name={"arrow-back"}
+                size={verticalScale(24)}
+                color={Colors.neutral_400}
+              />
             </TouchableOpacity>
             <BN1 style={{ fontWeight: "bold" }}>시간 선택</BN1>
           </View>
