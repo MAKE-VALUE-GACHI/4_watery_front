@@ -1,5 +1,4 @@
 import addNewRecordStyles from "@/app/(tabs)/components/AddNewRecord.styles";
-import { addPastRecordStyles } from "@/app/record-history/components/AddPastRecord.styles";
 import { commonStyles } from "@/components/common.styles";
 import CustomBottomSheet from "@/components/CustomBottomSheet/CustomBottomSheet";
 import CustomButton from "@/components/CustomButton/CustomButton";
@@ -11,6 +10,7 @@ import React, { useState } from "react";
 import { TouchableOpacity, View } from "react-native";
 import RecordAmountSection from "@/components/CustomBottomSheet/RecordAmountSection";
 import RecordTimePickerSection from "@/components/CustomBottomSheet/RecordTimePickerSection";
+import addPastRecordStyles from "@/app/record-history/components/AddPastRecord.styles";
 
 interface addNewRecordProps {
   isOpen: boolean;
