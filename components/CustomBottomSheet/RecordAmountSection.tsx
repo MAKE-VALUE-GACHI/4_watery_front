@@ -17,7 +17,7 @@ interface RecordAmountSectionProps {
 const RecordAmountSection: React.FC<RecordAmountSectionProps> = ({
   currentVal,
   setCurrentVal,
-  min = 0,
+  min = 50,
   max = 1000,
   step = 50,
 }) => (

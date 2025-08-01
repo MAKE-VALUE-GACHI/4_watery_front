@@ -16,7 +16,7 @@ interface addNewRecordProps {
 
 const AddNewRecord: React.FC<addNewRecordProps> = ({ isOpen, onClose }) => {
   const [currentTab, setCurrentTab] = useState<TabType>("물");
-  const [currentVal, setCurrentVal] = useState(500);
+  const [currentVal, setCurrentVal] = useState(50);
   const { currentIndex } = useBeverageStore();
 
   const addAmount = () => {
