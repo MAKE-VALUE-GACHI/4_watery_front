@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import { CommonListItem } from "@/components/common/CommonListItem";
+import { HistoryListItem } from "@/components/TodayHistory/HistoryListItem";
 
 const data = [
   { index: 1, volume: "200ml", drinkType: "물", time: "오전 09:00" },
@@ -12,7 +12,7 @@ export default function HistoryScreenAsView() {
   return (
     <View style={{ padding: 12 }}>
       {data.map((item) => (
-        <CommonListItem
+        <HistoryListItem
           key={item.index}
           index={item.index}
           volume={item.volume}
