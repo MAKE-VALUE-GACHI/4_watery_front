@@ -1,14 +1,26 @@
+import { Colors } from "@/constants/Colors";
+import { paddingScale } from "@/libs/utils/scaling";
 import { StyleSheet } from "react-native";
 
 export const commonStyles = StyleSheet.create({
-  TransparentView: {
+  pageContainer: {
+    // main 페이지 기준 패딩 적용
+    ...paddingScale(8, 16),
+  },
+  transparentView: {
     backgroundColor: "transparent",
   },
-  TransparentFlexRow: {
+  transparentFlexRow: {
     flexDirection: "row",
     backgroundColor: "transparent",
   },
-  FlexRow: {
+  flexRow: {
     flexDirection: "row",
+  },
+  blurCard: {
+    borderWidth: 1,
+    borderColor: Colors.neutral_000,
+    backgroundColor: "#FFFFFF7A",
+    boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.03)",
   },
 });

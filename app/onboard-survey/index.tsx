@@ -11,6 +11,7 @@ import BirthYearStep from "@/app/onboard-survey/steps/BirthYearStep";
 import WeightStep from "@/app/onboard-survey/steps/WeightStep";
 import ActivityStep from "@/app/onboard-survey/steps/ActivityStep";
 import indexStyles from "@/app/onboard-survey/index.styles";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const categories = ["성별", "출생연도", "체중", "하루 평균 활동량"];
 
@@ -66,24 +67,26 @@ const OnboardSurvey = () => {
     (currentStep === 1 && !isGenderSelected) || (currentStep === 4 && !isActivitySelected);
 
   return (
-    <FormProvider {...methods}>
-      <ThemedView style={indexStyles.SurveyPageContainer}>
-        <SurveyProgressBar currentStep={currentStep} totalSteps={stepComponents.length} />
-        <ThemedView style={indexStyles.SurveyContentWrapper}>
-          <SurveyHeader
-            currentStep={currentStep}
-            totalSteps={stepComponents.length}
-            categoryName={categories[currentStep - 1]}
-          />
-          {renderStep()}
-          <CustomButton
-            disabled={isButtonDisabled}
-            title={currentStep === stepComponents.length ? "시작하기" : "다음 단계"}
-            onPress={handleButtonPress}
-          />
+    <SafeAreaView style={{ flex: 1 }}>
+      <FormProvider {...methods}>
+        <ThemedView style={indexStyles.SurveyPageContainer}>
+          <SurveyProgressBar currentStep={currentStep} totalSteps={stepComponents.length} />
+          <ThemedView style={indexStyles.SurveyContentWrapper}>
+            <SurveyHeader
+              currentStep={currentStep}
+              totalSteps={stepComponents.length}
+              categoryName={categories[currentStep - 1]}
+            />
+            {renderStep()}
+            <CustomButton
+              disabled={isButtonDisabled}
+              title={currentStep === stepComponents.length ? "시작하기" : "다음 단계"}
+              onPress={handleButtonPress}
+            />
+          </ThemedView>
         </ThemedView>
-      </ThemedView>
-    </FormProvider>
+      </FormProvider>
+    </SafeAreaView>
   );
 };
 

@@ -1,4 +1,8 @@
-import { getButtonBg, getButtonBorderColor, getTextColor } from "@/components/CustomButton/CustomButton.hooks";
+import {
+  getButtonBg,
+  getButtonBorderColor,
+  getTextColor,
+} from "@/components/CustomButton/CustomButton.hooks";
 import { customButtonStyles } from "@/components/CustomButton/CustomButton.styles";
 import { BN2 } from "@/components/ThemedText";
 import { textComponentMap } from "@/constants/textComponent";
@@ -58,7 +62,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
     <TouchableOpacity
       disabled={disabled}
       style={[
-        customButtonStyles.StyledButton,
+        customButtonStyles.styledButton,
         { borderColor, backgroundColor: bgColor, opacity: buttonOpacity },
         style,
       ]}

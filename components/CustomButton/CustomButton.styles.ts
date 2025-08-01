@@ -2,7 +2,7 @@ import { paddingScale, verticalScale } from "@/libs/utils/scaling";
 import { StyleSheet } from "react-native";
 
 export const customButtonStyles = StyleSheet.create({
-  StyledButton: {
+  styledButton: {
     height: verticalScale(56),
     ...paddingScale(12, 30),
     borderRadius: verticalScale(12),

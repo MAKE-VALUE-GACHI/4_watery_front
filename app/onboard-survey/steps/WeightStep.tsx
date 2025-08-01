@@ -24,7 +24,7 @@ const WeightStep = () => {
 
   return (
     <ThemedView style={stepsStyles.StepContainer}>
-      <ThemedView style={{ ...commonStyles.FlexRow, alignItems: "center" }}>
+      <ThemedView style={{ ...commonStyles.flexRow, alignItems: "center" }}>
         <WheelPicker
           height={300}
           width={150}
