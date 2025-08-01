@@ -1,7 +1,8 @@
+/** components/common/BottomSheet.tsx */
 import React from "react";
-import { View, StyleSheet, ViewProps } from "react-native";
-import { horizontalScale, verticalScale } from "@/libs/utils/scaling";
+import { View, ViewProps } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import bottomSheetStyles from "@/components/common/bottomSheet.styles";
 
 interface BottomSheetProps extends ViewProps {
   children?: React.ReactNode;
@@ -9,57 +10,19 @@ interface BottomSheetProps extends ViewProps {
 
 export default function BottomSheet({ children, style, ...rest }: BottomSheetProps) {
   return (
-    <View style={[styles.wrapper, style]} {...rest}>
-      <LinearGradient
-        colors={["#FFFFFF90", "#D4EFF790"]} // ← 투명도 추가됨
-        start={{ x: 0.5, y: 0 }}
-        end={{ x: 0.5, y: 1 }} // 위 → 아래 방향
-        style={styles.background}
-      >
+    <View style={[bottomSheetStyles.wrapper, style]} {...rest}>
+      {/* 외곽선용 LinearGradient */}
+      <LinearGradient colors={["#91CFEAA3", "#91CFEAA3"]} style={bottomSheetStyles.borderWrapper}>
+        {/* 내부 콘텐츠용 LinearGradient (배경 블러 느낌 표현) */}
         <LinearGradient
-          colors={["#FFFFFF", "#D4EFF7"]} // 테두리는 불투명
+          colors={["#FFFFFF", "rgba(145, 207, 234, 0.64)"]} // ← 정확한 알파 채널 표현
           start={{ x: 0.5, y: 0 }}
           end={{ x: 0.5, y: 1 }}
-          style={styles.border}
+          style={bottomSheetStyles.contentWrapper}
         >
-          <View style={styles.inner}>{children}</View>
+          <View style={bottomSheetStyles.innerContent}>{children}</View>
         </LinearGradient>
       </LinearGradient>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  wrapper: {
-    position: "absolute",
-    top: verticalScale(460),
-    left: horizontalScale(12),
-    right: horizontalScale(12),
-    bottom: verticalScale(24),
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  background: {
-    width: horizontalScale(351),
-    height: verticalScale(180),
-    borderRadius: horizontalScale(32),
-  },
-  border: {
-    flex: 1,
-    borderRadius: horizontalScale(32),
-    borderWidth: 1,
-    borderColor: "transparent", // borderGradient 대체
-    paddingHorizontal: horizontalScale(1),
-    paddingVertical: verticalScale(1),
-  },
-  inner: {
-    flex: 1,
-    borderRadius: horizontalScale(32),
-    backgroundColor: "transparent",
-    paddingHorizontal: horizontalScale(20),
-    paddingVertical: verticalScale(32),
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

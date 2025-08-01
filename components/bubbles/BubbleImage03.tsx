@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     width: horizontalScale(65),
     height: verticalScale(40),
-    top: verticalScale(511),
+    top: verticalScale(569),
     left: horizontalScale(178),
     zIndex: 0,
     resizeMode: "contain",

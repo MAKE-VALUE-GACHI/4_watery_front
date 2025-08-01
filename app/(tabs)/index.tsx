@@ -8,6 +8,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import renderItem from "@/app/(tabs)/utils/renderItem";
 import beverageDataSet from "@/app/(tabs)/constants/beverageDataSet";
 import AddNewRecord from "@/app/(tabs)/components/AddNewRecord";
+import HistoryScreen from "@/components/screens/HistoryScreen";
 
 const { width: screenWidth } = Dimensions.get("window");
 const DESIGN_WIDTH = 375;
@@ -48,6 +49,9 @@ export default function HomeScreen() {
         </ScrollView>
       </SafeAreaView>
       <AddNewRecord isOpen={isAddNewRecordOpen} onClose={() => setIsAddNewRecordOpen(false)} />
+
+      {/* History */}
+      {/*<HistoryScreen />*/}
     </ImageBackground>
   );
 }
