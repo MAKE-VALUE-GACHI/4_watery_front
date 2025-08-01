@@ -1,3 +1,4 @@
+import splashStyles from "@/app/(auth)/splash.styles";
 import React, { useEffect } from "react";
 import { useRouter } from "expo-router";
 import { View, Button, StyleSheet } from "react-native";
@@ -9,7 +10,6 @@ import { saveAccessToken } from "@/libs/secure/token";
 import { useAuthManager } from "@/hooks/useAuth/authManager";
 
 import { horizontalScale, verticalScale } from "@/libs/utils/scaling";
-import { Colors } from "@/constants/Colors";
 import type { SocialProvider } from "@/types/auth";
 
 import BottomSheet from "@/components/common/BottomSheet";
@@ -66,7 +66,7 @@ export default function SplashScreen() {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={splashStyles.container}>
       {/* 배경 원형 */}
       <Ellipse07 />
       <Ellipse08 />
@@ -80,8 +80,8 @@ export default function SplashScreen() {
       <BubbleImage03 />
 
       {/* SVG 로고 & TEXT */}
-      <LogoSvg style={styles.logo} width={horizontalScale(125)} height={verticalScale(59)} />
-      <LR1 style={styles.subText}>오늘의 수분 기록</LR1>
+      <LogoSvg style={splashStyles.logo} />
+      <LR1 style={splashStyles.subText}>오늘의 수분 기록</LR1>
 
       {/* 소셜 로그인 버튼 */}
       <BottomSheet>
@@ -91,42 +91,9 @@ export default function SplashScreen() {
       </BottomSheet>
 
       {/* 로그인 버튼 영역 -> 추후 제거 요망 */}
-      <View style={styles.buttonGroup}>
+      <View style={splashStyles.buttonGroup}>
         <Button title="메인 이동" onPress={() => router.replace("/(tabs)")} />
       </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    width: horizontalScale(375),
-    height: verticalScale(812),
-    paddingLeft: horizontalScale(48),
-    paddingTop: verticalScale(176),
-    paddingRight: horizontalScale(202),
-    paddingBottom: verticalScale(577),
-    backgroundColor: "#FFFFFF",
-  },
-  logo: {
-    logo: {
-      alignSelf: "center",
-      marginTop: verticalScale(176),
-      marginLeft: horizontalScale(48),
-    },
-  },
-  subText: {
-    marginLeft: verticalScale(4),
-    marginTop: verticalScale(2), // 로고 아래 2dp 간격
-    width: horizontalScale(100),
-    height: verticalScale(22),
-    fontWeight: "600",
-    color: Colors.neutral_400,
-  },
-  buttonGroup: {
-    position: "absolute",
-    bottom: verticalScale(300),
-    alignSelf: "center",
-    gap: verticalScale(12),
-  },
-});

@@ -8,6 +8,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import renderItem from "@/app/(tabs)/utils/renderItem";
 import beverageDataSet from "@/app/(tabs)/constants/beverageDataSet";
 import AddNewRecord from "@/app/(tabs)/components/AddNewRecord";
+import HistoryScreen from "@/components/screens/HistoryScreen";
 import CustomButton from "@/components/CustomButton/CustomButton";
 import { useRouter } from "expo-router";
 import CustomInput from "@/components/CustomInput/CustomInput";
@@ -51,19 +52,21 @@ export default function HomeScreen() {
           </View>
 
           <CustomButton
-            title={"섭취 기록으로(임시)"}
-            variant={"secondary"}
-            onPress={() => router.push("/record-history")}
+              title={"섭취 기록으로(임시)"}
+              variant={"secondary"}
+              onPress={() => router.push("/record-history")}
           />
 
           <CustomInput
-            label={"Input Title"}
-            errorText={"*10자 이내로 작성해주세요."}
-            detailText={"*detail"}
+              label={"Input Title"}
+              errorText={"*10자 이내로 작성해주세요."}
+              detailText={"*detail"}
           />
         </ScrollView>
       </SafeAreaView>
       <AddNewRecord isOpen={isAddNewRecordOpen} onClose={() => setIsAddNewRecordOpen(false)} />
+      {/* History */}
+      {/*<HistoryScreen />*/}
     </ImageBackground>
   );
 }
