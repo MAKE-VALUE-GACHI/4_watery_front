@@ -10,7 +10,8 @@ export const splashStyles = StyleSheet.create({
     paddingTop: verticalScale(176),
     paddingRight: horizontalScale(202),
     paddingBottom: verticalScale(577),
-    backgroundColor: "#FFFFFF",
+    // backgroundColor: "#FFFFFF",
+    backgroundColor: "transparent", // ✅ 투명하게 변경
   },
   logo: {
     alignSelf: "center",

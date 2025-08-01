@@ -1,12 +1,12 @@
 import { StyleSheet } from "react-native";
 import { horizontalScale, verticalScale } from "@/libs/utils/scaling";
 
-const bottomSheetStyles = StyleSheet.create({
+const bottomSheetRoundStyles = StyleSheet.create({
   wrapper: {
     position: "absolute",
     left: horizontalScale(12),
     right: horizontalScale(12),
-    bottom: verticalScale(24),
+    bottom: verticalScale(48),
     alignItems: "center",
   },
   borderWrapper: {
@@ -27,4 +27,4 @@ const bottomSheetStyles = StyleSheet.create({
   },
 });
 
-export default bottomSheetStyles;
+export default bottomSheetRoundStyles;

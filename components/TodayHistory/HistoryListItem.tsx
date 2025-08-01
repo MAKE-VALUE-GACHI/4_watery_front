@@ -10,7 +10,7 @@ type Props = {
   time: string;
 };
 
-export const CommonListItem = ({ index, volume, drinkType, time }: Props) => {
+export const HistoryListItem = ({ index, volume, drinkType, time }: Props) => {
   return (
     <View style={styles.itemContainer}>
       <C1 style={styles.index}>{index}</C1>

@@ -8,7 +8,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import renderItem from "@/app/(tabs)/utils/renderItem";
 import beverageDataSet from "@/app/(tabs)/constants/beverageDataSet";
 import AddNewRecord from "@/app/(tabs)/components/AddNewRecord";
-import HistoryScreen from "@/components/screens/HistoryScreen";
+import TodayHistory from "@/components/TodayHistory/TodayHistory";
 import CustomButton from "@/components/CustomButton/CustomButton";
 import { useRouter } from "expo-router";
 import CustomInput from "@/components/CustomInput/CustomInput";
@@ -66,7 +66,7 @@ export default function HomeScreen() {
       </SafeAreaView>
       <AddNewRecord isOpen={isAddNewRecordOpen} onClose={() => setIsAddNewRecordOpen(false)} />
       {/* History */}
-      {/*<HistoryScreen />*/}
+      <TodayHistory />
     </ImageBackground>
   );
 }

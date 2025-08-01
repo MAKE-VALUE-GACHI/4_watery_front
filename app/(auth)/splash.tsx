@@ -12,7 +12,7 @@ import { useAuthManager } from "@/hooks/useAuth/authManager";
 import { horizontalScale, verticalScale } from "@/libs/utils/scaling";
 import type { SocialProvider } from "@/types/auth";
 
-import BottomSheet from "@/components/common/BottomSheet";
+import BottomSheet from "@/components/CustomBottomSheetRound/BottomSheetRound";
 import SocialLoginButtons from "@/components/login/SocialLoginButtons";
 import LogoSvg from "@/components/svgs/LogoSvg";
 import { LR1 } from "@/components/ThemedText";
