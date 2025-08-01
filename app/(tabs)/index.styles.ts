@@ -1,6 +1,6 @@
 import { commonStyles } from "@/components/common.styles";
 import { StyleSheet } from "react-native";
-import { verticalScale } from "@/libs/utils/scaling";
+import { horizontalScale, verticalScale } from "@/libs/utils/scaling";
 
 export const tabsStyles = StyleSheet.create({
   mainContainer: {
@@ -10,6 +10,7 @@ export const tabsStyles = StyleSheet.create({
   },
   carouselWrapper: {
     marginTop: verticalScale(14),
+    marginRight: horizontalScale(-16),
   },
 });
 
