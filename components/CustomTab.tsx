@@ -60,7 +60,6 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     gap: 8,
-    marginBottom: 12,
   },
   tab: {
     paddingVertical: 8,
