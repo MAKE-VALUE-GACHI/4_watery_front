@@ -1,4 +1,3 @@
-import addNewRecordStyles from "@/app/(tabs)/components/AddNewRecord.styles";
 import { commonStyles } from "@/components/common.styles";
 import CustomBottomSheet from "@/components/CustomBottomSheet/CustomBottomSheet";
 import CustomButton from "@/components/CustomButton/CustomButton";
@@ -48,7 +47,7 @@ const AddNewRecord: React.FC<addNewRecordProps> = ({ isOpen, onClose }) => {
   return (
     <CustomBottomSheet isOpen={isOpen} onClose={handleClose}>
       {!addTimeMode ? (
-        <View style={addNewRecordStyles.bottomSheetContainer}>
+        <View style={addPastRecordStyles.bottomSheetContainer}>
           <View style={commonStyles.flexRow}>
             <CustomTab
               selectedTab={currentTab}
@@ -66,7 +65,7 @@ const AddNewRecord: React.FC<addNewRecordProps> = ({ isOpen, onClose }) => {
           />
         </View>
       ) : (
-        <View style={addNewRecordStyles.bottomSheetContainer}>
+        <View style={addPastRecordStyles.bottomSheetContainer}>
           <View style={addPastRecordStyles.timeModeHeader}>
             <TouchableOpacity onPress={goBack}>
               <MaterialIcons
