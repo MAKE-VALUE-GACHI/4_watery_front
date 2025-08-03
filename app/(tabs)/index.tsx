@@ -1,6 +1,5 @@
 import tabsStyles from "@/app/(tabs)/index.styles";
-import TodayGoalCard from "@/components/TodayGoalMoisture/TodayGoal";
-import { horizontalScale } from "@/libs/utils/scaling";
+import { horizontalScale, verticalScale } from "@/libs/utils/scaling";
 import React, { useState } from "react";
 import { Dimensions, ImageBackground, ScrollView, View } from "react-native";
 import Carousel from "react-native-reanimated-carousel";
@@ -9,6 +8,11 @@ import renderItem from "@/app/(tabs)/utils/renderItem";
 import beverageDataSet from "@/app/(tabs)/constants/beverageDataSet";
 import AddNewRecord from "@/app/(tabs)/components/AddNewRecord";
 import TodayHistory from "@/components/TodayHistory/TodayHistory";
+import CustomBottomSheetRoundFixed from "@/components/CustomBottomSheetRound/CustomBottomSheetRoundFixed";
+import { BN1 } from "@/components/ThemedText";
+import CustomButtonMove from "@/components/CustomButton/CustomButtonMove";
+import { CustomTab, TabType } from "@/components/CustomTab";
+import CustomTodayGoal from "@/components/CustomTodayGoal/CustomTodayGoal";
 
 const { width: screenWidth } = Dimensions.get("window");
 const DESIGN_WIDTH = 375;
@@ -17,6 +21,7 @@ const bgHeight = (screenWidth / DESIGN_WIDTH) * DESIGN_HEIGHT;
 
 export default function HomeScreen() {
   const [isAddNewRecordOpen, setIsAddNewRecordOpen] = useState(false);
+  const [currentTab, setCurrentTab] = useState<TabType>("물");
 
   const handleBottomSheetOpen = () => {
     setIsAddNewRecordOpen(!isAddNewRecordOpen);
@@ -30,7 +35,8 @@ export default function HomeScreen() {
     >
       <SafeAreaView style={{ flex: 1 }}>
         <ScrollView style={tabsStyles.mainContainer}>
-          <TodayGoalCard />
+          <CustomTodayGoal />
+
           <View style={tabsStyles.carouselWrapper}>
             <Carousel
               loop={true}
@@ -45,6 +51,21 @@ export default function HomeScreen() {
                 onPress: handleBottomSheetOpen,
               })}
             />
+          </View>
+
+          <View style={tabsStyles.todayRecordTop}>
+            <BN1 style={tabsStyles.todayText}>오늘 마신 기록</BN1>
+            <CustomButtonMove label="더보기" onPress={() => console.log("더보기")} />
+          </View>
+
+          <View style={{ marginTop: 12 }}>
+            <CustomBottomSheetRoundFixed height={600}>
+              <CustomTab
+                selectedTab={currentTab}
+                onSelectTab={(tab) => setCurrentTab(tab)}
+                visibleTabs={["전체", "물", "커피", "녹차"]}
+              />
+            </CustomBottomSheetRoundFixed>
           </View>
         </ScrollView>
       </SafeAreaView>
