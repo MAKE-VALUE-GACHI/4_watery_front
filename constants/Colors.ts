@@ -60,5 +60,6 @@ export const Colors = {
     cola: ["#1A1A1A", "#333333", "#4D4D4D"],
     black_tea: ["#8B4513", "#A0522D", "#CD853F"],
   },
-  primaryTransparent: "rgba(145, 207, 234, 0.64)",
+  whiteTransparent: "rgba(255, 255, 255, 0.85)",
+  primaryTransparent: "rgba(145, 207, 234, 0.63)",
 };
