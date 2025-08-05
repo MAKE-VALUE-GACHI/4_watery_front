@@ -1,9 +1,9 @@
 import React from "react";
-import { View, ViewProps, StyleProp, ViewStyle } from "react-native";
+import { ViewProps, StyleProp, ViewStyle, ScrollView, DimensionValue } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import CustomBottomSheetRoundStyles from "@/components/CustomBottomSheetRound/CustomBottomSheetRound.styles";
+import { BlurView } from "expo-blur";
 import { Colors } from "@/constants/Colors";
-import type { DimensionValue } from "react-native"; // type DimensionValue = number | `${number}%` | undefined;
+import CustomBottomSheetRoundStyles from "./CustomBottomSheetRound.styles";
 
 interface BottomSheetProps extends ViewProps {
   children?: React.ReactNode;
@@ -11,26 +11,26 @@ interface BottomSheetProps extends ViewProps {
   minHeight?: DimensionValue;
   maxHeight?: DimensionValue;
   innerStyle?: StyleProp<ViewStyle>;
-  positionStyle?: StyleProp<ViewStyle>; // ← 추가
+  positionStyle?: StyleProp<ViewStyle>;
 }
 
 export default function CustomBottomSheetRound({
   children,
-  style,
   height,
   minHeight,
   maxHeight,
   innerStyle,
   positionStyle,
+  style,
   ...rest
 }: BottomSheetProps) {
   return (
     <LinearGradient
-      colors={[Colors.neutral_000, Colors.primaryTransparent]} // ✅ 배경 그라데이션 적용
+      colors={[Colors.whiteTransparent, Colors.primaryTransparent]} // 투명도 조절된 배경
       start={{ x: 0.5, y: 0 }}
       end={{ x: 0.5, y: 1 }}
       style={[
-        CustomBottomSheetRoundStyles.wrapper, // ✅ 위치 및 그림자 유지
+        CustomBottomSheetRoundStyles.gradientWrapper,
         height ? { height } : {},
         minHeight ? { minHeight } : {},
         maxHeight ? { maxHeight } : {},
@@ -39,7 +39,12 @@ export default function CustomBottomSheetRound({
       ]}
       {...rest}
     >
-      <View style={[CustomBottomSheetRoundStyles.innerContent, innerStyle]}>{children}</View>
+      <ScrollView
+        contentContainerStyle={[CustomBottomSheetRoundStyles.innerContent, innerStyle]}
+        showsVerticalScrollIndicator={false}
+      >
+        {children}
+      </ScrollView>
     </LinearGradient>
   );
 }

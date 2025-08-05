@@ -12,7 +12,7 @@ import { useAuthManager } from "@/hooks/useAuth/authManager";
 import { horizontalScale, verticalScale } from "@/libs/utils/scaling";
 import type { SocialProvider } from "@/types/auth";
 
-import CustomBottomSheetRound from "@/components/CustomBottomSheetRound/CustomBottomSheetRound";
+import CustomBottomSheetRoundFixed from "@/components/CustomBottomSheetRound/CustomBottomSheetRoundFixed";
 import SocialLoginButtons from "@/components/login/SocialLoginButtons";
 import LogoSvg from "@/components/svgs/LogoSvg";
 import { LR1 } from "@/components/ThemedText";
@@ -84,7 +84,7 @@ export default function SplashScreen() {
       <LR1 style={splashStyles.subText}>오늘의 수분 기록</LR1>
 
       {/* 소셜 로그인 버튼 */}
-      <CustomBottomSheetRound
+      <CustomBottomSheetRoundFixed
         positionStyle={{ bottom: verticalScale(48) }}
         innerStyle={{ backgroundColor: "transparent" }}
       >
@@ -93,7 +93,7 @@ export default function SplashScreen() {
         >
           <SocialLoginButtons handleLogin={handleLogin} />
         </View>
-      </CustomBottomSheetRound>
+      </CustomBottomSheetRoundFixed>
 
       {/* 로그인 버튼 영역 -> 추후 제거 요망 */}
       <View style={splashStyles.buttonGroup}>

@@ -8,7 +8,7 @@ import renderItem from "@/app/(tabs)/utils/renderItem";
 import beverageDataSet from "@/app/(tabs)/constants/beverageDataSet";
 import AddNewRecord from "@/app/(tabs)/components/AddNewRecord";
 import TodayHistory from "@/components/TodayHistory/TodayHistory";
-import CustomBottomSheetRoundFixed from "@/components/CustomBottomSheetRound/CustomBottomSheetRoundFixed";
+import CustomBottomSheetRound from "@/components/CustomBottomSheetRound/CustomBottomSheetRound";
 import { BN1 } from "@/components/ThemedText";
 import CustomButtonMove from "@/components/CustomButton/CustomButtonMove";
 import { CustomTab, TabType } from "@/components/CustomTab";
@@ -69,14 +69,14 @@ export default function HomeScreen() {
           </View>
 
           <View style={{ marginTop: 12 }}>
-            <CustomBottomSheetRoundFixed height={verticalScale(324)}>
+            <CustomBottomSheetRound height={verticalScale(324)}>
               <CustomTab
                 selectedTab={currentTab}
                 onSelectTab={(tab) => setCurrentTab(tab)}
                 visibleTabs={["전체", "물", "커피", "녹차"]}
               />
               <CustomTabContent data={selectedTabData} />
-            </CustomBottomSheetRoundFixed>
+            </CustomBottomSheetRound>
           </View>
         </ScrollView>
       </SafeAreaView>
