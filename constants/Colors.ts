@@ -61,6 +61,7 @@ export const Colors = {
     black_tea: ["#8B4513", "#A0522D", "#CD853F"],
   },
   whiteTransparent: "rgba(255, 255, 255, 0.85)",
-  primaryTransparent: "#82D7FF7A",
+  primaryTransparent: "#91CFEA",
+  primaryTransparent32: "#91CFEA52", // 32% 투명도
   // primaryTransparent: "rgba(145, 207, 234, 0.63)",
 };

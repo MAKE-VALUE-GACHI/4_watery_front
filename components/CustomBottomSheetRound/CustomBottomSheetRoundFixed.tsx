@@ -26,7 +26,7 @@ export default function CustomBottomSheetRoundFixed({
 }: BottomSheetProps) {
   return (
     <LinearGradient
-      colors={[Colors.neutral_000, Colors.primaryTransparent]} // ✅ 배경 그라데이션 적용
+      colors={[Colors.whiteTransparent, Colors.primaryTransparent32]} // ✅ 배경 그라데이션 적용
       start={{ x: 0.5, y: 0 }}
       end={{ x: 0.5, y: 1 }}
       style={[
