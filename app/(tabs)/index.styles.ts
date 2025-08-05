@@ -13,7 +13,7 @@ export const tabsStyles = StyleSheet.create({
     marginRight: horizontalScale(-16),
   },
   todayRecordTop: {
-    marginTop: verticalScale(24),
+    // marginTop: verticalScale(24),
     paddingLeft: horizontalScale(8),
     width: horizontalScale(343),
     height: verticalScale(28),

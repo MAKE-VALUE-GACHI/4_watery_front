@@ -7,6 +7,7 @@ import { LN1 } from "@/components/ThemedText";
 import { horizontalScale, verticalScale } from "@/libs/utils/scaling";
 import CustomTabContentStyles from "@/components/CustomTab/CustomTabContent.styles";
 import { HistoryListItem } from "@/components/TodayHistory/HistoryListItem";
+import { ScrollView } from "react-native";
 
 interface DrinkData {
   index: number;
@@ -36,20 +37,29 @@ export default function CustomTabContent({ data }: Props) {
 
   return (
     <View style={CustomTabContentStyles.listWrapper}>
-      <FlatList
-        data={data}
-        renderItem={({ item }) => (
-          <HistoryListItem
-            key={item.index}
-            index={item.index}
-            volume={item.volume}
-            drinkType={item.drinkType}
-            time={item.time}
-          />
-        )}
-        keyExtractor={(item) => item.index.toString()}
-        contentContainerStyle={CustomTabContentStyles.contentContainer}
-      />
+      {/*<FlatList*/}
+      {/*  data={data}*/}
+      {/*  renderItem={({ item }) => (*/}
+      {/*    <HistoryListItem*/}
+      {/*      key={item.index}*/}
+      {/*      index={item.index}*/}
+      {/*      volume={item.volume}*/}
+      {/*      drinkType={item.drinkType}*/}
+      {/*      time={item.time}*/}
+      {/*    />*/}
+      {/*  )}*/}
+      {/*  keyExtractor={(item) => item.index.toString()}*/}
+      {/*  contentContainerStyle={CustomTabContentStyles.contentContainer}*/}
+      {/*/>*/}
+      {data.map((item) => (
+        <HistoryListItem
+          key={item.index}
+          index={item.index}
+          volume={item.volume}
+          drinkType={item.drinkType}
+          time={item.time}
+        />
+      ))}
     </View>
   );
 }
