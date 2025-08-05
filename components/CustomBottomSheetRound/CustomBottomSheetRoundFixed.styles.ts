@@ -22,9 +22,9 @@ const CustomBottomSheetRoundFixedStyles = StyleSheet.create({
     // elevation: 6,
   },
   innerContent: {
-    paddingHorizontal: horizontalScale(16),
-    paddingVertical: verticalScale(16),
-    gap: verticalScale(16),
+    paddingHorizontal: horizontalScale(32),
+    paddingVertical: verticalScale(32),
+    gap: verticalScale(8),
     backgroundColor: "transparent", // ← 이거 대신
   },
 });

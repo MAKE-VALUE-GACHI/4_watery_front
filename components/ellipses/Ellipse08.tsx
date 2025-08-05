@@ -8,8 +8,7 @@ export default function Ellipse08() {
       <Image
         source={require("@/assets/images/Ellipses/Ellipse8.png")}
         style={styles.ellipse}
-        resizeMode="center" // ContentScale.None 대응
-        blurRadius={16} // 80dp 대응 (1dp ≈ 0.2 blurRadius)
+        resizeMode="contain"
       />
     </View>
   );
@@ -18,13 +17,13 @@ export default function Ellipse08() {
 const styles = StyleSheet.create({
   container: {
     position: "absolute",
-    top: verticalScale(331),
-    left: horizontalScale(-33),
-    width: horizontalScale(140),
-    height: verticalScale(140),
-    backgroundColor: "#D4EFF7",
+    top: verticalScale(300),
+    right: horizontalScale(200),
+    width: horizontalScale(240),
+    height: verticalScale(240),
     padding: 1,
-    borderRadius: horizontalScale(70),
+    borderRadius: horizontalScale(70), // width/2 → perfect circle
+    backgroundColor: "transparent",
     overflow: "hidden",
     zIndex: 0,
   },

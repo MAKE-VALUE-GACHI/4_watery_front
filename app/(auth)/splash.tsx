@@ -17,6 +17,7 @@ import SocialLoginButtons from "@/components/login/SocialLoginButtons";
 import LogoSvg from "@/components/svgs/LogoSvg";
 import { LR1 } from "@/components/ThemedText";
 
+import BubbleImage01 from "@/components/bubbles/BubbleImage01";
 import BubbleImage03 from "@/components/bubbles/BubbleImage03";
 import BubbleImage04 from "@/components/bubbles/BubbleImage04";
 import BubbleImage05 from "@/components/bubbles/BubbleImage05";
@@ -78,6 +79,7 @@ export default function SplashScreen() {
       <BubbleImage04 />
       <BubbleImage05 />
       <BubbleImage03 />
+      <BubbleImage01 />
 
       {/* SVG 로고 & TEXT */}
       <LogoSvg style={splashStyles.logo} />
@@ -89,7 +91,7 @@ export default function SplashScreen() {
         innerStyle={{ backgroundColor: "transparent" }}
       >
         <View
-          style={{ gap: verticalScale(16), alignItems: "center", backgroundColor: "transparent" }}
+          style={{ gap: verticalScale(8), alignItems: "center", backgroundColor: "transparent" }}
         >
           <SocialLoginButtons handleLogin={handleLogin} />
         </View>
