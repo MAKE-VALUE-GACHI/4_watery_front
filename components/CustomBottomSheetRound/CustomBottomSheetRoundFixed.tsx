@@ -1,9 +1,9 @@
 import React from "react";
-import { ViewProps, StyleProp, ViewStyle, ScrollView, DimensionValue } from "react-native";
+import { View, ViewProps, StyleProp, ViewStyle } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { BlurView } from "expo-blur";
+import CustomBottomSheetRoundFixedStyles from "@/components/CustomBottomSheetRound/CustomBottomSheetRoundFixed.styles";
 import { Colors } from "@/constants/Colors";
-import CustomBottomSheetRoundFixedStyles from "./CustomBottomSheetRoundFixed.styles";
+import type { DimensionValue } from "react-native"; // type DimensionValue = number | `${number}%` | undefined;
 
 interface BottomSheetProps extends ViewProps {
   children?: React.ReactNode;
@@ -11,26 +11,26 @@ interface BottomSheetProps extends ViewProps {
   minHeight?: DimensionValue;
   maxHeight?: DimensionValue;
   innerStyle?: StyleProp<ViewStyle>;
-  positionStyle?: StyleProp<ViewStyle>;
+  positionStyle?: StyleProp<ViewStyle>; // ← 추가
 }
 
 export default function CustomBottomSheetRoundFixed({
   children,
+  style,
   height,
   minHeight,
   maxHeight,
   innerStyle,
   positionStyle,
-  style,
   ...rest
 }: BottomSheetProps) {
   return (
     <LinearGradient
-      colors={[Colors.whiteTransparent, Colors.primaryTransparent]} // 투명도 조절된 배경
+      colors={[Colors.neutral_000, Colors.primaryTransparent]} // ✅ 배경 그라데이션 적용
       start={{ x: 0.5, y: 0 }}
       end={{ x: 0.5, y: 1 }}
       style={[
-        CustomBottomSheetRoundFixedStyles.gradientWrapper,
+        CustomBottomSheetRoundFixedStyles.wrapper, // ✅ 위치 및 그림자 유지
         height ? { height } : {},
         minHeight ? { minHeight } : {},
         maxHeight ? { maxHeight } : {},
@@ -39,12 +39,7 @@ export default function CustomBottomSheetRoundFixed({
       ]}
       {...rest}
     >
-      <ScrollView
-        contentContainerStyle={[CustomBottomSheetRoundFixedStyles.innerContent, innerStyle]}
-        showsVerticalScrollIndicator={false}
-      >
-        {children}
-      </ScrollView>
+      <View style={[CustomBottomSheetRoundFixedStyles.innerContent, innerStyle]}>{children}</View>
     </LinearGradient>
   );
 }
