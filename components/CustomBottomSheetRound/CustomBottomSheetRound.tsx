@@ -25,30 +25,21 @@ export default function CustomBottomSheetRound({
   ...rest
 }: BottomSheetProps) {
   return (
-    <View style={[CustomBottomSheetRoundStyles.wrapper, positionStyle, style]} {...rest}>
-      {/* ← 순서 중요: override 가능하게    */}
-      {/* 🔹 외곽선용 Gradient (좌하단 → 우상단) */}
-      <LinearGradient
-        colors={[Colors.neutral_000, Colors.primary_100]} // #FFFFFF → #B2E0EE
-        start={{ x: 0, y: 1 }}
-        end={{ x: 1, y: 0 }}
-        style={CustomBottomSheetRoundStyles.borderWrapper}
-      >
-        {/* 🔸 내부 콘텐츠용 Gradient (상단 → 하단) */}
-        <LinearGradient
-          colors={[Colors.neutral_000, Colors.primaryTransparent]}
-          start={{ x: 0.5, y: 0 }}
-          end={{ x: 0.5, y: 1 }}
-          style={[
-            CustomBottomSheetRoundStyles.contentWrapper,
-            height ? { height } : {},
-            minHeight ? { minHeight } : {},
-            maxHeight ? { maxHeight } : {},
-          ]}
-        >
-          <View style={[CustomBottomSheetRoundStyles.innerContent, innerStyle]}>{children}</View>
-        </LinearGradient>
-      </LinearGradient>
-    </View>
+    <LinearGradient
+      colors={[Colors.neutral_000, Colors.primaryTransparent]} // ✅ 배경 그라데이션 적용
+      start={{ x: 0.5, y: 0 }}
+      end={{ x: 0.5, y: 1 }}
+      style={[
+        CustomBottomSheetRoundStyles.wrapper, // ✅ 위치 및 그림자 유지
+        height ? { height } : {},
+        minHeight ? { minHeight } : {},
+        maxHeight ? { maxHeight } : {},
+        positionStyle,
+        style,
+      ]}
+      {...rest}
+    >
+      <View style={[CustomBottomSheetRoundStyles.innerContent, innerStyle]}>{children}</View>
+    </LinearGradient>
   );
 }

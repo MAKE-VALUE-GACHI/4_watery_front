@@ -29,6 +29,8 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    gap: verticalScale(16),
+    backgroundColor: "transparent",
   },
   googleButton: {
     flexDirection: "row",
@@ -40,7 +42,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#E6E8EA",
     backgroundColor: "#FFFFFF",
-    marginBottom: verticalScale(16), // 버튼 사이 간격
   },
   kakaoButton: {
     flexDirection: "row",

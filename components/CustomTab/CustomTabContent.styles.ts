@@ -42,7 +42,7 @@ const CustomTabContentStyles = StyleSheet.create({
 
   // 데이터 있을 때
   listWrapper: {
-    width: horizontalScale(292),
+    // width: horizontalScale(292),
     height: verticalScale(236),
     borderRadius: horizontalScale(8),
     backgroundColor: Colors.neutral_000,

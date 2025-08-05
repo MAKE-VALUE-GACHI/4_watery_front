@@ -38,6 +38,18 @@ const ProgressBar = ({ current, goal }: ProgressBarProps) => {
         ]}
       />
 
+      {!isStarted && (
+        <View
+          style={[
+            progressBarStyles.fill,
+            {
+              width: 5,
+              backgroundColor: Colors.neutral_000,
+            },
+          ]}
+        />
+      )}
+
       {/* 내부 콘텐츠 */}
       <View style={progressBarStyles.content}>
         {isGoalReached && (

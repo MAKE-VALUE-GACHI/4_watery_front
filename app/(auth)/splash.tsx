@@ -84,8 +84,13 @@ export default function SplashScreen() {
       <LR1 style={splashStyles.subText}>오늘의 수분 기록</LR1>
 
       {/* 소셜 로그인 버튼 */}
-      <CustomBottomSheetRound positionStyle={{ bottom: verticalScale(48) }}>
-        <View style={{ gap: verticalScale(16), alignItems: "center" }}>
+      <CustomBottomSheetRound
+        positionStyle={{ bottom: verticalScale(48) }}
+        innerStyle={{ backgroundColor: "transparent" }}
+      >
+        <View
+          style={{ gap: verticalScale(16), alignItems: "center", backgroundColor: "transparent" }}
+        >
           <SocialLoginButtons handleLogin={handleLogin} />
         </View>
       </CustomBottomSheetRound>
