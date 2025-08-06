@@ -11,7 +11,7 @@ import BirthYearStep from "@/app/onboard-survey/steps/BirthYearStep";
 import WeightStep from "@/app/onboard-survey/steps/WeightStep";
 import ActivityStep from "@/app/onboard-survey/steps/ActivityStep";
 import indexStyles from "@/app/onboard-survey/index.styles";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { View } from "react-native";
 
 const categories = ["성별", "출생연도", "체중", "하루 평균 활동량"];
 
@@ -67,7 +67,7 @@ const OnboardSurvey = () => {
     (currentStep === 1 && !isGenderSelected) || (currentStep === 4 && !isActivitySelected);
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <View style={{ flex: 1 }}>
       <FormProvider {...methods}>
         <ThemedView style={indexStyles.SurveyPageContainer}>
           <SurveyProgressBar currentStep={currentStep} totalSteps={stepComponents.length} />
@@ -86,7 +86,7 @@ const OnboardSurvey = () => {
           </ThemedView>
         </ThemedView>
       </FormProvider>
-    </SafeAreaView>
+    </View>
   );
 };
 
