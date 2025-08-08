@@ -1,13 +1,13 @@
 import { customInputStyles } from "@/components/CustomInput/CustomInput.styles";
 import { L2, LN1 } from "@/components/ThemedText";
 import { Colors } from "@/constants/Colors";
-import React from "react";
+import React, { useState } from "react";
 import { TextInput, TextInputProps, View } from "react-native";
 
 export interface CustomInputProps extends TextInputProps {
   label?: string;
   errorText?: string;
-  isError?: boolean;
+  errorCondition?: (value: string) => boolean;
   rightIcon?: React.ReactNode;
   leftIcon?: React.ReactNode;
 }
@@ -23,7 +23,7 @@ export interface CustomInputProps extends TextInputProps {
  * @component
  * @param {string} [label] - Input 위에 표시될 라벨
  * @param {string} [errorText] - 에러 상태일 때 표시될 메시지
- * @param {boolean} [isError=false] - 에러 상태 여부
+ * @param {(value: string) => boolean} [errorCondition] - 에러 조건을 확인하는 함수 (true면 에러)
  * @param {React.ReactNode} [rightIcon] - 오른쪽에 표시할 아이콘
  * @param {React.ReactNode} [leftIcon] - 왼쪽에 표시할 아이콘
  * @param {TextInputProps} [...props] - 추가 TextInput 속성
@@ -32,13 +32,17 @@ export interface CustomInputProps extends TextInputProps {
 const CustomInput: React.FC<CustomInputProps> = ({
   label,
   errorText,
-  isError = false,
+  errorCondition,
   rightIcon,
   leftIcon,
   style,
   editable = true,
   ...props
 }) => {
+  const [isFocused, setIsFocused] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [currentValue, setCurrentValue] = useState(props.value || props.defaultValue || "");
+
   return (
     <View style={customInputStyles.container}>
       {label && (
@@ -53,13 +57,34 @@ const CustomInput: React.FC<CustomInputProps> = ({
         <TextInput
           style={[
             customInputStyles.input,
-            isError ? customInputStyles.inputError : null,
             leftIcon ? customInputStyles.inputWithLeftIcon : null,
             rightIcon ? customInputStyles.inputWithRightIcon : null,
+            isFocused && !isError ? customInputStyles.inputFocused : null,
+            isError ? customInputStyles.inputError : null,
             style,
           ]}
           editable={editable}
           placeholderTextColor={Colors.neutral_400}
+          onFocus={(e) => {
+            setIsFocused(true);
+            setIsError(false); // 포커스 시 에러 상태 초기화
+            props.onFocus?.(e);
+          }}
+          onChangeText={(text) => {
+            setCurrentValue(text);
+            props.onChangeText?.(text);
+          }}
+          onBlur={(e) => {
+            setIsFocused(false);
+
+            // errorCondition이 있을 때만 검증, 없으면 빈 값만 체크
+            const hasError = errorCondition
+              ? !currentValue || errorCondition(currentValue)
+              : !currentValue;
+            setIsError(hasError);
+
+            props.onBlur?.(e);
+          }}
           {...props}
         />
 

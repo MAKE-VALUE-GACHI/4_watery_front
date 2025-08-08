@@ -6,17 +6,15 @@ export const customInputStyles = StyleSheet.create({
   container: {
     marginBottom: verticalScale(4),
   },
-  
   label: {
+    fontWeight: "bold",
     marginBottom: verticalScale(8),
   },
-  
   inputWrapper: {
     flexDirection: "row",
     alignItems: "center",
     position: "relative",
   },
-  
   input: {
     flex: 1,
     height: verticalScale(48),
@@ -35,6 +33,10 @@ export const customInputStyles = StyleSheet.create({
     backgroundColor: Colors.danger_100 + "10", // 10% opacity
   },
   
+  inputFocused: {
+    borderColor: Colors.primary_500,
+    borderWidth: 2,
+  },
   // Icon containers
   leftIconContainer: {
     position: "absolute",
@@ -43,7 +45,6 @@ export const customInputStyles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  
   rightIconContainer: {
     position: "absolute",
     right: horizontalScale(12),
@@ -51,15 +52,12 @@ export const customInputStyles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  
   inputWithLeftIcon: {
     paddingLeft: horizontalScale(44),
   },
-  
   inputWithRightIcon: {
     paddingRight: horizontalScale(44),
   },
-  
   errorText: {
     marginTop: verticalScale(4),
   },
