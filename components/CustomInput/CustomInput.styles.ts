@@ -1,6 +1,7 @@
 import { Colors } from "@/constants/Colors";
 import { horizontalScale, paddingScale, verticalScale } from "@/libs/utils/scaling";
 import { StyleSheet } from "react-native";
+import { presetStyles } from "@/components/styles/TextPresets";
 
 export const customInputStyles = StyleSheet.create({
   container: {
@@ -9,7 +10,10 @@ export const customInputStyles = StyleSheet.create({
   label: {
     fontWeight: "bold",
     marginBottom: verticalScale(8),
+    marginLeft: horizontalScale(8),
   },
+
+  // input
   inputWrapper: {
     flexDirection: "row",
     alignItems: "center",
@@ -17,26 +21,22 @@ export const customInputStyles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    height: verticalScale(48),
-    ...paddingScale(12, 16),
-    fontSize: 16,
-    lineHeight: 24,
-    letterSpacing: 0.0912,
-    borderRadius: verticalScale(12),
+    ...paddingScale(16),
+    ...presetStyles.BN2,
     borderWidth: 1,
+    borderRadius: verticalScale(12),
     borderColor: Colors.neutral_200,
     backgroundColor: Colors.neutral_000,
   },
-  
   inputError: {
     borderColor: Colors.danger_200,
-    backgroundColor: Colors.danger_100 + "10", // 10% opacity
+    backgroundColor: Colors.danger_100 + "10",
   },
-  
   inputFocused: {
     borderColor: Colors.primary_500,
-    borderWidth: 2,
+    borderWidth: 1,
   },
+
   // Icon containers
   leftIconContainer: {
     position: "absolute",
@@ -58,7 +58,14 @@ export const customInputStyles = StyleSheet.create({
   inputWithRightIcon: {
     paddingRight: horizontalScale(44),
   },
+
+  // Text
   errorText: {
-    marginTop: verticalScale(4),
+    marginTop: verticalScale(8),
+    marginLeft: horizontalScale(8),
+  },
+  detailText: {
+    marginTop: verticalScale(8),
+    marginLeft: horizontalScale(8),
   },
 });

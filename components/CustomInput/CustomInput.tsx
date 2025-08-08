@@ -7,6 +7,7 @@ import { TextInput, TextInputProps, View } from "react-native";
 export interface CustomInputProps extends TextInputProps {
   label?: string;
   errorText?: string;
+  detailText?: string;
   errorCondition?: (value: string) => boolean;
   rightIcon?: React.ReactNode;
   leftIcon?: React.ReactNode;
@@ -23,6 +24,7 @@ export interface CustomInputProps extends TextInputProps {
  * @component
  * @param {string} [label] - Input 위에 표시될 라벨
  * @param {string} [errorText] - 에러 상태일 때 표시될 메시지
+ * @param {string} [detailText] - 추가적인 정보를 표시하는 메시지
  * @param {(value: string) => boolean} [errorCondition] - 에러 조건을 확인하는 함수 (true면 에러)
  * @param {React.ReactNode} [rightIcon] - 오른쪽에 표시할 아이콘
  * @param {React.ReactNode} [leftIcon] - 왼쪽에 표시할 아이콘
@@ -32,6 +34,7 @@ export interface CustomInputProps extends TextInputProps {
 const CustomInput: React.FC<CustomInputProps> = ({
   label,
   errorText,
+  detailText,
   errorCondition,
   rightIcon,
   leftIcon,
@@ -94,6 +97,12 @@ const CustomInput: React.FC<CustomInputProps> = ({
       {errorText && isError && (
         <L2 style={customInputStyles.errorText} lightColor={Colors.danger_200}>
           {errorText}
+        </L2>
+      )}
+
+      {detailText && !isError && (
+        <L2 style={customInputStyles.detailText} lightColor={Colors.neutral_500}>
+          {detailText}
         </L2>
       )}
     </View>

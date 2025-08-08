@@ -56,7 +56,11 @@ export default function HomeScreen() {
             onPress={() => router.push("/record-history")}
           />
 
-          <CustomInput label={"Input Title"} errorText={"*10자 이내로 작성해주세요."} />
+          <CustomInput
+            label={"Input Title"}
+            errorText={"*10자 이내로 작성해주세요."}
+            detailText={"*detail"}
+          />
         </ScrollView>
       </SafeAreaView>
       <AddNewRecord isOpen={isAddNewRecordOpen} onClose={() => setIsAddNewRecordOpen(false)} />
