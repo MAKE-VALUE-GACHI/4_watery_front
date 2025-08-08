@@ -4,7 +4,6 @@ import { horizontalScale, verticalScale } from "@/libs/utils/scaling";
 
 export const tabsStyles = StyleSheet.create({
   mainContainer: {
-    flex: 1,
     ...commonStyles.pageContainer,
     ...commonStyles.transparentView,
   },

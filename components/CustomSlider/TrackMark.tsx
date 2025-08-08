@@ -3,13 +3,14 @@ import { ThemedView } from "@/components/ThemedView";
 import { Colors } from "@/constants/Colors";
 import React from "react";
 import { StyleSheet } from "react-native";
-import { verticalScale } from "@/libs/utils/scaling";
+import { horizontalScale, verticalScale } from "@/libs/utils/scaling";
 
 export const trackMarkStyles = StyleSheet.create({
   StyledThemedView: {
     backgroundColor: "transparent",
     height: verticalScale(80),
     justifyContent: "flex-end",
+    marginLeft: horizontalScale(10),
   },
 });
 
