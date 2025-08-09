@@ -100,6 +100,7 @@ export default function SplashScreen() {
       {/* 로그인 버튼 영역 -> 추후 제거 요망 */}
       <View style={splashStyles.buttonGroup}>
         <Button title="메인 이동" onPress={() => router.replace("/(tabs)")} />
+        <Button title="온보드 이동" onPress={() => router.replace("/onboard-survey")} />
       </View>
     </View>
   );
