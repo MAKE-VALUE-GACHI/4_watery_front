@@ -67,41 +67,41 @@ export default function SplashScreen() {
   };
 
   return (
-    <View style={splashStyles.container}>
-      {/* 배경 원형 */}
-      <Ellipse07 />
-      <Ellipse08 />
-      <Ellipse09 />
-      <Ellipse10 />
+      <View style={splashStyles.container}>
+        {/* 배경 원형 */}
+        <Ellipse07 />
+        <Ellipse08 />
+        <Ellipse09 />
+        <Ellipse10 />
 
-      {/* 배경 물방울 */}
-      <BubbleImage06 />
-      <BubbleImage04 />
-      <BubbleImage05 />
-      <BubbleImage03 />
-      <BubbleImage01 />
+        {/* 배경 물방울 */}
+        <BubbleImage06 />
+        <BubbleImage04 />
+        <BubbleImage05 />
+        <BubbleImage03 />
+        <BubbleImage01 />
 
-      {/* SVG 로고 & TEXT */}
-      <LogoSvg style={splashStyles.logo} />
-      <LR1 style={splashStyles.subText}>오늘의 수분 기록</LR1>
+        {/* SVG 로고 & TEXT */}
+        <LogoSvg style={splashStyles.logo} />
+        <LR1 style={splashStyles.subText}>오늘의 수분 기록</LR1>
 
-      {/* 소셜 로그인 버튼 */}
-      <CustomBottomSheetRoundFixed
-        positionStyle={{ bottom: verticalScale(48) }}
-        innerStyle={{ backgroundColor: "transparent" }}
-      >
-        <View
-          style={{ gap: verticalScale(8), alignItems: "center", backgroundColor: "transparent" }}
+        {/* 소셜 로그인 버튼 */}
+        <CustomBottomSheetRoundFixed
+            positionStyle={{ bottom: verticalScale(48) }}
+            innerStyle={{ backgroundColor: "transparent" }}
         >
-          <SocialLoginButtons handleLogin={handleLogin} />
-        </View>
-      </CustomBottomSheetRoundFixed>
+          <View
+              style={{ gap: verticalScale(8), alignItems: "center", backgroundColor: "transparent" }}
+          >
+            <SocialLoginButtons handleLogin={handleLogin} />
+          </View>
+        </CustomBottomSheetRoundFixed>
 
-      {/* 로그인 버튼 영역 -> 추후 제거 요망 */}
-      <View style={splashStyles.buttonGroup}>
-        <Button title="메인 이동" onPress={() => router.replace("/(tabs)")} />
-        <Button title="온보드 이동" onPress={() => router.replace("/onboard-survey")} />
+        {/* 로그인 버튼 영역 -> 추후 제거 요망 */}
+        <View style={splashStyles.buttonGroup}>
+          <Button title="메인 이동" onPress={() => router.replace("/(tabs)")} />
+          <Button title="온보드 이동" onPress={() => router.replace("/onboard-survey")} />
+        </View>
       </View>
-    </View>
   );
 }

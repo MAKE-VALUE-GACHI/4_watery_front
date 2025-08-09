@@ -27,14 +27,14 @@ export default function RootLayout() {
   }
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <SafeAreaProvider>
-        <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-          {/* NavigationContainer는 Expo Router가 자동으로 처리 */}
-          <Stack screenOptions={{ headerShown: false }} />
-          <StatusBar style="auto" />
-        </ThemeProvider>
-      </SafeAreaProvider>
-    </GestureHandlerRootView>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <SafeAreaProvider>
+          <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+            {/* NavigationContainer는 Expo Router가 자동으로 처리 */}
+            <Stack screenOptions={{ headerShown: false }} />
+            <StatusBar style="auto" />
+          </ThemeProvider>
+        </SafeAreaProvider>
+      </GestureHandlerRootView>
   );
 }
