@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 import { paddingScale, verticalScale } from "@/libs/utils/scaling";
 import { commonStyles } from "@/components/common.styles";
 
-const todayGoalStyles = StyleSheet.create({
+const customTodayGoalStyles = StyleSheet.create({
   mainHeader: {
     height: verticalScale(102),
     borderRadius: verticalScale(24), // 기존 16 -> 24 변경
@@ -20,4 +20,4 @@ const todayGoalStyles = StyleSheet.create({
   },
 });
 
-export default todayGoalStyles;
+export default customTodayGoalStyles;
