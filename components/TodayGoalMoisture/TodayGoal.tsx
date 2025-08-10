@@ -1,14 +1,17 @@
 import React from "react";
-import { View, StyleSheet, TouchableOpacity } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import styles from "./TodayGoal.styles";
 
 import { Colors } from "@/constants/Colors";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
+import { useRouter } from "expo-router";
 
 export default function TodayGoalCard() {
+  const router = useRouter();
+
   return (
     <LinearGradient
       colors={["#FFFFFFFF", "#CDD1D57A"]}
@@ -23,7 +26,9 @@ export default function TodayGoalCard() {
             <ThemedText style={styles.goalText}>오늘의 목표 수분</ThemedText>
             <TouchableOpacity style={styles.settingButton}>
               <View style={styles.settingContent}>
-                <ThemedText style={styles.settingText}>개인설정</ThemedText>
+                <ThemedText style={styles.settingText} onPress={() => router.push("/(settings)")}>
+                  개인설정
+                </ThemedText>
                 <MaterialIcons
                   name="keyboard-arrow-right"
                   size={16}
