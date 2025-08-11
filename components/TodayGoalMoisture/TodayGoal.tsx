@@ -24,11 +24,12 @@ export default function TodayGoalCard() {
           {/* Top Row: 텍스트 + 버튼 */}
           <View style={styles.topRow}>
             <ThemedText style={styles.goalText}>오늘의 목표 수분</ThemedText>
-            <TouchableOpacity style={styles.settingButton}>
+            <TouchableOpacity
+              style={styles.settingButton}
+              onPress={() => router.push("/(settings)")}
+            >
               <View style={styles.settingContent}>
-                <ThemedText style={styles.settingText} onPress={() => router.push("/(settings)")}>
-                  개인설정
-                </ThemedText>
+                <ThemedText style={styles.settingText}>개인설정</ThemedText>
                 <MaterialIcons
                   name="keyboard-arrow-right"
                   size={16}
