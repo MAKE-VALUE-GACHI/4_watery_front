@@ -2,9 +2,10 @@ import React from "react";
 import { TouchableOpacity, View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Colors } from "@/constants/Colors";
-import { BN1 } from "@/components/ThemedText";
+import { BN2 } from "@/components/ThemedText";
 import settingsListItemStyles from "@/app/(settings)/components/SettingsListItem.styles";
 import { useRouter } from "expo-router";
+import { verticalScale } from "@/libs/utils/scaling";
 
 interface SettingsListItemProps {
   title: string;
@@ -30,16 +31,16 @@ const SettingsListItem: React.FC<SettingsListItemProps> = ({
       style={settingsListItemStyles.settingItem}
       onPress={() => handlePress(route ?? "/(settings)")}
     >
-      <View style={settingsListItemStyles.iconContainer}>{leftIcon}</View>
+      {leftIcon && <View style={settingsListItemStyles.iconContainer}>{leftIcon}</View>}
 
       <View style={settingsListItemStyles.textContainer}>
-        <BN1 style={settingsListItemStyles.title}>{title}</BN1>
+        <BN2 style={settingsListItemStyles.title}>{title}</BN2>
       </View>
 
       {rightIcon ? (
         rightIcon
       ) : (
-        <MaterialIcons name="chevron-right" size={24} color={Colors.neutral_400} />
+        <MaterialIcons name="chevron-right" size={verticalScale(24)} color={Colors.neutral_400} />
       )}
     </TouchableOpacity>
   );
