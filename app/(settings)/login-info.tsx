@@ -1,26 +1,28 @@
-import { BN1, H1 } from "@/components/ThemedText";
+import { BN1, BN2, LR1 } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import React from "react";
-import { ScrollView, View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
+import SettingsListItem from "@/app/(settings)/components/SettingsListItem";
+import loginInfoStyles from "@/app/(settings)/login-info.styles";
+import { Colors } from "@/constants/Colors";
 
 export default function LoginInfoScreen() {
   return (
-    <ThemedView style={{ flex: 1 }}>
-      <ScrollView style={{ flex: 1, padding: 20 }}>
-        <H1 style={{ marginBottom: 20 }}>로그인 정보</H1>
+    <ThemedView style={loginInfoStyles.container}>
+      <View style={loginInfoStyles.listItemWrapper}>
+        <BN1 style={loginInfoStyles.listItemLabel}>소셜 정보</BN1>
+        <LR1 lightColor={Colors.neutral_400}>asdfasdf@kakaotalk.com</LR1>
+      </View>
 
-        <View style={{ marginBottom: 16 }}>
-          <BN1>연결된 계정</BN1>
-        </View>
+      <SettingsListItem title={"로그아웃"} />
 
-        <View style={{ marginBottom: 16 }}>
-          <BN1>비밀번호 변경</BN1>
-        </View>
-
-        <View style={{ marginBottom: 16 }}>
-          <BN1>계정 관리</BN1>
-        </View>
-      </ScrollView>
+      <View style={loginInfoStyles.listItemWrapper}>
+        <TouchableOpacity onPress={() => console.log("unregister")}>
+          <BN2 style={loginInfoStyles.unRegister} lightColor={Colors.neutral_400}>
+            회원탈퇴
+          </BN2>
+        </TouchableOpacity>
+      </View>
     </ThemedView>
   );
 }

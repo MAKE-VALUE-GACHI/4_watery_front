@@ -35,7 +35,7 @@ const SettingsScreen = () => {
           <L2 lightColor={Colors.neutral_600}>수분 섭취가 필요할 때 알려드려요.</L2>
         </View>
 
-        <SettingsListItem title={"로그인 정보"} />
+        <SettingsListItem title={"로그인 정보"} route={"/(settings)/login-info"} />
 
         <View style={settingsStyles.versionInfoContainer}>
           <BN2 style={settingsStyles.versionInfoWrapper} lightColor={Colors.neutral_800}>
