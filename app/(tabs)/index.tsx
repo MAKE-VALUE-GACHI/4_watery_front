@@ -8,6 +8,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import renderItem from "@/app/(tabs)/utils/renderItem";
 import beverageDataSet from "@/app/(tabs)/constants/beverageDataSet";
 import AddNewRecord from "@/app/(tabs)/components/AddNewRecord";
+import CustomButton from "@/components/CustomButton/CustomButton";
+import { useRouter } from "expo-router";
 
 const { width: screenWidth } = Dimensions.get("window");
 const DESIGN_WIDTH = 375;
@@ -16,6 +18,7 @@ const bgHeight = (screenWidth / DESIGN_WIDTH) * DESIGN_HEIGHT;
 
 export default function HomeScreen() {
   const [isAddNewRecordOpen, setIsAddNewRecordOpen] = useState(false);
+  const router = useRouter();
 
   const handleBottomSheetOpen = () => {
     setIsAddNewRecordOpen(!isAddNewRecordOpen);
@@ -45,6 +48,12 @@ export default function HomeScreen() {
               })}
             />
           </View>
+
+          <CustomButton
+            title={"섭취 기록으로(임시)"}
+            variant={"secondary"}
+            onPress={() => router.push("/record-history")}
+          />
         </ScrollView>
       </SafeAreaView>
       <AddNewRecord isOpen={isAddNewRecordOpen} onClose={() => setIsAddNewRecordOpen(false)} />
