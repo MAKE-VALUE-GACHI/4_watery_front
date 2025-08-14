@@ -7,8 +7,10 @@ import { View } from "react-native";
 import customTodayGoalStyles from "@/components/CustomTodayGoal/CustomTodayGoal.styles";
 import CustomButtonMove from "@/components/CustomButton/CustomButtonMove";
 import ProgressBar from "@/components/CustomTodayGoal/ProgressBar";
+import { useRouter } from "expo-router";
 
 const CustomTodayGoal = () => {
+  const router = useRouter();
   return (
     <BlurView style={customTodayGoalStyles.mainHeader} intensity={100} tint={"default"}>
       <ThemedView style={customTodayGoalStyles.headerDesc}>
@@ -16,7 +18,7 @@ const CustomTodayGoal = () => {
           오늘의 목표 수분
         </BN1>
 
-        <CustomButtonMove label="개인설정" onPress={() => console.log("개인설정")} />
+        <CustomButtonMove label="개인설정" onPress={() => router.push("/(settings)")} />
       </ThemedView>
       <View style={customTodayGoalStyles.progressBar}>
         <ProgressBar current={0} goal={2500} />

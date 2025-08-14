@@ -78,11 +78,6 @@ export default function HomeScreen() {
             <CustomButtonMove label="더보기" onPress={() => router.push("/record-history")} />
           </View>
 
-          <View style={tabsStyles.todayRecordTop}>
-            <BN1 style={tabsStyles.todayText}>오늘 마신 기록</BN1>
-            <CustomButtonMove label="더보기" onPress={() => console.log("더보기")} />
-          </View>
-
           <View style={{ marginTop: 12 }}>
             <CustomBottomSheetRound height={verticalScale(324)}>
               <CustomTab
