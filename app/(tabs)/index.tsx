@@ -10,6 +10,7 @@ import beverageDataSet from "@/app/(tabs)/constants/beverageDataSet";
 import AddNewRecord from "@/app/(tabs)/components/AddNewRecord";
 import CustomButton from "@/components/CustomButton/CustomButton";
 import { useRouter } from "expo-router";
+import CustomInput from "@/components/CustomInput/CustomInput";
 
 const { width: screenWidth } = Dimensions.get("window");
 const DESIGN_WIDTH = 375;
@@ -53,6 +54,12 @@ export default function HomeScreen() {
             title={"섭취 기록으로(임시)"}
             variant={"secondary"}
             onPress={() => router.push("/record-history")}
+          />
+
+          <CustomInput
+            label={"Input Title"}
+            errorText={"*10자 이내로 작성해주세요."}
+            detailText={"*detail"}
           />
         </ScrollView>
       </SafeAreaView>
