@@ -14,6 +14,9 @@ import CustomButtonMove from "@/components/CustomButton/CustomButtonMove";
 import { CustomTab, TabType } from "@/components/CustomTab";
 import CustomTodayGoal from "@/components/CustomTodayGoal/CustomTodayGoal";
 import CustomTabContent from "@/components/CustomTab/CustomTabContent";
+import CustomButton from "@/components/CustomButton/CustomButton";
+import { useRouter } from "expo-router";
+import CustomInput from "@/components/CustomInput/CustomInput";
 
 const { width: screenWidth } = Dimensions.get("window");
 const DESIGN_WIDTH = 375;
@@ -23,6 +26,7 @@ const bgHeight = (screenWidth / DESIGN_WIDTH) * DESIGN_HEIGHT;
 export default function HomeScreen() {
   const [isAddNewRecordOpen, setIsAddNewRecordOpen] = useState(false);
   const [currentTab, setCurrentTab] = useState<TabType>("물");
+  const router = useRouter();
 
   const handleBottomSheetOpen = () => {
     setIsAddNewRecordOpen(!isAddNewRecordOpen);
@@ -65,7 +69,7 @@ export default function HomeScreen() {
 
           <View style={tabsStyles.todayRecordTop}>
             <BN1 style={tabsStyles.todayText}>오늘 마신 기록</BN1>
-            <CustomButtonMove label="더보기" onPress={() => console.log("더보기")} />
+            <CustomButtonMove label="더보기" onPress={() => router.push("/record-history")} />
           </View>
 
           <View style={{ marginTop: 12 }}>
@@ -78,6 +82,12 @@ export default function HomeScreen() {
               <CustomTabContent data={selectedTabData} />
             </CustomBottomSheetRound>
           </View>
+
+          <CustomInput
+            label={"Input Title"}
+            errorText={"*10자 이내로 작성해주세요."}
+            detailText={"*detail"}
+          />
         </ScrollView>
       </SafeAreaView>
       <AddNewRecord isOpen={isAddNewRecordOpen} onClose={() => setIsAddNewRecordOpen(false)} />

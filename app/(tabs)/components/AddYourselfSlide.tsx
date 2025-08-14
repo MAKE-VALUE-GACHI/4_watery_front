@@ -45,6 +45,7 @@ const AddYourselfSlide: React.FC<AddYourselfSlideProps> = ({ style, onPress }) =
   );
 };
 
+// TODO: Badge 공용 컴포넌트로 대체
 const Badge = ({
   content,
   badgeColor,

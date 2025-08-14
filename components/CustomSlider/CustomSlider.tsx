@@ -27,7 +27,7 @@ interface CustomSliderProps extends Partial<SliderProps> {
 const CustomSlider: React.FC<CustomSliderProps> = ({
   sliderVal,
   onValueChange,
-  trackMarks = [0, 1000],
+  trackMarks = [50, 1000],
   ...props
 }) => {
   const renderTrackMark = (index: number) => <TrackMark value={trackMarks[index]} />;

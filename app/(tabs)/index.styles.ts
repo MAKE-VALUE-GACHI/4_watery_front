@@ -1,16 +1,16 @@
 import { commonStyles } from "@/components/common.styles";
 import { StyleSheet } from "react-native";
-import { verticalScale, horizontalScale } from "@/libs/utils/scaling";
+import { horizontalScale, verticalScale } from "@/libs/utils/scaling";
 import { Colors } from "@/constants/Colors";
 
 export const tabsStyles = StyleSheet.create({
   mainContainer: {
-    flex: 1,
     ...commonStyles.pageContainer,
     ...commonStyles.transparentView,
   },
   carouselWrapper: {
     marginTop: verticalScale(14),
+    marginRight: horizontalScale(-16),
   },
   todayRecordTop: {
     // marginTop: verticalScale(24),
