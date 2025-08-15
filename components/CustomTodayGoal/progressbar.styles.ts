@@ -8,7 +8,7 @@ const progressbarStyles = StyleSheet.create({
     ...commonStyles.flexRow,
     width: horizontalScale(319),
     height: verticalScale(42),
-    borderRadius: 8,
+    borderRadius: 12,
     borderWidth: 1,
     borderColor: Colors.neutral_000,
     overflow: "hidden",
