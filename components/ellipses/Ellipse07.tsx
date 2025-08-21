@@ -8,7 +8,7 @@ export default function Ellipse07() {
       <Image
         source={require("@/assets/images/Ellipses/Ellipse7.png")}
         style={styles.ellipse}
-        resizeMode="center" // ContentScale.None에 해당
+        resizeMode="contain" // ContentScale.None에 해당
       />
     </View>
   );
@@ -17,13 +17,12 @@ export default function Ellipse07() {
 const styles = StyleSheet.create({
   container: {
     position: "absolute",
-    top: verticalScale(373),
-    left: horizontalScale(257),
-    width: horizontalScale(120),
-    height: verticalScale(120),
-    backgroundColor: "#D4EFF7",
+    top: verticalScale(303),
+    left: horizontalScale(200),
+    width: horizontalScale(220),
+    height: verticalScale(220),
     padding: 1,
-    borderRadius: horizontalScale(60), // width/2 for perfect circle
+    backgroundColor: "transparent",
     overflow: "hidden",
     zIndex: 0,
   },

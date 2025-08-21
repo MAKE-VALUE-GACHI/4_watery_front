@@ -5,6 +5,7 @@ import React from "react";
 import { ImageStyle, StyleProp } from "react-native";
 import { CarouselRenderItem } from "react-native-reanimated-carousel";
 import beverageDataSet, { dummyBeverages } from "@/app/(tabs)/constants/beverageDataSet";
+import { useRouter } from "expo-router";
 
 interface renderItemProps {
   style?: StyleProp<ImageStyle>;
@@ -12,10 +13,10 @@ interface renderItemProps {
 }
 
 const renderItem = ({ style, onPress }: renderItemProps = {}): CarouselRenderItem<any> => {
+  const router = useRouter();
   return ({ index }) => {
     const redirectAddYourself = () => {
-      // TODO: 음룍 직접 추가하기 페이지 구현 시 해당 페이지로 이동하게 로직 변경
-      console.log("redirecting to Add Yourself Page . . .");
+      router.push("/add-beverage");
     };
 
     return beverageDataSet[index] === "addYourself" ? (
