@@ -11,6 +11,8 @@ import { useRouter } from "expo-router";
 
 const CustomTodayGoal = () => {
   const router = useRouter();
+
+  // TODO: 추후 props 전달로 목표랑 API 연동 예정
   return (
     <BlurView style={customTodayGoalStyles.mainHeader} intensity={100} tint={"default"}>
       <ThemedView style={customTodayGoalStyles.headerDesc}>
