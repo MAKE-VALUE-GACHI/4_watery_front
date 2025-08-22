@@ -1,4 +1,4 @@
-import {Colors} from "@/constants/Colors";
+import { Colors } from "@/constants/Colors";
 
 /**
  * A (Amplitude) - 진폭, 웨이브의 높이/깊이
@@ -33,5 +33,10 @@ export const wavesDict = {
     { A: 30, T: 350, fill: Colors.waves.cola[2] },
     { A: 25, T: 325, fill: Colors.waves.cola[1] },
     { A: 20, T: 300, fill: Colors.waves.cola[0] },
+  ],
+  default: [
+    { A: 30, T: 350, fill: Colors.waves.default[2] },
+    { A: 25, T: 325, fill: Colors.waves.default[1] },
+    { A: 20, T: 300, fill: Colors.waves.default[0] },
   ],
 };
