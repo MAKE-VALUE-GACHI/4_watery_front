@@ -7,6 +7,8 @@ interface CustomBottomSheetProps extends Partial<ModalProps> {
   isOpen?: boolean;
   onOpen?: () => void;
   onClose?: () => void;
+  showBackdrop?: boolean;
+  staticMode?: boolean; // ✅ 정적으로 항상 오픈될 경우 사용
   children: React.ReactNode;
   style?: any;
 }
@@ -21,7 +23,9 @@ interface CustomBottomSheetProps extends Partial<ModalProps> {
  * - react-native-modal의 모든 props(animationIn, animationOut, backdropColor 등)를 그대로 사용할 수 있습니다.
  *
  * @example
- * <CustomBottomSheet
+ * <CustomBottomSheet staticMode> - 고정된 BottomSheet(Open)
+ * or
+ * <CustomBottomSheet  - 모달 동작하는 모달형 BottomSheet(Open/Close)
  *   isOpen={isOpen}
  *   onClose={() => setIsOpen(false)}
  *   animationIn="slideInUp"
@@ -34,6 +38,7 @@ interface CustomBottomSheetProps extends Partial<ModalProps> {
  * @param {boolean} [isOpen] - true면 바텀시트가 열리고, false면 닫힙니다.
  * @param {() => void} [onOpen] - 바텀시트가 열릴 때 호출되는 콜백
  * @param {() => void} [onClose] - 바텀시트가 닫힐 때 호출되는 콜백
+ * @param {boolean} [showBackdrop] - 바텀시트가 열릴 때 배경
  * @param {React.ReactNode} children - 바텀시트 내부에 렌더링할 내용
  * @param {object} [style] - 바텀시트 컨테이너의 추가 스타일
  * @param {...ModalProps} rest - react-native-modal의 모든 props를 그대로 전달 가능
@@ -42,15 +47,29 @@ const CustomBottomSheet: React.FC<CustomBottomSheetProps> = ({
   isOpen = false,
   onOpen,
   onClose,
+  showBackdrop = true,
+  staticMode = false,
   children,
   style,
   ...rest
 }) => {
   useEffect(() => {
-    if (isOpen && onOpen) onOpen();
-    if (!isOpen && onClose) onClose();
-  }, [isOpen]);
+    if (!staticMode) {
+      if (isOpen && onOpen) onOpen();
+      if (!isOpen && onClose) onClose();
+    }
+  }, [isOpen, staticMode]);
 
+  // staticMode: 항상 열린 상태로 View만 렌더링
+  if (staticMode) {
+    return (
+      <View style={[customBottomSheetStyles.modal, { position: "absolute", bottom: 0 }]}>
+        <View style={customBottomSheetStyles.sheet}>{children}</View>
+      </View>
+    );
+  }
+
+  // Modal 기반 애니메이션 + 닫기 기능 포함
   return (
     // useNativeDriver, onSwipeComplete 동시 사용 불가 - 공식 문서 참조
     <Modal
