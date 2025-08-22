@@ -59,6 +59,7 @@ export const Colors = {
     green_tea: ["#4A7C59", "#6B8E23", "#90EE90"],
     cola: ["#1A1A1A", "#333333", "#4D4D4D"],
     black_tea: ["#8B4513", "#A0522D", "#CD853F"],
+    default: ["#CDD1D5", "#E6E8EA", "#FFFFFF"],
   },
   whiteTransparent: "rgba(255, 255, 255, 0.85)",
   primaryTransparent: "#91CFEA",
