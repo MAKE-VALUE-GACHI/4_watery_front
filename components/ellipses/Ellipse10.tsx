@@ -24,7 +24,6 @@ const styles = StyleSheet.create({
     width: horizontalScale(120 * SCALE_FACTOR),
     height: verticalScale(120 * SCALE_FACTOR),
     padding: 1,
-    // borderRadius: horizontalScale(60 * SCALE_FACTOR),
     backgroundColor: "transparent",
     overflow: "hidden",
     zIndex: 0,

@@ -63,6 +63,5 @@ export const Colors = {
   },
   whiteTransparent: "rgba(255, 255, 255, 0.85)",
   primaryTransparent: "#91CFEA",
-  primaryTransparent32: "#91CFEA52", // 32% 투명도
-  // primaryTransparent: "rgba(145, 207, 234, 0.63)",
+  primaryTransparent32: "#91CFEA52",
 };

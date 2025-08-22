@@ -4,7 +4,6 @@ import { horizontalScale, verticalScale } from "@/libs/utils/scaling";
 
 const historyListItemStyles = StyleSheet.create({
   itemContainer: {
-    // width: horizontalScale(311),
     height: verticalScale(32),
     backgroundColor: Colors.neutral_000,
     borderRadius: 4,
