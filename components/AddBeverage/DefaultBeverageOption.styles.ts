@@ -1,21 +1,26 @@
+import styled from "styled-components/native";
+import { verticalScale, horizontalScale } from "@/libs/utils/scaling";
 import { Colors } from "@/constants/Colors";
-import { paddingScale, verticalScale } from "@/libs/utils/scaling";
-import { StyleSheet } from "react-native";
 
-export const surveyOptionStyles = StyleSheet.create({
-  SurveyOptionWrapper: {
-    width: "100%",
-    ...paddingScale(18, 16),
-    borderWidth: 1,
-    borderColor: Colors.primary_100,
-    borderRadius: verticalScale(12),
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    height: verticalScale(81),
-  },
-  SurveyTextWrapper: {
-    backgroundColor: "transparent",
-    flex: 1,
-  },
-});
+export const OptionBase = styled.Pressable`
+  flex: 1;
+  height: ${verticalScale(44)}px;
+  border-radius: 6px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: ${verticalScale(4)}px ${horizontalScale(8)}px;
+  border-color: ${Colors.neutral_100};
+`;
+
+export const OptionInner = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  min-width: 0px;
+`;
+
+export const BeverageText = {
+  fontWeight: "700" as const,
+  textAlign: "center" as const,
+};

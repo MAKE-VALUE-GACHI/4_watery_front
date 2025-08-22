@@ -7,9 +7,13 @@ export const commonHeaderStyles = StyleSheet.create({
   },
   commonHeaderContainer: {
     flexDirection: "row",
-    height: verticalScale(56),
-    gap: horizontalScale(16),
     alignItems: "center",
-    ...paddingScale(16),
+    justifyContent: "space-between", // 양 끝 정렬
+    height: verticalScale(56),
+    width: "100%", // 전체 폭 차지
+    ...paddingScale(16), // 좌우 기본 패딩 16
+  },
+  completeText: {
+    paddingRight: horizontalScale(8), // 추가 여백
   },
 });

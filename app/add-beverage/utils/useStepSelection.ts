@@ -7,29 +7,33 @@ export function useStepSelection<T extends string>(
   onSelectionChange?: (selected: boolean) => void,
 ) {
   const { setValue, watch } = useFormContext();
-  const value = watch(formKey);
+  const value = watch(formKey) as string | undefined;
   const [selectedIdx, setSelectedIdx] = useState(0);
 
   useEffect(() => {
     if (value) {
-      setSelectedIdx(options.indexOf(value) + 1);
+      setSelectedIdx(options.indexOf(value as T) + 1);
     } else {
       setSelectedIdx(0);
     }
   }, [value, options]);
 
   useEffect(() => {
-    if (onSelectionChange) {
-      onSelectionChange(selectedIdx !== 0);
-    }
+    onSelectionChange?.(selectedIdx !== 0);
   }, [selectedIdx, onSelectionChange]);
 
   const changeSelectedOption = (idx: number) => {
-    setSelectedIdx(idx);
-    setValue(formKey, idx === 0 ? undefined : options[idx - 1]);
+    // 같은 버튼을 다시 누르면 해제 → 기본(default)으로
+    if (selectedIdx === idx) {
+      setValue(formKey, "" as any, { shouldDirty: true, shouldValidate: true, shouldTouch: true });
+    } else {
+      setValue(formKey, options[idx - 1] as any, {
+        shouldDirty: true,
+        shouldValidate: true,
+        shouldTouch: true,
+      });
+    }
   };
 
   return { selectedIdx, changeSelectedOption };
 }
-
-export default useStepSelection;
